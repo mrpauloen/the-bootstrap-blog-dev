@@ -5,7 +5,7 @@
 
 Summary:           | The Bootstrap Blog
 -------------------|----------------
-Contributors:      | [@mrpauloen](https://profiles.wordpress.org/mrpauloen/)
+Contributors:      | [mrpauloen](https://profiles.wordpress.org/mrpauloen/)
 Version:           | 0.1.3.1
 Requires at least: | 5.0
 Tested up to:      | 5.5

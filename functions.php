@@ -110,22 +110,20 @@ function the_bootstrap_blog__content_width() {
 }
 add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 
+	/*
+ 	* Custom template tags for this theme
+ 	*
+ 	* @since The Bootstrap Blog 0.1.4
+ 	*/
 
+	require trailingslashit( get_template_directory() ) . 'inc/template-tags.php';
 	/*
 	 * Customizer additions.
 	 *
 	 * @since The Bootstrap Blog 0.1
 	 */
 
- require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer.php';
-
-	/*
-	 * Custom template tags for this theme
-	 *
-	 * @since The Bootstrap Blog 0.1.4
-	 */
-
- require trailingslashit( get_template_directory() ) . 'inc/template-tags.php';
+ 	require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer.php';
 
 	/*
 	 * ** Define Bootstrap Menu **
@@ -135,7 +133,7 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 	 * @since The Bootstrap Blog 0.1
 	 **/
 
-require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-navwalker.php';
+	 require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-navwalker.php';
 	/*
 	 * ** Define Comments Walker **
 	 *
@@ -144,7 +142,7 @@ require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstr
 	 * @since The Bootstrap Blog 0.1
 	 **/
 
-require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-comments-walker.php';
+	 require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-comments-walker.php';
 
 	/*
 	 *  Enqueue scripts and styles.
@@ -523,6 +521,6 @@ add_filter( 'excerpt_length', 'the_bootstrap_blog__filter__excerpt_length', 999 
 function the_bootstrap_blog__filter__excerpt_more( $more ) {
 	if ( is_admin() ) return $more;
 
-	return $more . '? <a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
+	return $more . '<a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
 }
-add_filter( 'excerpt_more', 'the_bootstrap_blog__filter__excerpt_more' );
+add_filter( 'get_the_excerpt', 'the_bootstrap_blog__filter__excerpt_more' );

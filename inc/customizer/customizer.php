@@ -244,6 +244,78 @@ function the_bootstrap_blog__theme_customize( $wp_customize ) {
 				),
 			)
 		);
+		/******************************************
+		 *                                        *
+		 *      Option Two - Excerpt Lenght       *
+		 *                                        *
+		 ******************************************
+		 */
+
+		$wp_customize->add_section(
+			'excerpt_length_section',
+			array(
+				'title'      => __( 'Excerpt lenght', 'the-bootstrap-blog' ),
+				'description'	=> sprintf(
+				/* translators: %1$s: the_excerpt (word); %2$s !--more-- (tag); %3$s: url to codex; %4$s: url to codex */
+				__( 'Use this option to control the excerpt lenght on the home page.
+	The default excerpt length is 55 words. This setting works only when a post themplate use <code>%1$s</code> template tag and the excerpt is created automatically (excerpt meta box on the post editor screen is empty) but no longer than the <code>%2$s</code> tag (if it\'s used).
+	See: <a href="%3$s" target="_blank">Excerpt</a> or <a href="%4$s" target="_blank">Customizing_the_Read_More</a> in codex.', 'the-bootstrap-blog'),
+				esc_html__( 'the_excerpt', 'the-bootstrap-blog' ),
+				esc_html__( '&lt;!--more--&gt;', 'the-bootstrap-blog'  ),
+				esc_url('https://codex.wordpress.org/Excerpt' ),
+				esc_url('https://codex.wordpress.org/Customizing_the_Read_More' )),
+				'description_hidden' => true,
+
+		) );
+
+		/*
+		 * Excerpt lenght
+		 *
+		 * Return Values:
+		 * (int)
+		 * A non-negative integer.
+		 *
+		 **/
+
+		$wp_customize->add_setting(
+			'excerpt_length',
+			array(
+				'default' => the_bootstrap_blog__default_excerpt_length(),
+				'capability'     => 'edit_theme_options',
+				'type'           => 'theme_mod',
+				'sanitize_callback' => 'the_bootstrap_blog__sanitize_numbers',
+			)
+		);
+
+		$wp_customize->add_control(
+	    'excerpt_length_control',
+			array(
+				'label' => __( 'Use the slider or enter a number:', 'the-bootstrap-blog' ),
+				'settings' => 'excerpt_length',
+				'section' => 'excerpt_length_section',
+				'type' => 'range',
+				'input_attrs' => array(
+					'min' => 1,
+					'max' => 200,
+					'step' => 1,
+				),
+			)
+		);
+
+		$wp_customize->add_control(
+	    '_excerpt_length_control',
+			array(
+				'description' => __( 'Available slider range: 1 to 200', 'the-bootstrap-blog' ),
+				'settings' => 'excerpt_length',
+				'section' => 'excerpt_length_section',
+				'type' => 'number',
+				'input_attrs' => array(
+					'min' => 1,
+					'max' => 200,
+					'step' => 1,
+				),
+			)
+		);
 
 }
 add_action( 'customize_register', 'the_bootstrap_blog__theme_customize', 11 );
@@ -286,4 +358,10 @@ function the_bootstrap_blog__allowed_html(){
 function the_bootstrap_blog__sanitize_checkbox( $checked ) {
 	// Boolean check.
 	return ( ( isset( $checked ) && true == $checked ) ? true : false );
+}
+
+/*  Sanitizenumers for customizer */
+function the_bootstrap_blog__sanitize_numbers( $number ) {
+	// number check.
+	return absint( $number );
 }

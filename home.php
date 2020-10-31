@@ -36,7 +36,7 @@ if ( $password_required ) array_push( $class, 'border', 'pt-3', 'px-3' );?>
 
 	<?php  the_post_thumbnail( 'post-thumbnail', array( 'class' => 'img-fluid mb-3 ')); ?>
 
-<?php the_excerpt(); ?>
+    <?php the_excerpt(); ?>
 
 
 	<!--
@@ -45,7 +45,6 @@ if ( $password_required ) array_push( $class, 'border', 'pt-3', 'px-3' );?>
 
 	-->
 	</article><!-- /.blog-post -->
-
 
 <?php endwhile; else: ?>
 <p><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'the-bootstrap-blog' ); ?></p>

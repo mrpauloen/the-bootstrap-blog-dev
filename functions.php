@@ -120,6 +120,14 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
  require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer.php';
 
 	/*
+	 * Custom template tags for this theme
+	 *
+	 * @since The Bootstrap Blog 0.1.4
+	 */
+
+ require trailingslashit( get_template_directory() ) . 'inc/template-tags.php';
+
+	/*
 	 * ** Define Bootstrap Menu **
 	 *
 	 * ** This theme has only one menu level!
@@ -127,7 +135,7 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 	 * @since The Bootstrap Blog 0.1
 	 **/
 
-require trailingslashit( get_template_directory() ) . 'classess/class.the-bootstrap-blog-navwalker.php';
+require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-navwalker.php';
 	/*
 	 * ** Define Comments Walker **
 	 *
@@ -136,7 +144,7 @@ require trailingslashit( get_template_directory() ) . 'classess/class.the-bootst
 	 * @since The Bootstrap Blog 0.1
 	 **/
 
-require trailingslashit( get_template_directory() ) . 'classess/class.the-bootstrap-blog-comments-walker.php';
+require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-comments-walker.php';
 
 	/*
 	 *  Enqueue scripts and styles.
@@ -384,25 +392,8 @@ function the_bootstrap_blog__filter__password_form() {
 add_filter( 'the_password_form', 'the_bootstrap_blog__filter__password_form' );
 
 /**
- * Add question mark after [...]" (appended to automatically generated excerpts)
- *
- * @return string $more with question mark
- *
- * @since The Bootstrap Blog 0.1
- */
-
-function the_bootstrap_blog__filter__new_excerpt_more( $more ) {
-	if ( is_admin() ) {
-		return $more;
-	} else {
-		return  $more . '?';
-	}
-}
-add_filter( 'excerpt_more', 'the_bootstrap_blog__filter__new_excerpt_more' );
-
-/**
  * Filters the HTML output of individual page number links.
- * 
+ *
  * @param string $link The page number HTML output.
  * @param int    $i    Page number for paginated posts' page links.
  * @since 0.1
@@ -495,93 +486,43 @@ function the_bootstrap_blog__filter_comment_reply_link( $link, $args, $comment, 
 	 return $args['before'] . $link . $args['after'];
 }
 
-/**
- * Custom Site Title
- *
- * This function changes the way you see (in header section)
- * your site tile (or blog name), depends on different pages
- * See line: 36 in header.php file
- *
- * @since The Bootstrap Blog
- */
+/** Default excerpt length **/
 
-function the_bootstrap_blog__site_title(){
-
-	// if there is attachment page display: Attachment
-	if ( is_attachment() ) {
-
-		$site_title =  __( 'Attachment', 'the-bootstrap-blog');
-	}
-
-	elseif ( is_404() ) {
-		$site_title =  __( '404', 'the-bootstrap-blog');
-	}
-		// if there is author page display: Author + author name
-		elseif ( is_author()   ) {
-
-			$site_title =  __( 'Author', 'the-bootstrap-blog');
-		}
-			// if there is archive display: Archive
-			elseif ( is_archive()  ) {
-
-				$site_title =  __( 'Archive', 'the-bootstrap-blog');
-			}
-				// in other any cases display hyperlinked blog name
-					else {
-
-						$site_title =  get_bloginfo( 'name' );
-					}
-	echo esc_html( $site_title );
+function the_bootstrap_blog__default_excerpt_length(){
+	return 55;
 }
 
 /**
- * Sticky Post handle
+ * Excerpt lenght Filter
  *
- * Adds `svg` pin to the sticky post title
+ * @param integer @lenght    The maximum number of words. Default 55.
  *
- * @since The Bootstrap Blog 0.1
+ * @return integer excerpt_length
+ *
+ * @since The Bootstrap Blog 0.1.4
  */
+function the_bootstrap_blog__filter__excerpt_length( $length ) {
 
-function the_bootstrap_blog__sticky_pin(){
+	$_excerpt_length = the_bootstrap_blog__default_excerpt_length();
+	$excerpt_length = get_theme_mod( 'excerpt_length', $_excerpt_length );
 
-	if ( is_sticky() ) :
-
-	$url =  get_template_directory_uri() . '/images/pin.svg';
-
-?><img class="float-right post-sticky-icon m-2" src="<?php echo esc_url( $url ); ?>" alt="<?php esc_attr_e( 'Sticky', 'the-bootstrap-blog' );?>">
-<?php endif;
+	if ( $excerpt_length == $_excerpt_length )
+		return $_excerpt_length;
+	else return $excerpt_length;
 }
+add_filter( 'excerpt_length', 'the_bootstrap_blog__filter__excerpt_length', 999 );
 
 /**
- * Sticky Post classes
+ * Filter the "read more" excerpt string link to the post.
  *
- * The sticky post should be distinctly recognizable in some way in comparison to normal posts.
- * You can style the `sticky` class if you are using the @post_class() function to generate your post classes,
- * but since we use bootstrap framework, we need to only
- * adds extra classes to the sticky post title instead of create new styles.
+ * @param string $more "Read more" excerpt string.
+ * @return string (Maybe) modified "read more" excerpt string.
  *
- * @since The Bootstrap Blog 0.1
+ * @since The BootstrapBlog 0.1.4
  */
+function the_bootstrap_blog__filter__excerpt_more( $more ) {
+	if ( is_admin() ) return $more;
 
-function the_bootstrap_blog__sticky_class(){
-
-	if ( is_sticky() ) {
-
-		echo esc_attr ( 'p-3 mb-2 bg-dark text-white' );
-	}
+	return $more . '? <a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
 }
-
-/**
- * Author meta
- *
- * Display either author’s link or author’s name.
- * @link https://developer.wordpress.org/reference/functions/the_author_link/
- *
- * @since The Bootstrap Blog 0.1.3
- */
-function the_bootstrap_blog__author_meta(){
-
-	printf (
-		/* translators: %s: Either author’s link or author’s name. */
-		esc_html__('by %s', 'the-bootstrap-blog'), get_the_author_link() );
-}
+add_filter( 'excerpt_more', 'the_bootstrap_blog__filter__excerpt_more' );

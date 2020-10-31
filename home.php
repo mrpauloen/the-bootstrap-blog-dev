@@ -36,11 +36,7 @@ if ( $password_required ) array_push( $class, 'border', 'pt-3', 'px-3' );?>
 
 	<?php  the_post_thumbnail( 'post-thumbnail', array( 'class' => 'img-fluid mb-3 ')); ?>
 
-<p><?php echo esc_html( get_the_excerpt() ); ?>
-
-<a href="<?php the_permalink(); ?>" rel="<?php esc_attr_e( 'bookmark', 'the-bootstrap-blog' ); ?>" title="<?php esc_attr_e( 'Permanent Link to:', 'the-bootstrap-blog' ); ?>&nbsp;<?php the_title_attribute(); ?>" ><?php esc_html_e( '&rarr;Read&nbsp;more', 'the-bootstrap-blog' ); ?></a>
-
-</p>
+<?php the_excerpt(); ?>
 
 
 	<!--

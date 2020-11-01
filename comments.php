@@ -97,7 +97,7 @@ $comments_args = array(
 	'comment_notes_after' 	=> '',
 	'fields'				=> apply_filters( 'comment_form_default_fields', $fields ),
 	'comment_field'			=> '<div class="form-group">
-<textarea id="commenttext" name="comment" rows="1" class="form-control rounded comment-textarea" ' . $aria_req . ' '. ( $req ? 'required' : '' ) .' placeholder="** Napisz komentarz..."></textarea>
+<textarea id="commenttext" name="comment" rows="1" class="form-control rounded comment-textarea" ' . $aria_req . ' '. ( $req ? 'required' : '' ) .' placeholder="' . esc_attr__( '** Write a comment', 'the-boottrap-blog' ) . '"></textarea>
 </div>',
 
 ); ?>

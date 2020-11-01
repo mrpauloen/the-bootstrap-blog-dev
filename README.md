@@ -1,4 +1,4 @@
-# The Bootstrap Blog
+# The Bootstrap Blog v dev
 
 > A simple two-column WordPress theme, built with Bootstrap 4 with custom navigation, header, and type..
 
@@ -9,7 +9,7 @@ Contributors:      | [mrpauloen](https://profiles.wordpress.org/mrpauloen/)
 Version:           | 0.1.3.1
 Requires at least: | 5.0
 Tested up to:      | 5.5
-Requires PHP:	     | 7.0
+Requires PHP:	   | 7.0
 License:           | GPLv2 or later
 License URI:       | http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              | two-columns, custom-menu, custom-background, right-sidebar, custom-header, featured-images, sticky-post, threaded-comments, translation-ready, blog

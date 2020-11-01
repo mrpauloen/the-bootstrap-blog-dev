@@ -26,13 +26,11 @@ get_header(); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<h2 class="blog-post-title border border-top-0 border-left-0 border-right-0 border-succes <?php the_bootstrap_blog__sticky_class(); ?>"><?php the_title(); ?> <?php the_bootstrap_blog__sticky_pin(); ?></h2>
+	<h2 class="blog-post-title <?php the_bootstrap_blog__sticky_class(); ?>"><?php the_title(); ?> <?php the_bootstrap_blog__sticky_pin(); ?></h2>
 
-	<div class="text-center">
 	<?php the_post_thumbnail( 'post-thumbnail', array( 'class' => 'img-fluid mb-3 ')); ?>
-	</div>
 
-	<?php the_excerpt() ); ?>
+	<?php the_excerpt(); ?>
 
 	<!--
 

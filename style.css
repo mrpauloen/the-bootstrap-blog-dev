@@ -194,21 +194,7 @@ h6, .h6 {
   line-height: 1;
   border-bottom: 1px solid #e5e5e5;
 }
-.blog-title {
-  margin-bottom: 0;
-  font-size: 2rem;
-  font-weight: 700;
-}
-.blog-description {
-  font-size: 1.1rem;
-  color: #999;
-}
-@media (min-width: 40em) {
-  .blog-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-  }
-}
+
 /*
  * Main column and sidebar layout
  */
@@ -239,9 +225,6 @@ h6, .h6 {
  */
 .blog-post {
   margin-bottom: 4rem;
-}
-.blog-post-title {
-  font-size: 2.5rem;
 }
 .blog-post-meta {
   margin-bottom: 1.25rem;
@@ -289,22 +272,6 @@ textarea.comment-textarea {
 .archive-controls.control-next {	right: 0px }
 img.post-sticky-icon { width: 32px; }
 
-.icon {
-	display: inline-block;
-	text-indent: -9999px;
-}
-a.icon-github,a.icon-twitter,a.icon-facebook {
-	background-size: contain;
-	background-repeat: no-repeat;
-}
-
-a.link-icon {
-	background: url('images/external-link.svg');
-	background-size: 16px 16px;
-	background-repeat: no-repeat;
-	background-position: center right;
-	padding-right: 20px;
-}
 
 /* =WordPress Core
 -------------------------------------------------------------- */

@@ -414,8 +414,8 @@ function the_bootstrap_blog__filter__wp_link_pages_link( $link, $i ){
  *  @since The Bootstrap Blog 0.1.2
  */
 
-add_filter( 'post_thumbnail_html', 'the_bootstrap_blog__filter__post_thumbnail_html', 10, 5 );
-function the_bootstrap_blog__filter__post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+add_filter( 'post_thumbnail_html', 'the_bootstrap_blog__filter__post_thumbnail_html', 10 );
+function the_bootstrap_blog__filter__post_thumbnail_html( $html ) {
 
 	if ( !post_password_required() ){
 
@@ -515,7 +515,7 @@ function the_bootstrap_blog__filter__excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'the_bootstrap_blog__filter__excerpt_length', 999 );
 
 /**
- * Filter the "read more" excerpt string link to the post.
+ * Add the "read more" link to excerpt string filter.
  *
  * @param string $more "Read more" excerpt string.
  * @return string (Maybe) modified "read more" excerpt string.
@@ -527,3 +527,39 @@ function the_bootstrap_blog__filter__excerpt_more( $more ) {
 	return $more . ' <a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
 }
 add_filter( 'get_the_excerpt', 'the_bootstrap_blog__filter__excerpt_more' );
+
+/**
+ * Filters the archive title prefix.
+ *
+ * @param string $prefix Archive title prefix.
+ * @return empty on author | string $prefix
+ *
+ * @since The Bootstrap Blog 0.1.4
+ */
+ function the_bootstrap_blog__filter__archive_title_prefix( $prefix ) {
+	 if ( is_author() ) return '';
+	 return $prefix;
+ }
+ add_filter( 'get_the_archive_title_prefix', 'the_bootstrap_blog__filter__archive_title_prefix' );
+
+/**
+ * This filters prevents to display all post on empty search result
+ *
+ * @param string $search	 Search SQL for WHERE clause.
+ * @param WP_Query $q  The current WP_Query object.
+ * @return string WHERE clause.
+ *
+ * @since The Bootstrap Blog 0.1.4
+ */
+function the_bootstrap_blog__filter__posts_search( $search, $q ) {
+
+	$sphrase = get_search_query();
+	$slen = strlen( $sphrase );
+	$minlen = 2;
+
+	if( ! is_admin() && $slen < $minlen && $q->is_search() && $q->is_main_query() ){
+		$search .=" AND 0=1 ";
+	}
+	return $search;
+}
+add_filter( 'posts_search', 'the_bootstrap_blog__filter__posts_search', 10, 2 );

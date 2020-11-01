@@ -46,9 +46,11 @@
 
   <header class="blog-header">
   <div class="container">
-    <h1 class="blog-title mb-2"><?php the_bootstrap_blog__site_title(); ?></h1>
+    <h1 class="blog-title display-4 mb-2"><?php the_bootstrap_blog__site_title(); ?></h1>
 <?php if ( is_archive() ) { ?>
 <p class="lead blog-description"><?php the_archive_title(); ?><p/>
+<?php } elseif ( is_404() ) { ?>
+<p class="lead blog-description"><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'the-bootstrap-blog' ); ?></p>
 <?php } else { ?>
     <p class="lead blog-description"><?php bloginfo('description'); ?></p>
 <?php } ?>

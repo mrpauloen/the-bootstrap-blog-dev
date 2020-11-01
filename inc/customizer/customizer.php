@@ -181,7 +181,9 @@ function the_bootstrap_blog__theme_customize( $wp_customize ) {
 			'custom_footer_section',
 			array(
 				'title'      => __( 'Custom footer', 'the-bootstrap-blog' ),
-				'description'	=> sprintf( __( 'Footer text is displayed by default. Change it using input field bellow. If nothing specified, default text will be used instead. You may use some HTML tags and attributes: <code>%s</code><br>As well as some predefined tags: <code>%s</code>',  'the-bootstrap-blog' ), esc_html( '<a href="" title=""> <b> <del datetime=""> <em> <i> <q cite=""> <s> <strike> <strong>' ), esc_html( '%sitetitle% %sitedescription% %year%' )),
+				'description'	=> sprintf(
+					/* translators: %s allowed HTML tags */
+					__( 'Footer text is displayed by default. Change it using input field bellow. If nothing specified, default text will be used instead. You may use some HTML tags and attributes: <code>%s</code><br>As well as some predefined tags: <code>%s</code>',  'the-bootstrap-blog' ), esc_html( '<a href="" title=""> <b> <del datetime=""> <em> <i> <q cite=""> <s> <strike> <strong>' ), esc_html( '%sitetitle% %sitedescription% %year%' )),
 				'description_hidden' => true,
 
 		) );
@@ -256,14 +258,21 @@ function the_bootstrap_blog__theme_customize( $wp_customize ) {
 			array(
 				'title'      => __( 'Excerpt lenght', 'the-bootstrap-blog' ),
 				'description'	=> sprintf(
-				/* translators: %1$s: the_excerpt (word); %2$s !--more-- (tag); %3$s: url to codex; %4$s: url to codex */
-				__( 'Use this option to control the excerpt lenght on the home page.
-	The default excerpt length is 55 words. This setting works only when a post themplate use <code>%1$s</code> template tag and the excerpt is created automatically (excerpt meta box on the post editor screen is empty) but no longer than the <code>%2$s</code> tag (if it\'s used).
-	See: <a href="%3$s" target="_blank">Excerpt</a> or <a href="%4$s" target="_blank">Customizing_the_Read_More</a> in codex.', 'the-bootstrap-blog'),
-				esc_html__( 'the_excerpt', 'the-bootstrap-blog' ),
-				esc_html__( '&lt;!--more--&gt;', 'the-bootstrap-blog'  ),
-				esc_url('https://codex.wordpress.org/Excerpt' ),
-				esc_url('https://codex.wordpress.org/Customizing_the_Read_More' )),
+						wp_kses(
+							/* translators: %1$s: the_excerpt (word); %2$s !--more-- (tag); %3$s: url to codex; %4$s: url to codex */
+							__( 'Use this option to control the excerpt lenght on the home and archive page. The default excerpt length is 55 words. This setting works only when a post themplate use <code>%1$s</code> template tag and the excerpt is created automatically (excerpt meta box on the post editor screen is empty) but no longer than the <code>%2$s</code> tag (if it\'s used).
+				See: <a href="%3$s" target="_blank">Excerpt</a> or <a href="%4$s" target="_blank">Customizing_the_Read_More</a> in codex.', 'the-bootstrap-blog' ),
+							array(
+								'a' => array(
+									'href' => array(),
+									'target' => array(),
+								),
+							)
+						),
+						esc_html__( 'the_excerpt', 'the-bootstrap-blog' ),
+						esc_html__( '&lt;!--more--&gt;', 'the-bootstrap-blog'  ),
+						esc_url('https://wordpress.org/support/article/excerpt/' ),
+						esc_url('https://codex.wordpress.org/Customizing_the_Read_More' ) ),
 				'description_hidden' => true,
 
 		) );
@@ -307,6 +316,54 @@ function the_bootstrap_blog__theme_customize( $wp_customize ) {
 			array(
 				'description' => __( 'Available slider range: 1 to 200', 'the-bootstrap-blog' ),
 				'settings' => 'excerpt_length',
+				'section' => 'excerpt_length_section',
+				'type' => 'number',
+				'input_attrs' => array(
+					'min' => 1,
+					'max' => 200,
+					'step' => 1,
+				),
+			)
+		);
+		/*
+		 * Archive Excerpt lenght
+		 *
+		 * Return Values:
+		 * (int)
+		 * A non-negative integer.
+		 *
+		 **/
+
+		$wp_customize->add_setting(
+			'archive_excerpt_length',
+			array(
+				'default' => the_bootstrap_blog__default_excerpt_length(),
+				'capability'     => 'edit_theme_options',
+				'type'           => 'theme_mod',
+				'sanitize_callback' => 'the_bootstrap_blog__sanitize_numbers',
+			)
+		);
+
+		$wp_customize->add_control(
+	    'archive_excerpt_length_control',
+			array(
+				'label' => __( 'Archive excerpt lenght:', 'the-bootstrap-blog' ),
+				'settings' => 'archive_excerpt_length',
+				'section' => 'excerpt_length_section',
+				'type' => 'range',
+				'input_attrs' => array(
+					'min' => 1,
+					'max' => 200,
+					'step' => 1,
+				),
+			)
+		);
+
+		$wp_customize->add_control(
+	    '_archive_excerpt_length_control',
+			array(
+				'description' => __( 'Available slider range: 1 to 200', 'the-bootstrap-blog' ),
+				'settings' => 'archive_excerpt_length',
 				'section' => 'excerpt_length_section',
 				'type' => 'number',
 				'input_attrs' => array(

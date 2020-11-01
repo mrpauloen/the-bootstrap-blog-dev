@@ -501,12 +501,16 @@ function the_bootstrap_blog__default_excerpt_length(){
  */
 function the_bootstrap_blog__filter__excerpt_length( $length ) {
 
-	$_excerpt_length = the_bootstrap_blog__default_excerpt_length();
-	$excerpt_length = get_theme_mod( 'excerpt_length', $_excerpt_length );
+	if ( is_admin() ) return $length;
 
-	if ( $excerpt_length == $_excerpt_length )
-		return $_excerpt_length;
-	else return $excerpt_length;
+	$excerpt_length_home = get_theme_mod( 'excerpt_length' );
+	$excerpt_length_archive = get_theme_mod( 'archive_excerpt_length' );
+
+	if ( $excerpt_length_home and is_home() )	return $excerpt_length_home;
+	if ( $excerpt_length_archive and is_archive() )	return $excerpt_length_archive;
+
+	// Remember to always return default number
+	return the_bootstrap_blog__default_excerpt_length();
 }
 add_filter( 'excerpt_length', 'the_bootstrap_blog__filter__excerpt_length', 999 );
 
@@ -519,8 +523,7 @@ add_filter( 'excerpt_length', 'the_bootstrap_blog__filter__excerpt_length', 999 
  * @since The BootstrapBlog 0.1.4
  */
 function the_bootstrap_blog__filter__excerpt_more( $more ) {
-	if ( is_admin() ) return $more;
 
-	return $more . '<a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
+	return $more . ' <a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
 }
 add_filter( 'get_the_excerpt', 'the_bootstrap_blog__filter__excerpt_more' );

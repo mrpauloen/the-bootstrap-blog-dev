@@ -14,7 +14,7 @@
 get_header(); ?>
 
     <div class="container">
-
+<?php var_dump( get_theme_mod( 'excerpt_length' ) ); ?>
       <div class="row">
        <div id="site-content" class="col-sm-8 blog-main" role="main">
 

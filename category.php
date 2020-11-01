@@ -11,7 +11,7 @@
 get_header(); ?>
 
     <div class="container">
-<?php var_dump( get_theme_mod( 'archive_excerpt_length' ) ); ?>
+
       <div class="row">
        <div class="col-sm-8 blog-main">
 	   <ul class="list-unstyled">

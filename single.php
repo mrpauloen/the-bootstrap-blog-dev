@@ -39,7 +39,7 @@ if ( ! $password_required ){ ?>
 		$args = array(
 		'before'		=> '<p class="pager">' . esc_html__( 'Pages:', 'the-bootstrap-blog' ),
 		'after'			=> '</p>',
-		'link_before'	=> '<span class="badge badge-danger">',
+		'link_before'	=> '<span class="badge badge-danger badge-pill">',
 		'link_after'	=> '</span>',
 		'separator'		=> '&nbsp;&nbsp;',
 		'pagelink'		=> '%',

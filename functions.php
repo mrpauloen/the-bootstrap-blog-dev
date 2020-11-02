@@ -402,7 +402,7 @@ function the_bootstrap_blog__filter__wp_link_pages_link( $link, $i ){
 	global $page;
 
 	if ( !is_archive() AND $i === $page ) {
-    $link = '<span class="badge badge-secondary disabled">' . $i . '</span>';
+    $link = '<span class="badge badge-secondary badge-pill disabled">' . $i . '</span>';
 	}
 
 	return $link;

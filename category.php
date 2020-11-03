@@ -31,7 +31,7 @@ get_header(); ?>
 		$args = array(
 		'before'		=> '<p class="pager">' . esc_html__( 'Pages:', 'the-bootstrap-blog' ),
 		'after'			=> '</p>',
-		'link_before'	=> '<span class="badge badge-danger">',
+		'link_before'	=> '<span class="badge badge-danger badge-pill">',
 		'link_after'	=> '</span>',
 		'separator'		=> '&nbsp;&nbsp;',
 		'pagelink'		=> esc_html_x( 'part: %', 'category & tag page', 'the-bootstrap-blog' )

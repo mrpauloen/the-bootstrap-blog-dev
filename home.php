@@ -28,15 +28,15 @@ if ( $password_required ) array_push( $class, 'border', 'pt-3', 'px-3' );?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( $class ); ?>>
 
-	<h2 class="h2 <?php the_bootstrap_blog__sticky_class(); ?>"><?php the_bootstrap_blog__sticky_pin(); ?> <?php the_title(); ?></h2>
+	<h2 class="h2"><?php the_title(); the_bootstrap_blog__sticky_pin(); ?></h2>
 
 <?php if ( ! $password_required ){ ?>
 <p class="blog-post-meta"><time class="entry-date updated" datetime="<?php echo get_the_date('c'); ?>" itemprop="datePublished"><?php echo get_the_date('F j, Y'); ?></time> <?php the_bootstrap_blog__author_meta(); ?></p>
 <?php } ?>
 
-	<?php  the_post_thumbnail( 'post-thumbnail', array( 'class' => 'img-fluid mb-3 ')); ?>
+	<?php  the_post_thumbnail( 'post-thumbnail', array( 'class' => 'img-fluid mb-3 '));
 
-    <?php the_excerpt();
+    the_excerpt();
 
      	wp_link_pages(
 

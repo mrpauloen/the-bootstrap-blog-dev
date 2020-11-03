@@ -214,22 +214,13 @@ h6, .h6 {
   margin-bottom: 0;
 }
 /* Pagination */
-.blog-pagination {
-  margin-bottom: 4rem;
-}
-.blog-pagination > .btn, .round {
-  border-radius: 2rem;
-}
+.blog-pagination {margin-bottom: 4rem;}
+.blog-pagination > .btn, .round {border-radius: 2rem;}
 /*
  * Blog posts
  */
-.blog-post {
-  margin-bottom: 4rem;
-}
-.blog-post-meta {
-  margin-bottom: 1.25rem;
-  color: #999;
-}
+.blog-post {margin-bottom: 4rem;}
+.blog-post-meta {color: #999;}
 /*
  * Footer
  */
@@ -270,8 +261,6 @@ textarea.comment-textarea {
 .archive-controls {/* position: absolute; */}
 .archive-controls.control-prev {	right: 20px }
 .archive-controls.control-next {	right: 0px }
-img.post-sticky-icon { width: 32px; }
-
 
 /* =WordPress Core
 -------------------------------------------------------------- */
@@ -372,7 +361,13 @@ a img.aligncenter {
 }
 
 
-.sticky {}
+.sticky {
+padding: 0.5rem 1rem;
+background-color: #343a40;
+color: #f8f9fa;
+}
+.sticky h2 {color: #f8f9fa;}.sticky a.read-more{padding-right:.7rem}
+
 .gallery-caption {}
 .bypostauthor {}
 

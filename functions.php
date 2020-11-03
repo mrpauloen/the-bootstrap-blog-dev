@@ -360,9 +360,13 @@ add_filter( 'cancel_comment_reply_link', 'the_bootstrap_blog__filter__cancel_com
 add_filter( 'protected_title_format', 'the_bootstrap_blog__filter__protected_text_title' );
 function the_bootstrap_blog__filter__protected_text_title() {
 
-	$height = ( is_archive() ) ? '20' : '32';
+	$height = ( is_archive() ) ? '16' : '24';
+	$lock = '<path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
+  <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>';
+	$unlock = '<path d="M.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
+  <path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>';
 
-return '<svg height="' . esc_attr ( $height ) . '" viewBox="0 0 12 16" version="1.1" width="' . esc_attr ( $height ) . '" aria-hidden="true"><path fill-rule="evenodd" d="M4 13H3v-1h1v1zm8-6v7c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h1V4c0-2.2 1.8-4 4-4s4 1.8 4 4v2h1c.55 0 1 .45 1 1zM3.8 6h4.41V4c0-1.22-.98-2.2-2.2-2.2-1.22 0-2.2.98-2.2 2.2v2H3.8zM11 7H2v7h9V7zM4 8H3v1h1V8zm0 2H3v1h1v-1z"></path></svg> %s';
+return '<svg width="' . esc_attr ( $height ) . '" height="' . esc_attr ( $height ) . '" viewBox="0 0 16 16" class="align-baseline" fill="currentColor" xmlns="http://www.w3.org/2000/svg">' . ( ( isset( $_COOKIE['wp-postpass_' . COOKIEHASH] ) ) ? $unlock : $lock ) . '</svg> %s';
 }
 
 /**
@@ -401,7 +405,7 @@ add_filter( 'wp_link_pages_link', 'the_bootstrap_blog__filter__wp_link_pages_lin
 function the_bootstrap_blog__filter__wp_link_pages_link( $link, $i ){
 	global $page;
 
-	if ( !is_archive() AND $i === $page ) {
+	if ( is_singular() AND $i === $page ) {
     $link = '<span class="badge badge-secondary badge-pill disabled">' . $i . '</span>';
 	}
 
@@ -515,6 +519,32 @@ function the_bootstrap_blog__filter__excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'the_bootstrap_blog__filter__excerpt_length', 999 );
 
 /**
+ * Add svg icon to password protected post excerpt.
+ *
+ * @param string $post_excerpt The post excerpt.
+ * @return string $post_excerpt with svg icon
+ * @since The Bootstrap Blog 0.1.4
+ */
+
+function the_bootstrap_blog__filter__excerpt( $post_excerpt ){
+
+	if ( is_admin() ) return $post_excerpt;
+
+    if ( post_password_required() and !is_archive() )
+	return '<a class="float-right text-decoration-none" href="' . get_the_permalink() . '" title="Unlock"><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		<path fill-rule="evenodd" d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+	</svg>
+	<svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		<path fill-rule="evenodd" d="M5.443 1.991a60.17 60.17 0 0 0-2.725.802.454.454 0 0 0-.315.366C1.87 7.056 3.1 9.9 4.567 11.773c.736.94 1.533 1.636 2.197 2.093.333.228.626.394.857.5.116.053.21.089.282.11A.73.73 0 0 0 8 14.5c.007-.001.038-.005.097-.023.072-.022.166-.058.282-.111.23-.106.525-.272.857-.5a10.197 10.197 0 0 0 2.197-2.093C12.9 9.9 14.13 7.056 13.597 3.159a.454.454 0 0 0-.315-.366c-.626-.2-1.682-.526-2.725-.802C9.491 1.71 8.51 1.5 8 1.5c-.51 0-1.49.21-2.557.491zm-.256-.966C6.23.749 7.337.5 8 .5c.662 0 1.77.249 2.813.525a61.09 61.09 0 0 1 2.772.815c.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.191 11.191 0 0 1-2.418 2.3 6.942 6.942 0 0 1-1.007.586c-.27.124-.558.225-.796.225s-.526-.101-.796-.225a6.908 6.908 0 0 1-1.007-.586 11.192 11.192 0 0 1-2.417-2.3C2.167 10.331.839 7.221 1.412 3.024A1.454 1.454 0 0 1 2.415 1.84a61.11 61.11 0 0 1 2.772-.815z"/>
+		<path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z"/>
+	</svg>
+</a>' . $post_excerpt;
+return $post_excerpt;
+}
+add_filter( 'the_excerpt', 'the_bootstrap_blog__filter__excerpt' );
+
+
+/**
  * Add the "read more" link to excerpt string filter.
  *
  * @param string $more "Read more" excerpt string.
@@ -524,7 +554,9 @@ add_filter( 'excerpt_length', 'the_bootstrap_blog__filter__excerpt_length', 999 
  */
 function the_bootstrap_blog__filter__excerpt_more( $more ) {
 
-	return $more . ' <a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
+	$sticky = ( is_sticky() and ! is_paged()) ? ' badge badge-light badge-pill' : '';
+
+	return $more . ' <a class="read-more' . esc_attr( $sticky ) . '" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
 }
 add_filter( 'get_the_excerpt', 'the_bootstrap_blog__filter__excerpt_more' );
 

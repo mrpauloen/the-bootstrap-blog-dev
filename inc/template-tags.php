@@ -55,31 +55,12 @@
 
  function the_bootstrap_blog__sticky_pin(){
 
- 	if ( is_sticky() ) :
+ 	if ( is_sticky() and ! is_paged()) :
 
  	$url =  get_template_directory_uri() . '/images/pin.svg';
 
- ?><img class="float-right post-sticky-icon m-2" src="<?php echo esc_url( $url ); ?>" alt="<?php esc_attr_e( 'Sticky', 'the-bootstrap-blog' );?>">
+ ?><img width="32" height="32" class="float-right mt-2" src="<?php echo esc_url( $url ); ?>" alt="<?php esc_attr_e( 'Sticky', 'the-bootstrap-blog' );?>">
  <?php endif;
- }
-
- /**
-  * Sticky Post classes
-  *
-  * The sticky post should be distinctly recognizable in some way in comparison to normal posts.
-  * You can style the `sticky` class if you are using the @post_class() function to generate your post classes,
-  * but since we use bootstrap framework, we need to only
-  * adds extra classes to the sticky post title instead of create new styles.
-  *
-  * @since The Bootstrap Blog 0.1
-  */
-
- function the_bootstrap_blog__sticky_class(){
-
- 	if ( is_sticky() ) {
-
- 		echo esc_attr ( 'p-3 mb-2 bg-dark text-white' );
- 	}
  }
 
  /**

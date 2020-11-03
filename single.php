@@ -19,7 +19,7 @@ get_header(); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'blog-post' ); ?>>
 
-	<h2 class="blog-post-title <?php the_bootstrap_blog__sticky_class(); ?>"><?php the_title(); ?> <?php the_bootstrap_blog__sticky_pin(); ?></h2>
+	<h2 class="blog-post-title"><?php the_title(); ?> <?php the_bootstrap_blog__sticky_pin(); ?></h2>
 
 <?php // Get condition once so there is no repetitions
 $password_required = post_password_required();
@@ -37,7 +37,7 @@ if ( ! $password_required ){ ?>
 	wp_link_pages(
 
 		$args = array(
-		'before'		=> '<p class="pager">' . esc_html__( 'Pages:', 'the-bootstrap-blog' ),
+		'before'		=> '<p class="pager mt-3">' . esc_html__( 'Pages:', 'the-bootstrap-blog' ),
 		'after'			=> '</p>',
 		'link_before'	=> '<span class="badge badge-danger badge-pill">',
 		'link_after'	=> '</span>',

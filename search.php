@@ -3,14 +3,9 @@
 <div class="container bg-white pt-1 pb-5"><!-- container -->
 
 <div class="row">
-       <div class="col-sm-8 blog-main pt-0">
-	<p class="lead mt-2 mb-0"><?php printf ( __( 'Search results for: <strong>%s</strong>', 'czystespalanie' ), get_search_query() ); ?></p>
-	<hr class="m-0"/>
-	<p class="mb-3 text-secondary"><small><?php printf( _n( '%s result found', '%s results found', $wp_query->found_posts, 'czystespalanie' ), $wp_query->found_posts ); ?></small></p>
+<div id="site-content" class="col-sm-8 blog-main" role="main">
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-
-  <div class="blog-post">
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
@@ -18,12 +13,8 @@
 
 	<p><small class="text-success"><?php the_permalink();?></small><br />
 	<small><?php
-
-
 	$excerpt = get_the_excerpt();
-
 	$excerpt = str_ireplace( get_search_query(), '<strong>' . get_search_query() . '</strong>', $excerpt );
-
 	echo $excerpt; ?></small></p>
 
 	<!--
@@ -32,13 +23,11 @@
 
 	-->
 	</article>
-  </div><!-- /.blog-post -->
-
 
 <?php endwhile; else: ?>
-<h3><?php _e( 'Sorry, no posts matched your criteria.', 'czystespalanie' ); ?></h3>
+<p class="lead"><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'czystespalanie' ); ?></p>
 
-<p>Poszukaj jeszcze raz:</p>
+<p><?php esc_html_e('Search again:'); ?></p>
 
 <?php get_search_form(); ?>
 
@@ -53,7 +42,7 @@
  <?php } ?>
 </nav>
         </div><!-- /.blog-main -->
-
+<?php get_sidebar(); ?>
  </div><!-- /.row -->
 </div>
 <!-- container -->

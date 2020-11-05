@@ -360,13 +360,11 @@ a img.aligncenter {
 	z-index: 100000; /* Above WP toolbar. */
 }
 
-
-.sticky {
-padding: 0.5rem 1rem;
+.sticky h2 {padding: 0.5rem 1rem;
 background-color: #343a40;
 color: #f8f9fa;
 }
-.sticky h2 {color: #f8f9fa;}.sticky a.read-more{padding-right:.7rem}
+.sticky a.read-more{padding-right:.7rem}
 
 .gallery-caption {}
 .bypostauthor {}

@@ -25,11 +25,7 @@
 	</article>
 
 <?php endwhile; else: ?>
-<p class="lead"><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'czystespalanie' ); ?></p>
-
-<p><?php esc_html_e('Search again:'); ?></p>
-
-<?php get_search_form(); ?>
+<p class="lead"><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'the-bootstrap-blog' ); ?></p>
 
 <?php endif; ?>
 <nav class="blog-pagination">

@@ -554,9 +554,7 @@ add_filter( 'the_excerpt', 'the_bootstrap_blog__filter__excerpt' );
  */
 function the_bootstrap_blog__filter__excerpt_more( $more ) {
 
-	$sticky = ( is_sticky() and ! is_paged()) ? ' badge badge-light badge-pill' : '';
-
-	return $more . ' <a class="read-more' . esc_attr( $sticky ) . '" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
+	return $more . ' <a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
 }
 add_filter( 'get_the_excerpt', 'the_bootstrap_blog__filter__excerpt_more' );
 

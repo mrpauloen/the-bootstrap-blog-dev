@@ -1,7 +1,7 @@
 /*
 Theme Name: The Bootstrap Blog
-Author: Paweł Nowak
-Author URI: https://www.facebook.com/PawRakiety
+Author: mrpauloen
+Author URI: https://github.com/mrpauloen
 Description: Based on the popular Bootstrap 4 library, this theme shows how mobile friendly CSS framework can be used to create sleek, simple, fast and functional websites, with ease and intuitive way in modern front-end web developmen days.
 Version: 0.1.4
 Requires at least: 5.0
@@ -51,14 +51,6 @@ Domain Path: /languages
  * Licence URI: https://creativecommons.org/licenses/by-sa/4.0/
  *
 
-*! lock.svg
- * Copyright: Octicons
- * Author URI: https://octicons.github.com/
- * @link: https://octicons.github.com/icon/lock/
- * Licence: MIT
- * Licence URI: https://github.com/primer/octicons/blob/master/LICENSE
- *
-
 *! screenshot.png
  * Copyright:   http://unsplash.com/
  * @link:       https://unsplash.com/photos/E0Spm6XXn2Y
@@ -69,7 +61,7 @@ Domain Path: /languages
  *
 
 *!
- * Bootstrap v4.5.2 (https://getbootstrap.com/)
+ * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)

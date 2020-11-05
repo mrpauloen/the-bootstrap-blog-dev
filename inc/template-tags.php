@@ -20,30 +20,28 @@
 
  	// if there is attachment page display: Attachment
  	if ( is_attachment() ) {
-
  		$site_title =  __( 'Attachment', 'the-bootstrap-blog');
  	}
-
  	elseif ( is_404() ) {
  		$site_title =  __( '404', 'the-bootstrap-blog');
  	}
- 		// if there is author page display: Author + author name
- 		elseif ( is_author()   ) {
+  elseif ( is_search() ) {
+    $site_title =  sprintf ( __( 'Search results for: <strong>%s</strong>', 'the-bootstrap-blog' ), get_search_query() );
+  }
+	elseif ( is_author()   ) {
+ 	$site_title =  __( 'Author', 'the-bootstrap-blog');
+ 	}
+ 	// if there is archive display: Archive
+ 	elseif ( is_archive()  ) {
+ 	$site_title =  __( 'Archive', 'the-bootstrap-blog');
+ 	}
+ 	// in other any cases display hyperlinked blog name
+ 	else {
+ 	$site_title =  get_bloginfo( 'name' );
+ 	}
 
- 			$site_title =  __( 'Author', 'the-bootstrap-blog');
- 		}
- 			// if there is archive display: Archive
- 			elseif ( is_archive()  ) {
-
- 				$site_title =  __( 'Archive', 'the-bootstrap-blog');
- 			}
- 				// in other any cases display hyperlinked blog name
- 					else {
-
- 						$site_title =  get_bloginfo( 'name' );
- 					}
- 	echo esc_html( $site_title );
- }
+ 	echo wp_kses( $site_title, 'strong' );
+}
 
  /**
   * Sticky Post handle
@@ -59,7 +57,7 @@
 
  	$url =  get_template_directory_uri() . '/images/pin.svg';
 
- ?><img width="32" height="32" class="float-right mt-2" src="<?php echo esc_url( $url ); ?>" alt="<?php esc_attr_e( 'Sticky', 'the-bootstrap-blog' );?>">
+ ?><img width="32" height="32" class="float-right" src="<?php echo esc_url( $url ); ?>" alt="<?php esc_attr_e( 'Sticky', 'the-bootstrap-blog' );?>">
  <?php endif;
  }
 

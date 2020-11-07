@@ -20,7 +20,7 @@ get_header(); ?>
 <article>
 
 
-<h5 class="mt-0 mb-1"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h5>
+<h5 class="mt-0 mb-1"><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_bootstrap_blog__padlock(); the_title(); ?></a></h5>
 
 <?php
 	wp_link_pages(

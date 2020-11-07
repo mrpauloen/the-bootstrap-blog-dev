@@ -352,21 +352,17 @@ function the_bootstrap_blog__filter__cancel_comment_reply_link( $formatted_link,
 add_filter( 'cancel_comment_reply_link', 'the_bootstrap_blog__filter__cancel_comment_reply_link', 10, 3 );
 
 /**
- * Adds `svg` image padlock to the 'Protected' post in post title
+ * Filters the text prepended to the post title for protected posts.
+ *
+ * @return string
  *
  * @since The Bootstrap Blog 0.1
  */
 
 add_filter( 'protected_title_format', 'the_bootstrap_blog__filter__protected_text_title' );
-function the_bootstrap_blog__filter__protected_text_title() {
-
-	$height = ( is_archive() ) ? '16' : '24';
-	$lock = '<path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
-  <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>';
-	$unlock = '<path d="M.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
-  <path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>';
-
-return '<svg width="' . esc_attr ( $height ) . '" height="' . esc_attr ( $height ) . '" viewBox="0 0 16 16" class="align-baseline" fill="currentColor" xmlns="http://www.w3.org/2000/svg">' . ( ( isset( $_COOKIE['wp-postpass_' . COOKIEHASH] ) ) ? $unlock : $lock ) . '</svg> %s';
+function the_bootstrap_blog__filter__protected_text_title( $prepend ) {
+	if ( is_home() || is_singular() || is_archive() )	return  '%s';
+	return $prepend;
 }
 
 /**
@@ -387,8 +383,8 @@ function the_bootstrap_blog__filter__password_form() {
 <label class="sr-only" for="' . esc_attr( $label ). '">' . esc_html__( 'Password:', 'the-bootstrap-blog' ) . ' </label><input name="post_password" id="' . esc_attr( $label ). '" type="password" class="form-control round mb-2 mr-sm-2 mb-sm-0" id="' . esc_attr( $label ). '" placeholder="' . esc_attr__( 'Enter password...', 'the-bootstrap-blog' ) . '" required>
 </div>
 <div class="col">
-<button type="submit" class="bg-warning btn btn-primary round">' . esc_html__( 'Submit', 'the-bootstrap-blog' ) . '</button>
-</div></div></form><hr/>';
+<button type="submit" class="btn btn-outline-primary my-2 round">' . esc_html__( 'Submit', 'the-bootstrap-blog' ) . '</button>
+</div></div></form>';
     return $form;
 }
 add_filter( 'the_password_form', 'the_bootstrap_blog__filter__password_form' );
@@ -519,7 +515,7 @@ function the_bootstrap_blog__filter__excerpt_length( $length ) {
 add_filter( 'excerpt_length', 'the_bootstrap_blog__filter__excerpt_length', 999 );
 
 /**
- * Add svg icon to password protected post excerpt.
+ * Add svg key icon to password protected post excerpt.
  *
  * @param string $post_excerpt The post excerpt.
  * @return string $post_excerpt with svg icon
@@ -530,7 +526,7 @@ function the_bootstrap_blog__filter__excerpt( $post_excerpt ){
 
 	if ( is_admin() ) return $post_excerpt;
 
-    if ( post_password_required() and !is_archive() )
+    if ( post_password_required() && !is_archive() )
 	return '<a class="float-right text-decoration-none" href="' . get_the_permalink() . '" title="Unlock"><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 		<path fill-rule="evenodd" d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
 	</svg>
@@ -542,7 +538,6 @@ function the_bootstrap_blog__filter__excerpt( $post_excerpt ){
 return $post_excerpt;
 }
 add_filter( 'the_excerpt', 'the_bootstrap_blog__filter__excerpt' );
-
 
 /**
  * Add the "read more" link to excerpt string filter.

@@ -19,7 +19,7 @@ get_header(); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( 'blog-post' ); ?>>
 
-	<h2 class="blog-post-title"><?php the_title(); ?> <?php the_bootstrap_blog__sticky_pin(); ?></h2>
+	<h2 class="blog-post-title"><?php the_bootstrap_blog__padlock(); the_title(); ?> <?php the_bootstrap_blog__sticky_pin(); ?></h2>
 
 <?php // Get condition once so there is no repetitions
 $password_required = post_password_required();
@@ -59,7 +59,7 @@ if ( ! $password_required ){ ?>
 <?php if ( ! $password_required ) { ?>
 <div class="mt-4"><?php esc_html_e( 'In category:&nbsp;', 'the-bootstrap-blog' ); the_category( ' | ' ); ?><br/>
 <?php the_tags( __( 'Tagged with:&nbsp;', 'the-bootstrap-blog' ), ', ', '<br />' ); ?></div>
-<?php } ?>
+
 
 <nav class="blog-pagination mt-4 mb-4">
 
@@ -68,7 +68,7 @@ if ( ! $password_required ){ ?>
 <?php next_post_link( '%link', esc_html__( 'Next post', 'the-bootstrap-blog') ); ?>
 
 </nav>
-
+<?php } ?>
 	</article><!-- /.blog-post -->
 
 

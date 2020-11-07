@@ -19,10 +19,10 @@ get_header(); ?>
 <article>
 <li class="media my-3">
 
-<?php if ( !post_password_required() ) the_post_thumbnail( array( 80, 80 ), array ( 'class' => 'd-flex mr-3' )); ?>
+<?php the_post_thumbnail( array( 80, 80 ), array ( 'class' => 'd-flex mr-3' )); ?>
 
 	<div class="media-body">
-      <h5 class="mt-0 mb-1"><a href="<?php esc_url( the_permalink() ); ?>"><?php the_title(); ?> </a></h5>
+      <h5 class="mt-0 mb-1"><a href="<?php esc_url( the_permalink() ); ?>"><?php the_bootstrap_blog__padlock(); the_title(); ?> </a></h5>
 
 <?php the_excerpt();
 

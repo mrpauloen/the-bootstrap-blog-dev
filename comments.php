@@ -30,9 +30,13 @@ if ( post_password_required() )
 	'cookies' => '<div id="form-input"  class="' . esc_attr( $collapse ) . '">
   <div class="form-group">
     <div class="form-check pl-0">
-      <label for="wp-comment-cookies-consent">
+      <label title="' . esc_attr( 'Your data will be stored in this browser and added automaticly so next time you don\'t need to put it again.', 'the-bootstrap-blog' ) . '" for="wp-comment-cookies-consent">
       <input class="" type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes">
-<small>Remember me</small>
+<small>Remember me</small> ' . ( ( ! wp_is_mobile() ) ? '<svg width="0.8em" height="0.8em" viewBox="0 0 16 16" class="" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+  <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
+  <circle cx="8" cy="4.5" r="1"/>
+</svg>' : '***' ) . '
       </label>
     </div>
   </div>',
@@ -77,7 +81,7 @@ $comments_args = array(
 'must_log_in'			=> '<p class="must-log-in">' .
 
 	sprintf(
-		/* translators: %s: @wp_login_url*/
+		/* translators: %s: wp_login_url */
 		__( 'You must be <a href="%s">logged in</a> to post a comment.', 'the-bootstrap-blog' ),
 		wp_login_url(
 			apply_filters( 'the_permalink', get_permalink() )
@@ -153,7 +157,8 @@ if ( $have_comments ) {
 <?php printf(
 	/* translators: %s: Display all of the allowed tags in HTML format (within code tag) with attributes.*/
 esc_html_x( '**) You may use these HTML tags and attributes: %s', 'comments legend', 'the-bootstrap-blog'), '<code>' . allowed_tags() . '</code>' );
-?>
+?><br/>
+<?php if ( wp_is_mobile() ) esc_html_e( '***) Your data will be stored in this browser and added automaticly so next time you don\'t need to put it again.', 'the-bootstrap-blog' ); ?>
 </small>
 </fieldset>
 

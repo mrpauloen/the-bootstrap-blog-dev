@@ -26,7 +26,7 @@
  		$site_title =  __( '404', 'the-bootstrap-blog');
  	}
   elseif ( is_search() ) {
-    $site_title =  sprintf ( __( 'Search results for: <strong>%s</strong>', 'the-bootstrap-blog' ), get_search_query() );
+    $site_title =  sprintf ( __( 'Search results for: <i>%s</i>', 'the-bootstrap-blog' ), get_search_query() );
   }
 	elseif ( is_author()   ) {
  	$site_title =  __( 'Author', 'the-bootstrap-blog');
@@ -40,7 +40,7 @@
  	$site_title =  get_bloginfo( 'name' );
  	}
 
- 	echo wp_kses( $site_title, 'strong' );
+ 	echo wp_kses( $site_title, 'i' );
 }
 
  /**
@@ -120,15 +120,14 @@
  */
 
 function the_bootstrap_blog__padlock() {
-
   global $post;
-
-  $height = ( is_archive() ) ? '16' : '24';
-  $lock = '<svg width="' . esc_attr ( $height ) . '" height="' . esc_attr ( $height ) . '" viewBox="0 0 16 16" class="align-baseline mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/><path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/></svg>';
-  $unlock = '<svg width="' . esc_attr ( $height ) . '" height="' . esc_attr ( $height ) . '" viewBox="0 0 16 16" class="align-baseline mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/><path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/></svg>';
+  $size = ( is_archive() ) ? '16' : '24';
   if ( post_password_required() ) {
-    echo $lock;
-  } elseif ( $post->post_password ) {
-    echo $unlock;
-  }
+?>
+    <svg width="<?php echo esc_attr ( $size ); ?>" height="<?php echo esc_attr ( $size ); ?>" viewBox="0 0 16 16" class="align-baseline mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/><path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/></svg>
+<?php
+} elseif ( !empty( $post->post_password ) ) {
+ ?>
+    <svg width="<?php echo esc_attr ( $size ); ?>" height="<?php echo esc_attr ( $size ); ?>" viewBox="0 0 16 16" class="align-baseline mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/><path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/></svg>
+<?php }
 }

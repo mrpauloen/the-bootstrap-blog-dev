@@ -149,17 +149,4 @@ if ( $have_comments ) {
 <?php
 }
 
-	if ( $comments_open ){ ?>
-
-<fieldset class="mt-2 p-2 border" >
-<legend class="h6 px-2" style="width: fit-content;"><?php esc_html_e( 'Legend', 'the-bootstrap-blog' );?></legend>
-<small><?php echo esc_html_x( '*) Required fields are marked', 'comments legend', 'the-bootstrap-blog' ); ?><br/>
-<?php printf(
-	/* translators: %s: Display all of the allowed tags in HTML format (within code tag) with attributes.*/
-esc_html_x( '**) You may use these HTML tags and attributes: %s', 'comments legend', 'the-bootstrap-blog'), '<code>' . allowed_tags() . '</code>' );
-?><br/>
-<?php if ( wp_is_mobile() ) esc_html_e( '***) Your data will be stored in this browser and added automaticly so next time you don\'t need to put it again.', 'the-bootstrap-blog' ); ?>
-</small>
-</fieldset>
-
-<?php } ?>
+the_bootstrap_blog__comment_legend();

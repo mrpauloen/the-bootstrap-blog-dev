@@ -1,9 +1,9 @@
 /*
 Theme Name: The Bootstrap Blog
-Author: Paweł Nowak
-Author URI: https://www.facebook.com/PawRakiety
+Author: mrpauloen
+Author URI: https://github.com/mrpauloen
 Description: Based on the popular Bootstrap 4 library, this theme shows how mobile friendly CSS framework can be used to create sleek, simple, fast and functional websites, with ease and intuitive way in modern front-end web developmen days.
-Version: 0.1.3.1
+Version: 0.1.4
 Requires at least: 5.0
 Tested up to: 5.5
 Requires PHP: 7.0
@@ -51,14 +51,6 @@ Domain Path: /languages
  * Licence URI: https://creativecommons.org/licenses/by-sa/4.0/
  *
 
-*! lock.svg
- * Copyright: Octicons
- * Author URI: https://octicons.github.com/
- * @link: https://octicons.github.com/icon/lock/
- * Licence: MIT
- * Licence URI: https://github.com/primer/octicons/blob/master/LICENSE
- *
-
 *! screenshot.png
  * Copyright:   http://unsplash.com/
  * @link:       https://unsplash.com/photos/E0Spm6XXn2Y
@@ -69,7 +61,7 @@ Domain Path: /languages
  *
 
 *!
- * Bootstrap v4.5.2 (https://getbootstrap.com/)
+ * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
@@ -194,21 +186,7 @@ h6, .h6 {
   line-height: 1;
   border-bottom: 1px solid #e5e5e5;
 }
-.blog-title {
-  margin-bottom: 0;
-  font-size: 2rem;
-  font-weight: 700;
-}
-.blog-description {
-  font-size: 1.1rem;
-  color: #999;
-}
-@media (min-width: 40em) {
-  .blog-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-  }
-}
+
 /*
  * Main column and sidebar layout
  */
@@ -228,25 +206,13 @@ h6, .h6 {
   margin-bottom: 0;
 }
 /* Pagination */
-.blog-pagination {
-  margin-bottom: 4rem;
-}
-.blog-pagination > .btn, .round {
-  border-radius: 2rem;
-}
+.blog-pagination {margin-bottom: 4rem;}
+.blog-pagination > .btn, .round {border-radius: 2rem;}
 /*
  * Blog posts
  */
-.blog-post {
-  margin-bottom: 4rem;
-}
-.blog-post-title {
-  font-size: 2.5rem;
-}
-.blog-post-meta {
-  margin-bottom: 1.25rem;
-  color: #999;
-}
+.blog-post {margin-bottom: 4rem;}
+.blog-post-meta {color: #999;}
 /*
  * Footer
  */
@@ -287,24 +253,6 @@ textarea.comment-textarea {
 .archive-controls {/* position: absolute; */}
 .archive-controls.control-prev {	right: 20px }
 .archive-controls.control-next {	right: 0px }
-img.post-sticky-icon { width: 32px; }
-
-.icon {
-	display: inline-block;
-	text-indent: -9999px;
-}
-a.icon-github,a.icon-twitter,a.icon-facebook {
-	background-size: contain;
-	background-repeat: no-repeat;
-}
-
-a.link-icon {
-	background: url('images/external-link.svg');
-	background-size: 16px 16px;
-	background-repeat: no-repeat;
-	background-position: center right;
-	padding-right: 20px;
-}
 
 /* =WordPress Core
 -------------------------------------------------------------- */
@@ -404,8 +352,12 @@ a img.aligncenter {
 	z-index: 100000; /* Above WP toolbar. */
 }
 
+.sticky h2 {padding: 0.5rem 1rem;
+background-color: #343a40;
+color: #f8f9fa;
+}
+.sticky a.read-more{padding-right:.7rem}
 
-.sticky {}
 .gallery-caption {}
 .bypostauthor {}
 

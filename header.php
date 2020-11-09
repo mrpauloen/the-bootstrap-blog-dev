@@ -44,13 +44,17 @@
       </div>
     </div>
 
-  <header class="blog-header">
+<header class="blog-header badg">
   <div class="container">
-    <h1 class="blog-title mb-2"><?php the_bootstrap_blog__site_title(); ?></h1>
+    <h1 class="blog-title h1 mb-2"><?php the_bootstrap_blog__site_title(); ?></h1>
 <?php if ( is_archive() ) { ?>
 <p class="lead blog-description"><?php the_archive_title(); ?><p/>
+<?php } elseif ( is_404() ) { ?>
+<p class="lead blog-description"><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'the-bootstrap-blog' ); ?></p>
+<?php } elseif ( is_search() ) { ?>
+<p class="lead blog-description mb-3"><?php printf( _n( '%s result found', '%s results found', $wp_query->found_posts, 'czystespalanie' ), number_format_i18n( $wp_query->found_posts )  ); ?></p>
 <?php } else { ?>
-    <p class="lead blog-description"><?php bloginfo('description'); ?></p>
+    <p class="lead blog-description text-muted"><?php bloginfo('description'); ?></p>
 <?php } ?>
   </div>
 </header>

@@ -1,4 +1,4 @@
-# The Bootstrap Blog v dev
+# The Bootstrap Blog
 
 > A simple two-column WordPress theme, built with Bootstrap 4 with custom navigation, header, and type..
 
@@ -6,10 +6,10 @@
 Summary:           | The Bootstrap Blog
 -------------------|----------------
 Contributors:      | [mrpauloen](https://profiles.wordpress.org/mrpauloen/)
-Version:           | 0.1.3.1
+Version:           | 0.1.4
 Requires at least: | 5.0
 Tested up to:      | 5.5
-Requires PHP:	   | 7.0
+Requires PHP:	     | 7.0
 License:           | GPLv2 or later
 License URI:       | http://www.gnu.org/licenses/gpl-2.0.html
 Tags:              | two-columns, custom-menu, custom-background, right-sidebar, custom-header, featured-images, sticky-post, threaded-comments, translation-ready, blog
@@ -45,7 +45,7 @@ Based on the popular Bootstrap 4 library, this theme shows how mobile friendly C
 ## License
 
  The Bootstrap Blog WordPress Theme, Copyright 2020 Paweł Nowak
- 
+
  The Bootstrap Blog is distributed under the terms of the GNU GPL
 
 
@@ -75,7 +75,7 @@ Based on the popular Bootstrap 4 library, this theme shows how mobile friendly C
   - Licence URI: https://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&id=OFL
   - Author: Claus Eggers Sørensen Principal design
   - Author URL: http://forthehearts.net/about/
-  
+
 
 * pin.svg
   - Copyright: Entypo
@@ -84,19 +84,11 @@ Based on the popular Bootstrap 4 library, this theme shows how mobile friendly C
   - Licence URI: https://creativecommons.org/licenses/by-sa/4.0/
 
 
-* lock.svg
-  - Copyright: Octicons
-  - Author URI: https://octicons.github.com/
-  - @link: https://octicons.github.com/icon/lock/
-  - Licence: MIT
-  - Licence URI: https://github.com/primer/octicons/blob/master/LICENSE
-    
-
-* Bootstrap v4.5.2 (https://getbootstrap.com/)
+* Bootstrap v4.5.3 (https://getbootstrap.com/)
   - Copyright 2011-2020 The Bootstrap Authors
   - Copyright 2011-2020 Twitter, Inc.
   - Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
-  
+
 
 * HTML5 Shiv v3.7.0,
   - Copyright 2014 Alexander Farkas

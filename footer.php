@@ -11,9 +11,8 @@
  */
 
 ?><footer class="blog-footer">
-	<p><?php /* translators: %s: WordPress. */
-		printf( esc_html__( 'Blog template built for %s.', 'the-bootstrap-blog' ), 'WordPress' ); ?></p>
-	<p><a href="<?php echo esc_url( '#' );?>"><?php esc_html_e( 'Back to top', 'the-bootstrap-blog' );?></a></p>
+	<p class="copyright"><?php echo the_bootstrap_blog__custom_footer_text(); ?></p>
+	<p><a href="<?php echo esc_url( '#' );?>"><?php esc_html_e( '&uarr; Back to top', 'the-bootstrap-blog' );?></a></p>
     </footer>
 
 <?php wp_footer(); ?>

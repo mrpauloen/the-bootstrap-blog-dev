@@ -28,19 +28,29 @@ if ( $password_required ) array_push( $class, 'border', 'pt-3', 'px-3' );?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( $class ); ?>>
 
-	<h2 class="blog-post-title <?php the_bootstrap_blog__sticky_class(); ?>"><?php the_bootstrap_blog__sticky_pin(); ?> <?php the_title(); ?></h2>
+	<h2 class="h2"><?php the_bootstrap_blog__padlock(); the_title(); the_bootstrap_blog__sticky_pin(); ?></h2>
 
 <?php if ( ! $password_required ){ ?>
 <p class="blog-post-meta"><time class="entry-date updated" datetime="<?php echo get_the_date('c'); ?>" itemprop="datePublished"><?php echo get_the_date('F j, Y'); ?></time> <?php the_bootstrap_blog__author_meta(); ?></p>
 <?php } ?>
 
-	<?php  the_post_thumbnail( 'post-thumbnail', array( 'class' => 'img-fluid mb-3 ')); ?>
+	<?php  the_post_thumbnail( 'post-thumbnail', array( 'class' => 'img-fluid mb-3 '));
 
-<p><?php echo esc_html( get_the_excerpt() ); ?>
+    the_excerpt();
 
-<a href="<?php the_permalink(); ?>" rel="<?php esc_attr_e( 'bookmark', 'the-bootstrap-blog' ); ?>" title="<?php esc_attr_e( 'Permanent Link to:', 'the-bootstrap-blog' ); ?>&nbsp;<?php the_title_attribute(); ?>" ><?php esc_html_e( '&rarr;Read&nbsp;more', 'the-bootstrap-blog' ); ?></a>
+     	wp_link_pages(
 
-</p>
+    		$args = array(
+    		'before'		=> '<p class="pager">' . esc_html__( 'Pages:', 'the-bootstrap-blog' ),
+    		'after'			=> '</p>',
+    		'link_before'	=> '<span class="badge badge-danger badge-pill">',
+    		'link_after'	=> '</span>',
+    		'separator'		=> '&nbsp;&nbsp;',
+    		'pagelink'		=> '%',
+
+    	));
+
+      ?>
 
 
 	<!--
@@ -49,7 +59,6 @@ if ( $password_required ) array_push( $class, 'border', 'pt-3', 'px-3' );?>
 
 	-->
 	</article><!-- /.blog-post -->
-
 
 <?php endwhile; else: ?>
 <p><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'the-bootstrap-blog' ); ?></p>

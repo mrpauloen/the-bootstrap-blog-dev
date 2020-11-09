@@ -45,7 +45,7 @@ function the_bootstrap_blog__action__theme_setup() {
 	 * to output valid HTML5.
 	 */
 	add_theme_support( 'html5', array(
-		'search-form', 'comment-form', 'comment-list', 'caption'
+		'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script'
 	) );
 
 	// This theme uses wp_nav_menu() in one location.
@@ -110,14 +110,20 @@ function the_bootstrap_blog__content_width() {
 }
 add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 
+	/*
+ 	* Custom template tags for this theme
+ 	*
+ 	* @since The Bootstrap Blog 0.1.4
+ 	*/
 
+	require trailingslashit( get_template_directory() ) . 'inc/template-tags.php';
 	/*
 	 * Customizer additions.
 	 *
 	 * @since The Bootstrap Blog 0.1
 	 */
 
- require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer.php';
+ 	require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer.php';
 
 	/*
 	 * ** Define Bootstrap Menu **
@@ -127,7 +133,7 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 	 * @since The Bootstrap Blog 0.1
 	 **/
 
-require trailingslashit( get_template_directory() ) . 'classess/class.the-bootstrap-blog-navwalker.php';
+	 require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-navwalker.php';
 	/*
 	 * ** Define Comments Walker **
 	 *
@@ -136,7 +142,7 @@ require trailingslashit( get_template_directory() ) . 'classess/class.the-bootst
 	 * @since The Bootstrap Blog 0.1
 	 **/
 
-require trailingslashit( get_template_directory() ) . 'classess/class.the-bootstrap-blog-comments-walker.php';
+	 require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-comments-walker.php';
 
 	/*
 	 *  Enqueue scripts and styles.
@@ -177,10 +183,10 @@ function the_bootstrap_blog__action__enqueue_js_and_css() {
 	wp_enqueue_script( 'respond',	 get_template_directory_uri() . '/inc/bootstrap/js/respond.min.js',	false, null, true );
 
 	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
-    wp_script_add_data( 'respond',   'conditional', 'lt IE 9' );
+  wp_script_add_data( 'respond',   'conditional', 'lt IE 9' );
 
 
-	/*
+	/**
 	 * Custom Header handle
 	 *
 	 * Adds `background` properties to the `blog-header` class in order to makes it visible
@@ -346,17 +352,17 @@ function the_bootstrap_blog__filter__cancel_comment_reply_link( $formatted_link,
 add_filter( 'cancel_comment_reply_link', 'the_bootstrap_blog__filter__cancel_comment_reply_link', 10, 3 );
 
 /**
- * Adds `svg` image padlock to the 'Protected' post in post title
+ * Filters the text prepended to the post title for protected posts.
+ *
+ * @return string
  *
  * @since The Bootstrap Blog 0.1
  */
 
 add_filter( 'protected_title_format', 'the_bootstrap_blog__filter__protected_text_title' );
-function the_bootstrap_blog__filter__protected_text_title() {
-
-	$height = ( is_archive() ) ? '20' : '32';
-
-return '<svg height="' . esc_attr ( $height ) . '" viewBox="0 0 12 16" version="1.1" width="' . esc_attr ( $height ) . '" aria-hidden="true"><path fill-rule="evenodd" d="M4 13H3v-1h1v1zm8-6v7c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h1V4c0-2.2 1.8-4 4-4s4 1.8 4 4v2h1c.55 0 1 .45 1 1zM3.8 6h4.41V4c0-1.22-.98-2.2-2.2-2.2-1.22 0-2.2.98-2.2 2.2v2H3.8zM11 7H2v7h9V7zM4 8H3v1h1V8zm0 2H3v1h1v-1z"></path></svg> %s';
+function the_bootstrap_blog__filter__protected_text_title( $prepend ) {
+	if ( is_home() || is_singular() || is_archive() )	return  '%s';
+	return $prepend;
 }
 
 /**
@@ -377,32 +383,15 @@ function the_bootstrap_blog__filter__password_form() {
 <label class="sr-only" for="' . esc_attr( $label ). '">' . esc_html__( 'Password:', 'the-bootstrap-blog' ) . ' </label><input name="post_password" id="' . esc_attr( $label ). '" type="password" class="form-control round mb-2 mr-sm-2 mb-sm-0" id="' . esc_attr( $label ). '" placeholder="' . esc_attr__( 'Enter password...', 'the-bootstrap-blog' ) . '" required>
 </div>
 <div class="col">
-<button type="submit" class="bg-warning btn btn-primary round">' . esc_html__( 'Submit', 'the-bootstrap-blog' ) . '</button>
-</div></div></form><hr/>';
+<button type="submit" class="btn btn-outline-primary round">' . esc_html__( 'Submit', 'the-bootstrap-blog' ) . '</button>
+</div></div></form>';
     return $form;
 }
 add_filter( 'the_password_form', 'the_bootstrap_blog__filter__password_form' );
 
 /**
- * Add question mark after [...]" (appended to automatically generated excerpts)
- *
- * @return string $more with question mark
- *
- * @since The Bootstrap Blog 0.1
- */
-
-function the_bootstrap_blog__filter__new_excerpt_more( $more ) {
-	if ( is_admin() ) {
-		return $more;
-	} else {
-		return  $more . '?';
-	}
-}
-add_filter( 'excerpt_more', 'the_bootstrap_blog__filter__new_excerpt_more' );
-
-/**
  * Filters the HTML output of individual page number links.
- * 
+ *
  * @param string $link The page number HTML output.
  * @param int    $i    Page number for paginated posts' page links.
  * @since 0.1
@@ -412,8 +401,8 @@ add_filter( 'wp_link_pages_link', 'the_bootstrap_blog__filter__wp_link_pages_lin
 function the_bootstrap_blog__filter__wp_link_pages_link( $link, $i ){
 	global $page;
 
-	if ( !is_archive() AND $i === $page ) {
-    $link = '<span class="badge badge-secondary disabled">' . $i . '</span>';
+	if ( is_singular() AND $i === $page ) {
+    $link = '<span class="badge badge-secondary badge-pill disabled">' . $i . '</span>';
 	}
 
 	return $link;
@@ -425,8 +414,8 @@ function the_bootstrap_blog__filter__wp_link_pages_link( $link, $i ){
  *  @since The Bootstrap Blog 0.1.2
  */
 
-add_filter( 'post_thumbnail_html', 'the_bootstrap_blog__filter__post_thumbnail_html', 10, 5 );
-function the_bootstrap_blog__filter__post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
+add_filter( 'post_thumbnail_html', 'the_bootstrap_blog__filter__post_thumbnail_html', 10 );
+function the_bootstrap_blog__filter__post_thumbnail_html( $html ) {
 
 	if ( !post_password_required() ){
 
@@ -495,93 +484,268 @@ function the_bootstrap_blog__filter_comment_reply_link( $link, $args, $comment, 
 	 return $args['before'] . $link . $args['after'];
 }
 
+/** Default excerpt length **/
+
+function the_bootstrap_blog__default_excerpt_length(){
+	return 55;
+}
+
 /**
- * Custom Site Title
+ * Excerpt lenght Filter
  *
- * This function changes the way you see (in header section)
- * your site tile (or blog name), depends on different pages
- * See line: 36 in header.php file
+ * @param integer @lenght    The maximum number of words. Default 55.
  *
- * @since The Bootstrap Blog
+ * @return integer excerpt_length
+ *
+ * @since The Bootstrap Blog 0.1.4
+ */
+function the_bootstrap_blog__filter__excerpt_length( $length ) {
+
+	if ( is_admin() ) return $length;
+
+	$excerpt_length_home = get_theme_mod( 'excerpt_length' );
+	$excerpt_length_archive = get_theme_mod( 'archive_excerpt_length' );
+
+	if ( $excerpt_length_home and is_home() )	return $excerpt_length_home;
+	if ( $excerpt_length_archive and is_archive() )	return $excerpt_length_archive;
+
+	// Remember to always return default number
+	return the_bootstrap_blog__default_excerpt_length();
+}
+add_filter( 'excerpt_length', 'the_bootstrap_blog__filter__excerpt_length', 999 );
+
+/**
+ * Add svg key icon to password protected post excerpt.
+ *
+ * @param string $post_excerpt The post excerpt.
+ * @return string $post_excerpt with svg icon
+ * @since The Bootstrap Blog 0.1.4
  */
 
-function the_bootstrap_blog__site_title(){
+function the_bootstrap_blog__filter__excerpt( $post_excerpt ){
 
-	// if there is attachment page display: Attachment
-	if ( is_attachment() ) {
+	if ( is_admin() ) return $post_excerpt;
 
-		$site_title =  __( 'Attachment', 'the-bootstrap-blog');
+    if ( post_password_required() && !is_archive() )
+	return '<a class="float-right text-decoration-none" href="' . get_the_permalink() . '" title="Unlock"><svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		<path fill-rule="evenodd" d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+	</svg>
+	<svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		<path fill-rule="evenodd" d="M5.443 1.991a60.17 60.17 0 0 0-2.725.802.454.454 0 0 0-.315.366C1.87 7.056 3.1 9.9 4.567 11.773c.736.94 1.533 1.636 2.197 2.093.333.228.626.394.857.5.116.053.21.089.282.11A.73.73 0 0 0 8 14.5c.007-.001.038-.005.097-.023.072-.022.166-.058.282-.111.23-.106.525-.272.857-.5a10.197 10.197 0 0 0 2.197-2.093C12.9 9.9 14.13 7.056 13.597 3.159a.454.454 0 0 0-.315-.366c-.626-.2-1.682-.526-2.725-.802C9.491 1.71 8.51 1.5 8 1.5c-.51 0-1.49.21-2.557.491zm-.256-.966C6.23.749 7.337.5 8 .5c.662 0 1.77.249 2.813.525a61.09 61.09 0 0 1 2.772.815c.528.168.926.623 1.003 1.184.573 4.197-.756 7.307-2.367 9.365a11.191 11.191 0 0 1-2.418 2.3 6.942 6.942 0 0 1-1.007.586c-.27.124-.558.225-.796.225s-.526-.101-.796-.225a6.908 6.908 0 0 1-1.007-.586 11.192 11.192 0 0 1-2.417-2.3C2.167 10.331.839 7.221 1.412 3.024A1.454 1.454 0 0 1 2.415 1.84a61.11 61.11 0 0 1 2.772-.815z"/>
+		<path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z"/>
+	</svg>
+</a>' . $post_excerpt;
+return $post_excerpt;
+}
+add_filter( 'the_excerpt', 'the_bootstrap_blog__filter__excerpt' );
+
+/**
+ * Add the "read more" link to excerpt string filter.
+ *
+ * @param string $more "Read more" excerpt string.
+ * @return string (Maybe) modified "read more" excerpt string.
+ *
+ * @since The BootstrapBlog 0.1.4
+ */
+function the_bootstrap_blog__filter__excerpt_more( $more ) {
+
+	return $more . ' <a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
+}
+add_filter( 'get_the_excerpt', 'the_bootstrap_blog__filter__excerpt_more' );
+
+/**
+ * Filters the archive title prefix.
+ *
+ * @param string $prefix Archive title prefix.
+ * @return empty on author | string $prefix
+ *
+ * @since The Bootstrap Blog 0.1.4
+ */
+ function the_bootstrap_blog__filter__archive_title_prefix( $prefix ) {
+	 if ( is_author() ) return '';
+	 return $prefix;
+ }
+ add_filter( 'get_the_archive_title_prefix', 'the_bootstrap_blog__filter__archive_title_prefix' );
+
+/**
+ * This filters prevents to display all post on empty search result
+ *
+ * @param string $search	 Search SQL for WHERE clause.
+ * @param WP_Query $q  The current WP_Query object.
+ * @return string WHERE clause.
+ *
+ * @since The Bootstrap Blog 0.1.4
+ */
+function the_bootstrap_blog__filter__posts_search( $search, $q ) {
+
+	$sphrase = get_search_query();
+	$slen = strlen( $sphrase );
+	$minlen = 2;
+
+	if( ! is_admin() && $slen < $minlen && $q->is_search() && $q->is_main_query() ){
+		$search .=" AND 0=1 ";
 	}
+	return $search;
+}
+add_filter( 'posts_search', 'the_bootstrap_blog__filter__posts_search', 10, 2 );
 
-	elseif ( is_404() ) {
-		$site_title =  __( '404', 'the-bootstrap-blog');
+
+
+function themeprefix_gallery_output($output, $attr, $instance ) {
+
+global $post, $wp_locale;
+
+$html5 = current_theme_supports( 'html5', 'gallery' );
+$atts = shortcode_atts( array(
+	'order'      => 'ASC',
+	'orderby'    => 'menu_order ID',
+	'id'         => $post ? $post->ID : 0,
+	'itemtag'    => $html5 ? 'figure'     : 'dl',
+	'icontag'    => $html5 ? 'div'        : 'dt',
+	'captiontag' => $html5 ? 'figcaption' : 'dd',
+	'columns'    => 3,
+	'size'       => 'thumbnail',
+	'include'    => '',
+	'exclude'    => '',
+	'link'       => ''
+), $attr, 'gallery' );
+
+$id = intval( $atts['id'] );
+
+if ( ! empty( $atts['include'] ) ) {
+	$_attachments = get_posts( array( 'include' => $atts['include'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+
+	$attachments = array();
+	foreach ( $_attachments as $key => $val ) {
+		$attachments[$val->ID] = $_attachments[$key];
 	}
-		// if there is author page display: Author + author name
-		elseif ( is_author()   ) {
+} elseif ( ! empty( $atts['exclude'] ) ) {
+	$attachments = get_children( array( 'post_parent' => $id, 'exclude' => $atts['exclude'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+} else {
+	$attachments = get_children( array( 'post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $atts['order'], 'orderby' => $atts['orderby'] ) );
+}
 
-			$site_title =  __( 'Author', 'the-bootstrap-blog');
+if ( empty( $attachments ) ) {
+	return '';
+}
+
+if ( is_feed() ) {
+	$output = "\n";
+	foreach ( $attachments as $att_id => $attachment ) {
+		$output .= wp_get_attachment_link( $att_id, $atts['size'], true ) . "\n";
+	}
+	return $output;
+}
+
+$itemtag = tag_escape( $atts['itemtag'] );
+$captiontag = tag_escape( $atts['captiontag'] );
+$icontag = tag_escape( $atts['icontag'] );
+$valid_tags = wp_kses_allowed_html( 'post' );
+if ( ! isset( $valid_tags[ $itemtag ] ) ) {
+	$itemtag = 'dl';
+}
+if ( ! isset( $valid_tags[ $captiontag ] ) ) {
+	$captiontag = 'dd';
+}
+if ( ! isset( $valid_tags[ $icontag ] ) ) {
+	$icontag = 'dt';
+}
+
+$columns = intval( $atts['columns'] );
+$itemwidth = $columns > 0 ? floor(100/$columns) : 100;
+$float = is_rtl() ? 'right' : 'left';
+
+$selector = "gallery-{$instance}";
+
+$gallery_style = '';
+
+/**
+ * Filter whether to print default gallery styles.
+ *
+ * @since 3.1.0
+ *
+ * @param bool $print Whether to print default gallery styles.
+ *                    Defaults to false if the theme supports HTML5 galleries.
+ *                    Otherwise, defaults to true.
+ */
+if ( apply_filters( 'use_default_gallery_style', ! $html5 ) ) {
+	$gallery_style = "
+	<style type='text/css'>
+		#{$selector} {
+			margin: auto;
 		}
-			// if there is archive display: Archive
-			elseif ( is_archive()  ) {
-
-				$site_title =  __( 'Archive', 'the-bootstrap-blog');
-			}
-				// in other any cases display hyperlinked blog name
-					else {
-
-						$site_title =  get_bloginfo( 'name' );
-					}
-	echo esc_html( $site_title );
+		#{$selector} .gallery-item {
+			float: {$float};
+			margin-top: 10px;
+			text-align: center;
+			width: {$itemwidth}%;
+		}
+		#{$selector} img {
+			border: 2px solid #cfcfcf;
+		}
+		#{$selector} .gallery-caption {
+			margin-left: 0;
+		}
+		/* see gallery_shortcode() in wp-includes/media.php */
+	</style>\n\t\t";
 }
 
-/**
- * Sticky Post handle
- *
- * Adds `svg` pin to the sticky post title
- *
- * @since The Bootstrap Blog 0.1
- */
-
-function the_bootstrap_blog__sticky_pin(){
-
-	if ( is_sticky() ) :
-
-	$url =  get_template_directory_uri() . '/images/pin.svg';
-
-?><img class="float-right post-sticky-icon m-2" src="<?php echo esc_url( $url ); ?>" alt="<?php esc_attr_e( 'Sticky', 'the-bootstrap-blog' );?>">
-<?php endif;
-}
+$size_class = sanitize_html_class( $atts['size'] );
+$gallery_div = "<div id='$selector' class='row gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
 
 /**
- * Sticky Post classes
+ * Filter the default gallery shortcode CSS styles.
  *
- * The sticky post should be distinctly recognizable in some way in comparison to normal posts.
- * You can style the `sticky` class if you are using the @post_class() function to generate your post classes,
- * but since we use bootstrap framework, we need to only
- * adds extra classes to the sticky post title instead of create new styles.
+ * @since 2.5.0
  *
- * @since The Bootstrap Blog 0.1
+ * @param string $gallery_style Default CSS styles and opening HTML div container
+ *                              for the gallery shortcode output.
  */
+$output = apply_filters( 'gallery_style', $gallery_style . $gallery_div );
 
-function the_bootstrap_blog__sticky_class(){
+$i = 0;
+foreach ( $attachments as $id => $attachment ) {
 
-	if ( is_sticky() ) {
+	$attr = ( trim( $attachment->post_excerpt ) ) ? array( 'aria-describedby' => "$selector-$id" ) : '';
+	if ( ! empty( $atts['link'] ) && 'file' === $atts['link'] ) {
+		$image_output = wp_get_attachment_link( $id, $atts['size'], false, false, false, $attr );
+	} elseif ( ! empty( $atts['link'] ) && 'none' === $atts['link'] ) {
+		$image_output = wp_get_attachment_image( $id, $atts['size'], false, $attr );
+	} else {
+		$image_output = wp_get_attachment_link( $id, $atts['size'], true, false, false, $attr );
+	}
+	$image_meta  = wp_get_attachment_metadata( $id );
 
-		echo esc_attr ( 'p-3 mb-2 bg-dark text-white' );
+	$orientation = '';
+	if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
+		$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+	}
+	$output .= "<{$itemtag} class='gallery-item card border-0 text-center col-6 col-sm-6 col-md-4'>";
+	$output .= "
+		<{$icontag} class='gallery-icon card-img-top {$orientation}'>
+			$image_output
+		</{$icontag}>";
+	if ( $captiontag && trim($attachment->post_excerpt) ) {
+		$output .= "
+			<{$captiontag} class='card-body text-center smal wp-caption-text gallery-caption' id='$selector-$id'>
+			" . wptexturize($attachment->post_excerpt) . "
+			</{$captiontag}>";
+	}
+	$output .= "</{$itemtag}>";
+	if ( ! $html5 && $columns > 0 && ++$i % $columns == 0 ) {
+		$output .= '<br style="clear: both" />';
 	}
 }
 
-/**
- * Author meta
- *
- * Display either author’s link or author’s name.
- * @link https://developer.wordpress.org/reference/functions/the_author_link/
- *
- * @since The Bootstrap Blog 0.1.3
- */
-function the_bootstrap_blog__author_meta(){
-
-	printf (
-		/* translators: %s: Either author’s link or author’s name. */
-		esc_html__('by %s', 'the-bootstrap-blog'), get_the_author_link() );
+if ( ! $html5 && $columns > 0 && $i % $columns !== 0 ) {
+	$output .= "
+		<br style='clear: both' />";
 }
+
+$output .= "
+	</div>\n";
+
+return $output;
+
+}
+add_filter( 'post_gallery', 'themeprefix_gallery_output', 10, 3);

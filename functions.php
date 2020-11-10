@@ -88,6 +88,16 @@ function the_bootstrap_blog__action__theme_setup() {
 
 	// Add theme support for selective refresh for widgets.
 	add_theme_support( 'customize-selective-refresh-widgets' );
+
+	/*
+	 * Adds starter content to highlight the theme on fresh sites.
+	 * This is done conditionally to avoid loading the starter content on every
+	 * page load, as it is a one-off operation only needed once in the customizer.
+	 */
+	if ( is_customize_preview() ) {
+		require get_template_directory() . '/inc/starter-content.php';
+		add_theme_support( 'starter-content', the_bootstrap_blog__get_starter_content() );
+	}
 }
 
 /**
@@ -125,26 +135,36 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 
  	require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer.php';
 
-	/*
+	/**
 	 * ** Define Bootstrap Menu **
 	 *
 	 * ** This theme has only one menu level!
 	 *
 	 * @since The Bootstrap Blog 0.1
-	 **/
+	 */
 
 	 require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-navwalker.php';
-	/*
+
+	/**
 	 * ** Define Comments Walker **
 	 *
 	 * ** This theme has only one menu level!
 	 *
 	 * @since The Bootstrap Blog 0.1
-	 **/
+	 */
 
 	 require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-comments-walker.php';
 
-	/*
+	 /**
+		* ** Handle SVG icons **
+		*
+		*
+		* @since The Bootstrap Blog 0.1.4
+		**/
+	 require trailingslashit( get_template_directory() ) . '/classes/class-the-bootstrap-blog-svg-icons.php';
+	 require trailingslashit( get_template_directory() ) . '/inc/svg-icons.php';
+
+	/**
 	 *  Enqueue scripts and styles.
 	 *
 	 * @since The Bootstrap Blog 0.1
@@ -434,8 +454,8 @@ function the_bootstrap_blog__filter__post_thumbnail_html( $html ) {
  * @since The Bootstrap Blog 0.1.2
  */
 
-add_filter( 'comment_reply_link', 'the_bootstrap_blog__filter_comment_reply_link', 10, 4 );
-function the_bootstrap_blog__filter_comment_reply_link( $link, $args, $comment, $post ){
+add_filter( 'comment_reply_link', 'the_bootstrap_blog__filter__comment_reply_link', 10, 4 );
+function the_bootstrap_blog__filter__comment_reply_link( $link, $args, $comment, $post ){
 	global $wp_rewrite;
 
 	$page = get_page_of_comment( $comment->comment_ID );
@@ -591,7 +611,7 @@ add_filter( 'posts_search', 'the_bootstrap_blog__filter__posts_search', 10, 2 );
 
 
 
-function themeprefix_gallery_output($output, $attr, $instance ) {
+function the_bootstrap_blog__filter__gallery_output( $output, $attr, $instance ) {
 
 global $post, $wp_locale;
 
@@ -748,4 +768,4 @@ $output .= "
 return $output;
 
 }
-add_filter( 'post_gallery', 'themeprefix_gallery_output', 10, 3);
+add_filter( 'post_gallery', 'the_bootstrap_blog__filter__gallery_output', 10, 3);

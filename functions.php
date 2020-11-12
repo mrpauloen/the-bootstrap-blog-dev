@@ -396,7 +396,7 @@ function the_bootstrap_blog__filter__protected_text_title( $prepend ) {
 function the_bootstrap_blog__filter__password_form() {
     global $post;
     $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
-    $form = '<p>' . esc_html__( 'This content is password protected. To view it please enter your password below:', 'the-bootstrap-blog' ) . '</p>
+    $form = '<p>' . esc_html__( 'The content is protected. Please enter your password:', 'the-bootstrap-blog' ) . '</p>
 <form action="' . esc_url( home_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="POST">
 <div class="form-row">
 <div class="col">

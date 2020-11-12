@@ -14,8 +14,8 @@
  * @param string $group The group the icon belongs to.
  * @param string $color Color code.
  */
-function the_bootstrap_blog__the_theme_svg( $svg_name, $group = 'ui', $size = '', $color = '' ) {
-		echo the_bootstrap_blog__get_theme_svg( $svg_name, $group, $size, $color ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in the_bootstrap_blog__get_theme_svg().
+function the_bootstrap_blog__the_theme_svg( $svg_name, $group = 'ui', $size = '' ) {
+		echo the_bootstrap_blog__get_theme_svg( $svg_name, $group, $size ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in the_bootstrap_blog__get_theme_svg().
 }
 
 
@@ -26,7 +26,7 @@ function the_bootstrap_blog__the_theme_svg( $svg_name, $group = 'ui', $size = ''
  * @param string $group The group the icon belongs to.
  * @param string $color Color code.
  */
-function the_bootstrap_blog__get_theme_svg( $svg_name, $group = 'ui', $size = '', $color = '' ) {
+function the_bootstrap_blog__get_theme_svg( $svg_name, $group = 'ui', $size = '' ) {
 
 		// Make sure that only our allowed tags and attributes are included.
 		$svg = wp_kses(
@@ -41,6 +41,7 @@ function the_bootstrap_blog__get_theme_svg( $svg_name, $group = 'ui', $size = ''
 					'aria-hidden' => true,
 					'role'        => true,
 					'focusable'   => true,
+					'fill'       => true,
 				),
 				'path'    => array(
 					'fill'      => true,

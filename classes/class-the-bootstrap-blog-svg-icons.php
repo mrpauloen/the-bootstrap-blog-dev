@@ -17,10 +17,9 @@ if ( ! class_exists( 'TheBootstrapBlog_SVG_Icons' ) ) {
 		 *
 		 * @param string $icon  Icon name.
 		 * @param string $group Icon group.
-		 * @param string $color Icon color.
 		 * @param string $size Icon size.
 		 */
-		public static function get_svg( $icon, $group = 'ui', $size = '24', $color = '#1A1A1B' ) {
+		public static function get_svg( $icon, $group = 'ui', $size = '24' ) {
 			if ( 'ui' === $group ) {
 				$arr = self::$ui_icons;
 			} elseif ( 'social' === $group ) {
@@ -42,16 +41,6 @@ if ( ! class_exists( 'TheBootstrapBlog_SVG_Icons' ) ) {
 			$arr = apply_filters( "the_bootstrap_blog_svg_icons_{$group}", $arr );
 
 			/**
-			 * Filters an SVG icon's color.
-			 *
-			 * @since The Bootstrap Blog 0.1.4
-			 *
-			 * @param string $color The icon color.
-			 * @param string $icon  The icon name.
-			 * @param string $group The icon group.
-			 */
-			$color = apply_filters( 'the_bootstrap_blog_svg_icon_color', $color, $icon, $group );
-			/**
 			 * Filters an SVG icon's size.
 			 *
 			 * @since The Bootstrap Blog 0.1.4
@@ -63,10 +52,8 @@ if ( ! class_exists( 'TheBootstrapBlog_SVG_Icons' ) ) {
 			$size = apply_filters( 'the_bootstrap_blog_svg_icon_size', $size, $icon, $group );
 
 			if ( array_key_exists( $icon, $arr ) ) {
-				$repl = sprintf( '<svg class="svg-icon" width="%d" height="%d" aria-hidden="true" role="img" focusable="false" ', $size, $size );
+				$repl = sprintf( '<svg width="%d" height="%d" aria-hidden="true" role="img" focusable="false" fill="currentColor"', $size, $size );
 				$svg  = preg_replace( '/^<svg /', $repl, trim( $arr[ $icon ] ) ); // Add extra attributes to SVG code.
-				$svg  = str_replace( '#1A1A1B', $color, $svg );   // Replace the color.
-				$svg  = str_replace( '#', '%23', $svg );          // Urlencode hashes.
 				$svg  = preg_replace( "/([\n\t]+)/", ' ', $svg ); // Remove newlines & tabs.
 				$svg  = preg_replace( '/>\s*</', '><', $svg );    // Remove whitespace between SVG tags.
 				return $svg;

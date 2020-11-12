@@ -122,14 +122,10 @@
 function the_bootstrap_blog__padlock() {
   global $post;
   $size = ( is_archive() ) ? '16' : '24';
-  if ( post_password_required() ) {
-?>
-    <svg width="<?php echo esc_attr ( $size ); ?>" height="<?php echo esc_attr ( $size ); ?>" viewBox="0 0 16 16" class="align-baseline mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/><path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/></svg>
-<?php
-} elseif ( !empty( $post->post_password ) ) {
- ?>
-    <svg width="<?php echo esc_attr ( $size ); ?>" height="<?php echo esc_attr ( $size ); ?>" viewBox="0 0 16 16" class="align-baseline mr-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/><path fill-rule="evenodd" d="M8.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/></svg>
-<?php }
+  if ( post_password_required() )
+   the_bootstrap_blog__the_theme_svg( 'lock-fill', 'ui', $size );
+ elseif ( !empty( $post->post_password ) )
+   the_bootstrap_blog__the_theme_svg( 'unlock-fill', 'ui', $size );
 }
 
 /**

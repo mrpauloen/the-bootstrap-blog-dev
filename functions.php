@@ -52,7 +52,8 @@ function the_bootstrap_blog__action__theme_setup() {
 	// This menu has only one level.
 
 		register_nav_menus( array (
-		'top'	 => __( 'Top Menu', 	'the-bootstrap-blog')
+		'top'	 => __( 'Top Menu', 	'the-bootstrap-blog'),
+		'social'   => __( 'Social Menu', 'the-bootstrap-blog' ),
 		));
 
 	/*

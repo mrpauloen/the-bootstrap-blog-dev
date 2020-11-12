@@ -26,11 +26,11 @@ function the_bootstrap_blog__the_theme_svg( $svg_name, $group = 'ui', $size = ''
  * @param string $group The group the icon belongs to.
  * @param string $color Color code.
  */
-function the_bootstrap_blog__get_theme_svg( $svg_name, $group = 'ui', $size = '' ) {
+function the_bootstrap_blog__get_theme_svg( $svg_name, $group = 'ui', $size = '24' ) {
 
 		// Make sure that only our allowed tags and attributes are included.
 		$svg = wp_kses(
-			TheBootstrapBlog_SVG_Icons::get_svg( $svg_name, $group, $size, $color ),
+			TheBootstrapBlog_SVG_Icons::get_svg( $svg_name, $group, $size ),
 			array(
 				'svg'     => array(
 					'class'       => true,

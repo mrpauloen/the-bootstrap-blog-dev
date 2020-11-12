@@ -66,8 +66,9 @@ if ( ! class_exists( 'TheBootstrapBlog_SVG_Icons' ) ) {
 		 * Detects the social network from a URL and returns the SVG code for its icon.
 		 *
 		 * @param string $uri The URL to retrieve SVG for.
+		 * @param string $size Icon size.
 		 */
-		public static function get_social_link_svg( $uri ) {
+		public static function get_social_link_svg( $uri, $size ) {
 			static $regex_map; // Only compute regex map once, for performance.
 			if ( ! isset( $regex_map ) ) {
 				$regex_map = array();
@@ -102,7 +103,7 @@ if ( ! class_exists( 'TheBootstrapBlog_SVG_Icons' ) ) {
 			}
 			foreach ( $regex_map as $icon => $regex ) {
 				if ( preg_match( $regex, $uri ) ) {
-					return the_bootstrap_blog__get_theme_svg( $icon, 'social' );
+					return the_bootstrap_blog__get_theme_svg( $icon, 'social', $size );
 				}
 			}
 			return null;

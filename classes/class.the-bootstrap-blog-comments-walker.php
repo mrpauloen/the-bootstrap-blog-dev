@@ -147,6 +147,9 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 							'max_depth' => $args['max_depth'],
 							'before'    => '<p class="comment-reply">',
 							'after'     => '</p>',
+							'reply_text'  => sprintf (
+								/* translators: %s: arrow-return-right svg icon */
+								__( '%s Reply', 'the-bootstrap-blog' ), the_bootstrap_blog__get_icon_svg( 'arrow-return-right', '14') ),
 							'login_text'    => esc_html__( 'Log in to Reply', 'the-bootstrap-blog'),
 							/* translators: Comment reply text. %s: Comment author name. */
         			'reply_to_text' => esc_html__( 'You reply to: %s', "the-bootstrap-blog" )  . '&emsp;',

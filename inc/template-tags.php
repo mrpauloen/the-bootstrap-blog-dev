@@ -13,7 +13,7 @@
   * your site tile (or blog name), depends on different pages
   * See line: 36 in header.php file
   *
-  * @since The Bootstrap Blog
+  * @since The Bootstrap Blog 0.1
   */
 
  function the_bootstrap_blog__site_title(){
@@ -41,6 +41,29 @@
  	}
 
  	echo wp_kses( $site_title, 'i' );
+}
+/**
+ * Custom Site description
+ *
+ * This function changes the way you see (in header section)
+ * your site descriptions (or blog name), depends on different pages
+ * See line: 52 in header.php file
+ *
+ * @since The Bootstrap Blog 0.1.4
+ */
+function the_bootstrap_blog__site_description(){
+  global $wp_query;
+
+  if ( is_archive() ){
+      the_archive_title();
+  } elseif ( is_404() ) {
+       esc_html_e( 'Sorry, no posts matched your criteria.', 'the-bootstrap-blog' );
+  } elseif ( is_search() ){
+    /* translators: %d: wp_query->found_posts */
+      printf( _n( '%d result found', '%d results found', $wp_query->found_posts, 'the-bootstrap-blog' ), number_format_i18n( $wp_query->found_posts )  );
+  } else {
+      bloginfo('description');
+  }
 }
 
  /**

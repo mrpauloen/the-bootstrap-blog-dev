@@ -218,7 +218,7 @@ function the_bootstrap_blog__action__enqueue_js_and_css() {
 	$custom_header = get_custom_header();
 
 	if ( get_header_image() ) {
-		$custom_header_css = ".blog-header {background: url('" . esc_url( $custom_header->url ) . "');background-size:cover;background-repeat: no-repeat;}";
+		$custom_header_css = ".blog-header {background: url('" . esc_url( $custom_header->url ) . "');background-size:cover;background-repeat:no-repeat;}";
 		wp_add_inline_style( 'the-bootstrap-blog', $custom_header_css );
 	}
 
@@ -464,7 +464,7 @@ function the_bootstrap_blog__filter__comment_reply_link( $link, $args, $comment,
 // Copied from get_comment_reply_link() function
 	if ( get_option( 'comment_registration' ) && ! is_user_logged_in() ) {
 		$link = sprintf(
-			'<a rel="nofollow" class="comment-reply-login" href="%s">%s</a>',
+			'<a rel="nofollow" class="comment-reply-login small" href="%s">%s</a>',
 			esc_url( wp_login_url( get_permalink() ) ),
 			$args['login_text']
 		);
@@ -486,7 +486,7 @@ function the_bootstrap_blog__filter__comment_reply_link( $link, $args, $comment,
 		$data_attribute_string = trim( $data_attribute_string );
 
 		$link = sprintf(
-			"<a rel='nofollow' class='comment-reply-link' href='%s' %s aria-label='%s'>%s</a>",
+			"<a rel='nofollow' class='comment-reply-link small' href='%s' %s aria-label='%s'>%s</a>",
 			esc_url(
 				add_query_arg(
 					array(

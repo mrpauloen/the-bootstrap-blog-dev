@@ -17,13 +17,13 @@ wp_nav_menu(
     'theme_location'  => 'social',
     'container'       => '',
     'container_class' => '',
-    'items_wrap'      => '%3$s',
+    'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
     'menu_id'         => '',
-    'menu_class'      => '',
+    'menu_class'      => 'nav mb-3',
     'depth'           => 1,
     'link_before'     => '<span class="screen-reader-text">',
     'link_after'      => '</span>',
-    'fallback_cb'     => '',
+    'fallback' => false,
   )
 );
 ?>

@@ -126,7 +126,7 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 
 					<?php if ( '0' == $comment->comment_approved ) : ?>
 					<em class="text-primary comment-awaiting-moderation">
-							<?php the_bootstrap_blog__the_theme_svg( 'exclamation-triangle', 'ui', '21' ); ?>
+							<?php the_bootstrap_blog__icon_svg( 'exclamation-triangle', '21' ); ?>
 &nbsp;<?php echo esc_html( $moderation_note ); ?></em>
 
 					<?php endif; ?>

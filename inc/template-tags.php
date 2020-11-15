@@ -123,9 +123,9 @@ function the_bootstrap_blog__padlock() {
   global $post;
   $size = ( is_archive() ) ? '16' : '24';
   if ( post_password_required() )
-   the_bootstrap_blog__the_theme_svg( 'lock-fill', 'ui', $size );
+   the_bootstrap_blog__icon_svg( 'lock-fill', $size );
  elseif ( !empty( $post->post_password ) )
-   the_bootstrap_blog__the_theme_svg( 'unlock-fill', 'ui', $size );
+   the_bootstrap_blog__icon_svg( 'unlock-fill', $size );
 }
 
 /**
@@ -156,27 +156,3 @@ function the_bootstrap_blog__comment_legend(){
 
   <?php }
 }
-
-/**
- * Displays SVG icons in social links menu.
- *
- * @param string   $item_output The menu item's starting HTML output.
- * @param WP_Post  $item        Menu item data object.
- * @param int      $depth       Depth of the menu. Used for padding.
- * @param stdClass $args        An object of wp_nav_menu() arguments.
- * @return string The menu item output with social icon.
- */
-function the_bootstrap_blog__nav_menu_social_icons( $item_output, $item, $depth, $args ) {
-	// Change SVG icon inside social links menu if there is supported URL.
-	if ( 'social' === $args->theme_location ) {
-		$svg = TheBootstrapBlog_SVG_Icons::get_social_link_svg( $item->url, '43' );
-		if ( empty( $svg ) ) {
-			$svg = the_bootstrap_blog__get_theme_svg( 'link' );
-		}
-		$item_output = str_replace( $args->link_after, '</span>' . $svg, $item_output );
-	}
-
-	return $item_output;
-}
-
-add_filter( 'walker_nav_menu_start_el', 'the_bootstrap_blog__nav_menu_social_icons', 10, 4 );

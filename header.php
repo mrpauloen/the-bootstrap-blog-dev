@@ -26,7 +26,10 @@
 
   <?php wp_body_open(); ?>
 
-    <div class="blog-masthead">
+<?php // Let's get them only once
+$has_header_image = has_header_image(); ?>
+
+    <div class="blog-masthead<?php echo ( $has_header_image ? esc_attr( ' border-bottom border-white' ) : '' ); ?>">
       <div class="container nav-scroller">
 
 <?php
@@ -46,17 +49,9 @@
       </div>
     </div>
 
-<header class="blog-header badg">
-  <div class="container">
-    <h1 class="blog-title h1 mb-2"><?php the_bootstrap_blog__site_title(); ?></h1>
-<?php if ( is_archive() ) { ?>
-<p class="lead blog-description"><?php the_archive_title(); ?><p/>
-<?php } elseif ( is_404() ) { ?>
-<p class="lead blog-description"><?php esc_html_e( 'Sorry, no posts matched your criteria.', 'the-bootstrap-blog' ); ?></p>
-<?php } elseif ( is_search() ) { ?>
-<p class="lead blog-description mb-3"><?php printf( _n( '%s result found', '%s results found', $wp_query->found_posts, 'czystespalanie' ), number_format_i18n( $wp_query->found_posts )  ); ?></p>
-<?php } else { ?>
-    <p class="lead blog-description text-muted"><?php bloginfo('description'); ?></p>
-<?php } ?>
+<header class="blog-header">
+  <div class="container<?php echo ( $has_header_image ? esc_attr( ' has-custom-header') : '' ); ?>">
+    <h1 class="site-title"><?php the_bootstrap_blog__site_title(); ?></h1><br/>
+    <p class="lead site-description<?php echo ( ! $has_header_image ? esc_attr( ' text-muted' ) : '' ); ?>"><?php the_bootstrap_blog__site_description(); ?></p>
   </div>
 </header>

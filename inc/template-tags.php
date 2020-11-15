@@ -26,7 +26,7 @@
  		$site_title =  __( '404', 'the-bootstrap-blog');
  	}
   elseif ( is_search() ) {
-    $site_title =  sprintf ( __( 'Search results for: <i>%s</i>', 'the-bootstrap-blog' ), get_search_query() );
+    $site_title =  sprintf ( __( 'Search for: <i>%s</i>', 'the-bootstrap-blog' ), get_search_query() );
   }
 	elseif ( is_author()   ) {
  	$site_title =  __( 'Author', 'the-bootstrap-blog');

@@ -548,7 +548,7 @@ function the_bootstrap_blog__filter__the_excerpt( $post_excerpt ){
 	if ( is_admin() ) return $post_excerpt;
 
     if ( post_password_required() && !is_archive() )
-	return '<a class="float-right text-decoration-none" href="' . get_the_permalink() . '" title="Unlock">' . the_bootstrap_blog__get_theme_svg( 'key-fill', 'ui', '20' ) . the_bootstrap_blog__get_theme_svg( 'shield-lock', 'ui', '20' ) .
+	return '<a class="float-right text-decoration-none" href="' . get_the_permalink() . '" title="Unlock">' . the_bootstrap_blog__get_icon_svg( 'key-fill', '20' ) . the_bootstrap_blog__get_icon_svg( 'shield-lock', '20' ) .
 '</a>' . $post_excerpt;
 return $post_excerpt;
 }

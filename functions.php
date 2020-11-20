@@ -54,6 +54,12 @@ function the_bootstrap_blog__action__theme_setup() {
 		register_nav_menus( array (
 		'top'	 => __( 'Top Menu', 	'the-bootstrap-blog'),
 		'social'   => __( 'Social Menu', 'the-bootstrap-blog' ),
+		'footer-menu-1'	 => __( 'Footer mega menu (col 1)', 	'the-bootstrap-blog'),
+		'footer-menu-2'	 => __( 'Footer mega menu (col 2)', 	'the-bootstrap-blog'),
+		'footer-menu-3'	 => __( 'Footer mega menu (col 3)', 	'the-bootstrap-blog'),
+		'footer-menu-4'	 => __( 'Footer mega menu (col 4)', 	'the-bootstrap-blog'),
+		'footer-menu-5'	 => __( 'Footer mega menu (col 5)', 	'the-bootstrap-blog'),
+		'footer-menu-6'	 => __( 'Footer mega menu (col 6)', 	'the-bootstrap-blog'),
 		));
 
 	/*
@@ -144,7 +150,7 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 	 * @since The Bootstrap Blog 0.1
 	 */
 
-	 require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-navwalker.php';
+	 require trailingslashit( get_template_directory() ) . 'classes/class-the-bootstrap-blog-navwalker.php';
 
 	/**
 	 * ** Define Comments Walker **
@@ -154,7 +160,14 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 	 * @since The Bootstrap Blog 0.1
 	 */
 
-	 require trailingslashit( get_template_directory() ) . 'classes/class.the-bootstrap-blog-comments-walker.php';
+	 require trailingslashit( get_template_directory() ) . 'classes/class-the-bootstrap-blog-comments-walker.php';
+	/**
+	 * Define Mega Menu Custom Walker
+	 *
+	 * @since The Bootstrap Blog 0.1.4
+	 */
+
+	 require trailingslashit( get_template_directory() ) . 'classes/class-the-bootstrap-blog-mega-menu-walker.php';
 
 	 /**
 		* ** Handle SVG icons **

@@ -27,5 +27,4 @@ wp_nav_menu(
   )
 );
 ?>
-
 </div><!-- /.blog-sidebar -->

@@ -9,8 +9,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @subpackage The Bootstrap Blog
- * @since 0.1
+ * @since The Bootstrap Blog 0.1
  */
 
 get_header(); ?>

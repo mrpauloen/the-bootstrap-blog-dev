@@ -4,8 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @subpackage The Bootstrap Blog
- * @since 0.1
+ * @since The Bootstrap Blog 0.1
  */
 
 get_header(); ?>

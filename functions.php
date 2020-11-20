@@ -153,14 +153,14 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 	 require trailingslashit( get_template_directory() ) . 'classes/class-the-bootstrap-blog-navwalker.php';
 
 	/**
-	 * ** Define Comments Walker **
+	 * Define Comments Walker
 	 *
-	 * ** This theme has only one menu level!
 	 *
 	 * @since The Bootstrap Blog 0.1
 	 */
 
 	 require trailingslashit( get_template_directory() ) . 'classes/class-the-bootstrap-blog-comments-walker.php';
+	 
 	/**
 	 * Define Mega Menu Custom Walker
 	 *

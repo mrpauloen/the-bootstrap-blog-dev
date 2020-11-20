@@ -26,6 +26,7 @@
  		$site_title =  __( '404', 'the-bootstrap-blog');
  	}
   elseif ( is_search() ) {
+    /* translators: %s: search query variable */
     $site_title =  sprintf ( __( 'Search for: <i>%s</i>', 'the-bootstrap-blog' ), get_search_query() );
   }
 	elseif ( is_author()   ) {
@@ -159,23 +160,20 @@ function the_bootstrap_blog__padlock() {
  * @since The Bootstrap Blog 0.1.4
  */
 function the_bootstrap_blog__comment_legend(){
-  //Show comment legenf text if omments_open()
+  // Don't show comment legenf text if comment_registration option is on and user is not logged in
+  if ( get_option( 'comment_registration' ) && ! is_user_logged_in() ) return;
+  //Show comment legenf text if comments_open()
 	if ( comments_open() ){
-
- // Don't show comment legenf text if comment_registration option is on and user is not logged in
-		if ( get_option( 'comment_registration' ) && ! is_user_logged_in() ) return;
  ?>
-
   <fieldset class="mt-2 p-2 border" >
   <legend class="h6 px-2" style="width: fit-content;"><?php esc_html_e( 'Legend', 'the-bootstrap-blog' );?></legend>
   <small><?php echo esc_html_x( '*) Required fields are marked', 'comments legend', 'the-bootstrap-blog' ); ?><br/>
   <?php printf(
-  	/* translators: %s: Display all of the allowed tags in HTML format (within code tag) with attributes.*/
+  	/* translators: %s: Allowed tags (within code tag) */
   esc_html_x( '**) You may use these HTML tags and attributes: %s', 'comments legend', 'the-bootstrap-blog'), '<code>' . allowed_tags() . '</code>' );
   ?><br/>
   <?php if ( wp_is_mobile() ) esc_html_e( '***) Your data will be stored in this browser and added automaticly so next time you don\'t need to put it again.', 'the-bootstrap-blog' ); ?>
   </small>
   </fieldset>
-
   <?php }
 }

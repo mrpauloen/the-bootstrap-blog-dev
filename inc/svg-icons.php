@@ -2,9 +2,7 @@
 /**
  * SVG icons related functions
  *
- * @package WordPress
- * @subpackage Twenty_Nineteen
- * @since Twenty Nineteen 1.0
+ * @since The Bootstrap Blog 0.1.4
  */
 
 /**

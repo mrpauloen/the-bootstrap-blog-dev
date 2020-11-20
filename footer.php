@@ -12,7 +12,7 @@
 
 ?><footer class="blog-footer">
 
-	<div class="container">
+	<div class="container mb-5">
 	<div class="row">
 	<?php
 
@@ -31,13 +31,12 @@
 		'menu_class' => 'list-unstyled',
 		'theme_location' => $location,
 		'fallback_cb' => false,
-		//'walker' => new The_Bootstrap_Blog__Mega_Menu(),
+		'walker' => new The_Bootstrap_Blog__Mega_Menu(),
 
 		);
 	?><div class="col-6 col-md-3 col-lg-2"><?php wp_nav_menu( $args ); ?></div><?php } ?>
 
 	</div><!-- .row -->
-		<hr class="border-primary"/>
 </div>
 
 

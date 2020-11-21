@@ -56,8 +56,8 @@ if ( ! $password_required ){ ?>
 <?php comments_template(); ?>
 
 <?php if ( ! $password_required ) { ?>
-<div class="mt-4"><?php esc_html_e( 'In category:&nbsp;', 'the-bootstrap-blog' ); the_category( ' | ' ); ?><br/>
-<?php the_tags( __( 'Tagged with:&nbsp;', 'the-bootstrap-blog' ), ', ', '<br />' ); ?></div>
+<div class="mt-4"><?php esc_html_e( 'Category:', 'the-bootstrap-blog' ); ?> <?php the_category( ' | ' ); ?><br/>
+<?php the_tags( __( 'Tags: ', 'the-bootstrap-blog' ), ', ', '<br />' ); ?></div>
 
 
 <nav class="blog-pagination mt-4 mb-4">

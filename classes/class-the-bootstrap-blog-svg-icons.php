@@ -62,6 +62,28 @@ class The_Bootstrap_Blog__SVG_Icons {
 		}
 		return null;
 	}
+	/**
+	 * Detects the social network from a URL and returns true
+	 */
+	public static function check_social_link( $uri ) {
+		static $regex_map; // Only compute regex map once, for performance.
+		if ( ! isset( $regex_map ) ) {
+			$regex_map = array();
+			$map       = &self::$social_icons_map; // Use reference instead of copy, to save memory.
+			foreach ( array_keys( self::$social_icons ) as $icon ) {
+				$domains            = array_key_exists( $icon, $map ) ? $map[ $icon ] : array( sprintf( '%s.com', $icon ) );
+				$domains            = array_map( 'trim', $domains ); // Remove leading/trailing spaces, to prevent regex from failing to match.
+				$domains            = array_map( 'preg_quote', $domains );
+				$regex_map[ $icon ] = sprintf( '/(%s)/i', implode( '|', $domains ) );
+			}
+		}
+		foreach ( $regex_map as $icon => $regex ) {
+			if ( preg_match( $regex, $uri ) ) {
+				return true;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * User Interface icons – svg sources.

@@ -64,7 +64,7 @@ function the_bootstrap_blog__theme_customize( $wp_customize ) {
 
 				<hr/>
 
-				<h3><?php esc_html_e( 'Github', 'the-bootstrap-blog' ); ?></h3>
+				<h3><?php esc_html_e( 'Contribute', 'the-bootstrap-blog' ); ?></h3>
 				<p><?php esc_html_e( 'Are you familiar with github? Great! Use it as an extended support for reporting any bugs, keep track of tasks, propose enhancements or contributing to project.', 'the-bootstrap-blog' );
 					?></a></p>
 					<p><?php
@@ -106,7 +106,7 @@ function the_bootstrap_blog__theme_customize( $wp_customize ) {
 
 				<hr/>
 
-				<h3><?php esc_html_e( 'Fanpage', 'the-bootstrap-blog' ); ?></h3>
+				<h3><?php esc_html_e( 'Upgrade', 'the-bootstrap-blog' ); ?></h3>
 				<p><?php
 
 					printf(
@@ -408,7 +408,6 @@ function the_bootstrap_blog__allowed_html(){
  function the_bootstrap_blog__sanitize_footer_text( $text ){
 
  	$text = wp_kses( $text, the_bootstrap_blog__allowed_html() );
-
  	return  $text;
  }
 

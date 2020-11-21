@@ -32,6 +32,12 @@ function the_bootstrap_blog__get_social_icon_svg( $icon, $size = 24 ) {
 function the_bootstrap_blog__get_social_link_svg( $uri, $size = 24 ) {
 	return The_Bootstrap_Blog__SVG_Icons::get_social_link_svg( $uri, $size );
 }
+/**
+ * Detects the social network from a URL and returns the SVG code for its icon.
+ */
+function the_bootstrap_blog__check_social_link( $uri ) {
+	return The_Bootstrap_Blog__SVG_Icons::check_social_link( $uri );
+}
 
 /**
  * Display SVG icons in social links menu.
@@ -50,6 +56,12 @@ function the_bootstrap_blog__nav_menu_social_icons( $item_output, $item, $depth,
 			$svg = the_bootstrap_blog__get_icon_svg( 'link' );
 		}
 		$item_output = str_replace( $args->link_after, '</span>' . $svg, $item_output );
+	} elseif ( the_bootstrap_blog__check_social_link( $item->url ) ) {
+		$svg = the_bootstrap_blog__get_social_link_svg( $item->url, 20 );
+		if ( empty( $svg ) ) {
+			$svg = the_bootstrap_blog__get_icon_svg( 'link' );
+		}
+		return  $svg . $item_output;
 	}
 
 	return $item_output;

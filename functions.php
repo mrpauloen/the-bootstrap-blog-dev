@@ -53,13 +53,14 @@ function the_bootstrap_blog__action__theme_setup() {
 
 		register_nav_menus( array (
 		'top'	 => __( 'Top Menu', 	'the-bootstrap-blog'),
-		'social'   => __( 'Social Menu', 'the-bootstrap-blog' ),
-		'footer-menu-1'	 => __( 'Footer mega menu (col 1)', 	'the-bootstrap-blog'),
-		'footer-menu-2'	 => __( 'Footer mega menu (col 2)', 	'the-bootstrap-blog'),
-		'footer-menu-3'	 => __( 'Footer mega menu (col 3)', 	'the-bootstrap-blog'),
-		'footer-menu-4'	 => __( 'Footer mega menu (col 4)', 	'the-bootstrap-blog'),
-		'footer-menu-5'	 => __( 'Footer mega menu (col 5)', 	'the-bootstrap-blog'),
-		'footer-menu-6'	 => __( 'Footer mega menu (col 6)', 	'the-bootstrap-blog'),
+		'social-before-widgets'   => __( 'Social Menu (before widgets)', 'the-bootstrap-blog' ),
+		'social-after-widgets'   => __( 'Social Menu (after widgets)', 'the-bootstrap-blog' ),
+		'footer-menu-1'	 => __( 'Footer Mega Menu (col1)', 	'the-bootstrap-blog'),
+		'footer-menu-2'	 => __( 'Footer Mega Menu (col2)', 	'the-bootstrap-blog'),
+		'footer-menu-3'	 => __( 'Footer Mega Menu (col3)', 	'the-bootstrap-blog'),
+		'footer-menu-4'	 => __( 'Footer Mega Menu (col4)', 	'the-bootstrap-blog'),
+		'footer-menu-5'	 => __( 'Footer Mega Menu (col5)', 	'the-bootstrap-blog'),
+		'footer-menu-6'	 => __( 'Footer Mega Menu (col6)', 	'the-bootstrap-blog'),
 		));
 
 	/*
@@ -160,7 +161,7 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 	 */
 
 	 require trailingslashit( get_template_directory() ) . 'classes/class-the-bootstrap-blog-comments-walker.php';
-	 
+
 	/**
 	 * Define Mega Menu Custom Walker
 	 *

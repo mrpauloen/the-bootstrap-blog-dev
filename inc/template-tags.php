@@ -172,7 +172,6 @@ function the_bootstrap_blog__comment_legend(){
   	/* translators: %s: Allowed tags (within code tag) */
   esc_html_x( '**) You may use these HTML tags and attributes: %s', 'comments legend', 'the-bootstrap-blog'), '<code>' . allowed_tags() . '</code>' );
   ?><br/>
-  <?php if ( wp_is_mobile() ) esc_html_e( '***) Your data will be stored in this browser and added automaticly so next time you don\'t need to put it again.', 'the-bootstrap-blog' ); ?>
   </small>
   </fieldset>
   <?php }

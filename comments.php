@@ -30,10 +30,10 @@ if ( post_password_required() )
 	'cookies' => '<div id="form-input"  class="' . esc_attr( $collapse ) . '">
   <div class="form-group">
     <div class="form-check pl-0">
-      <label title="' . esc_attr( 'Your data will be stored in this browser and added automaticly so next time you don\'t need to put it again.', 'the-bootstrap-blog' ) . '" for="wp-comment-cookies-consent">
+      <label for="wp-comment-cookies-consent">
       <input class="" type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes">
-<small>Remember me</small> ' . the_bootstrap_blog__get_icon_svg( 'info-square-fill', '16' ) . '
-      </label>
+<small>Remember me</small>
+      </label> <span data-toggle="tooltip" data-placement="top" title="' . esc_attr( 'Your data will be stored in this browser and added automaticly so next time you don\'t need to put it again.', 'the-bootstrap-blog' ) . '">' . the_bootstrap_blog__get_icon_svg( 'info-square-fill', 16 ) . '</span>
     </div>
   </div>',
 
@@ -66,7 +66,7 @@ $comments_args = array(
 'title_reply_after'		=> '</h6>',
 'cancel_reply_before'	=> ' ',
 'cancel_reply_after'	=> '',
-'cancel_reply_link'		=> esc_html__( 'Cancel&nbsp;reply', 'the-bootstrap-blog' ),
+'cancel_reply_link'		=> esc_html__( 'Cancel', 'the-bootstrap-blog' ),
 'id_submit'				=> 'submit',
 'class_submit'			=> 'form-control mb-2 mb-sm-0 form-control-sm round btn btn-outline-primary btn-sm',
 'label_submit'			=> esc_html__( 'Add reply', 'the-bootstrap-blog' ),

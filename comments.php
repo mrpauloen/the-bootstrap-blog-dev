@@ -4,7 +4,6 @@
  *
  * The area of the page that contains comments and the comment form.
  *
- * @subpackage The Bootstrap Blog
  * @since The Bootstrap Blog 0.1
  */
 

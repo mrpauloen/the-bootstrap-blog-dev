@@ -6,9 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- *
- * @subpackage The Bootstrap Blog
- * @since 0.1
+ * @since The Bootstrap Blog 0.1
  */
 
 ?><!DOCTYPE html>

@@ -115,7 +115,7 @@ function the_bootstrap_blog__site_description(){
  /**
   * Cutom Footer Text
   *
-  * @return void|string 		$custom_footer_text | defult footer text
+  * @return void|string  $custom_footer_text | defult footer text
   *
   * @since The Bootstrap Blog 0.1.4
   */

@@ -2,8 +2,7 @@
 /**
  * The template for displaying error page
  *
- * @subpackage The Bootstrap Blog
- * @since 0.1.2
+ * @since The Bootstrap Blog 0.1.2
  */
 
 get_header(); ?>

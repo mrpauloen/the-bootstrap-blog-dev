@@ -4,8 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#displaying-sidebars-in-your-theme
  *
- * @subpackage The Bootstrap Blog
- * @since 0.1
+ * @since The Bootstrap Blog 0.1
  */
 ?><div class="col-sm-3 offset-sm-1 blog-sidebar mb-3">
 

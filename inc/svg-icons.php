@@ -33,14 +33,14 @@ function the_bootstrap_blog__get_social_link_svg( $uri, $size = 24 ) {
 	return The_Bootstrap_Blog__SVG_Icons::get_social_link_svg( $uri, $size );
 }
 /**
- * Detects the social network from a URL and returns the SVG code for its icon.
+ * Detects the social network from a URL and returns true.
  */
 function the_bootstrap_blog__check_social_link( $uri ) {
 	return The_Bootstrap_Blog__SVG_Icons::check_social_link( $uri );
 }
 
 /**
- * Display SVG icons in social links and any other menu.
+ * Display SVG icons in social links or if there is supported URL.
  *
  * @param string   $item_output The menu item's starting HTML output.
  * @param WP_Post  $item        Menu item data object.
@@ -53,7 +53,7 @@ function the_bootstrap_blog__check_social_link( $uri ) {
 function the_bootstrap_blog__nav_menu_social_icons( $item_output, $item, $depth, $args ) {
 
 	$locations = array( 'social-before-widgets', 'social-after-widgets' );
-	
+
 	// Change SVG icon inside social links menu if there is supported URL.
 	if ( in_array( $args->theme_location, $locations, true ) ) {
 		$svg = the_bootstrap_blog__get_social_link_svg( $item->url, 40 );
@@ -62,7 +62,7 @@ function the_bootstrap_blog__nav_menu_social_icons( $item_output, $item, $depth,
 		}
 		$item_output = str_replace( $args->link_after, '</span>' . $svg, $item_output );
 	} elseif (  the_bootstrap_blog__check_social_link( $item->url ) ) {
-		// Change SVG icon inside any menu if there is supported URL.
+		// Add SVG icon before any menu item if there is supported URL.
 		$svg = the_bootstrap_blog__get_social_link_svg( $item->url, 20 );
 		$item_output =  $svg . $item_output;
 	}

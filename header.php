@@ -25,7 +25,8 @@
   <?php wp_body_open(); ?>
 
 <?php // Let's get them only once
-$has_header_image = has_header_image(); ?>
+$has_header_image = has_header_image();
+?>
 
     <div class="blog-masthead<?php echo ( $has_header_image ? esc_attr( ' border-bottom border-white' ) : '' ); ?>">
       <div class="container nav-scroller">

@@ -9,18 +9,26 @@
  * @since The Bootstrap Blog 0.1
  */
 
-?><footer class="blog-footer">
+?>
+<footer class="blog-footer">
 
 	<div class="container mb-5">
 	<div class="row">
 	<?php
 
-		/*
-		 * Mega Menu Navigation
-		 *
-		 */
+	/**
+	 * Mega Menu Navigation
+	 * @since The Bootstrap Blog 0.1.4
+	 */
 
-		$locations = array ( 'footer-menu-1', 'footer-menu-2', 'footer-menu-3', 'footer-menu-4', 'footer-menu-5', 'footer-menu-6' );
+	$locations = array (
+		'footer-menu-1',
+		'footer-menu-2',
+		'footer-menu-3',
+		'footer-menu-4',
+		'footer-menu-5',
+		'footer-menu-6'
+	);
 
 	foreach ( $locations as $location ){
 
@@ -33,7 +41,9 @@
 		'walker' => new The_Bootstrap_Blog__Mega_Menu(),
 
 		);
-	?><div class="col-6 col-md-3 col-lg-2"><?php wp_nav_menu( $args ); ?></div><?php } ?>
+	?>
+	<div class="col-6 col-md-3 col-lg-2"><?php wp_nav_menu( $args ); ?></div>
+<?php } ?>
 
 	</div><!-- .row -->
 </div>

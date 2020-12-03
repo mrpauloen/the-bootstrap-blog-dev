@@ -19,14 +19,17 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 	function __construct() {
 		if ( have_comments() ):
 	?>
-	<div id="comments" class="comments-area"><ul id="comment-list" class="list-unstyled mt-3 py-1"><?php endif;
+	<div id="comments" class="comments-area"><ul id="comment-list" class="list-unstyled mt-3 py-1">
+	<?php endif;
 	}
 
 	/** DESTRUCTOR
 	 * I just using this since we needed to use the constructor to reach the top
 	 * of the comments list, just seems to balance out :) */
 	function __destruct() {
-	 if ( have_comments() ):	?></ul></div><?php endif;
+	 if ( have_comments() ):	?>
+		</ul></div>
+	<?php endif;
 	}
 
 	/**
@@ -78,8 +81,7 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 
 			<footer class="comment-meta">
 					<div class="comment-author vcard">
-						<?php
-						$comment_author = get_comment_author_link( $comment ); ?>
+						<?php $comment_author = get_comment_author_link( $comment ); ?>
 
 						<?php
 						if ( 0 != $args['avatar_size'] ) {
@@ -152,7 +154,7 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 								__( '%s Reply', 'the-bootstrap-blog' ), the_bootstrap_blog__get_icon_svg( 'arrow-return-right', '14') ),
 							'login_text'    => esc_html__( 'Log in to Reply', 'the-bootstrap-blog'),
 							/* translators: Comment reply text. %s: Comment author name. */
-        			'reply_to_text' => esc_html__( 'You reply to: %s', "the-bootstrap-blog" )  . '&emsp;',
+        			'reply_to_text' => esc_html__( 'Re: %s', "the-bootstrap-blog" )  . '&emsp;',
 						)
 					)
 				);

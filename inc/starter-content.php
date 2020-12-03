@@ -63,6 +63,11 @@ function the_bootstrap_blog__get_starter_content() {
 				'post_title' => _x( 'Developers', 'Theme starter content' ),
 				'post_content' => _x( 'Developers content.', 'Theme starter content' ),
 			),
+			'page3' => array(
+				'post_type' => 'page',
+				'post_title' => _x( 'Templates', 'Theme starter content' ),
+				'post_content' => _x( 'Templates content.', 'Theme starter content' ),
+			),
 
 			'homepage-section' => array(
 				'post_type' => 'page',
@@ -149,6 +154,10 @@ function the_bootstrap_blog__get_starter_content() {
 								),
 					'link_page2' => array(
 						'title' => 'Themes',
+							'url' => '#',
+					),
+					'link_page3' => array(
+						'title' => 'Templates',
 							'url' => '#',
 					),
 				),

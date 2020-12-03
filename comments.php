@@ -60,7 +60,7 @@ $comments_args = array(
 'class_form'			=> 'comment-form form-horizontal mt-2',
 'title_reply'      		=> '',
 	/* translators: %s: The translatable 'reply-to' button label. Default 'Leave a Reply to %s', where %s is the author of the comment being replied to. */
-'title_reply_to'    	=> esc_html__( 'You reply to: %s', 'the-bootstrap-blog' )  . '&emsp;',
+'title_reply_to'    	=> esc_html__( 'Re: %s', 'the-bootstrap-blog' )  . '&emsp;',
 'title_reply_before'	=> '<h6 id="reply-title" class="comment-reply-title">',
 'title_reply_after'		=> '</h6>',
 'cancel_reply_before'	=> ' ',

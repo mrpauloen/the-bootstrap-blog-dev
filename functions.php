@@ -789,5 +789,3 @@ function the_bootstrap_blog__filter__gallery_output( $output, $attr, $instance )
 
 }
 add_filter( 'post_gallery', 'the_bootstrap_blog__filter__gallery_output', 10, 3);
-
-update_option( 'fresh_site', 1 );

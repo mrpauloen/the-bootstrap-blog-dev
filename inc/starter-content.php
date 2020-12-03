@@ -25,7 +25,6 @@ function the_bootstrap_blog__get_starter_content() {
 					'map',
 				),
 			),
-
 		),
 
 		'posts' => array(

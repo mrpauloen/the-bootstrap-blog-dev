@@ -54,7 +54,7 @@ if ( ! class_exists( 'The_Bootstrap_Blog_Walker' ) ) :
 		$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
 		$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
 
-        $output .= '<a class="nav-link' . $active_class . '"'. $attributes .'>' . $item->title . '</a>';
+				$output .= $args->before . '<a class="nav-link' . $active_class . '"'. $attributes .'>' . $args->link_before . $item->title . $args->link_after . '</a>' . $args->after;
     }
 
     public function end_el( &$output, $item, $depth = 0, $args = array() ) {

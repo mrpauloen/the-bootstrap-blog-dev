@@ -124,14 +124,14 @@ function the_bootstrap_blog__site_description(){
 
  	if ( get_theme_mod( 'display_footer_text', 1 ) ) {
  		/* Some predefined tags */
- 		$tags_search = array( '%sitetitle%', '%sitedescription%', '%year%' );
+ 		$tags_search = array( '{sitetitle}', '{sitedescription}', '{year}' );
  		$tags_replace = array( get_bloginfo( 'name' ), get_bloginfo( 'description' ), date('Y') );
 
  		$custom_footer_text = get_theme_mod( 'custom_footer_text' );
 
- 		if ( empty( $custom_footer_text ))
+ 		if ( empty( $custom_footer_text )){
  		return the_bootstrap_blog__default_footer_text();
-
+		}
  		/* Replace tags */
  		return str_replace( $tags_search, $tags_replace, $custom_footer_text );
  	}
@@ -144,12 +144,13 @@ function the_bootstrap_blog__site_description(){
  */
 
 function the_bootstrap_blog__padlock() {
-  global $post;
-  $size = ( is_archive() ) ? '16' : '24';
-  if ( post_password_required() )
-   the_bootstrap_blog__icon_svg( 'lock-fill', $size );
- elseif ( !empty( $post->post_password ) )
-   the_bootstrap_blog__icon_svg( 'unlock-fill', $size );
+	global $post;
+	$size = ( is_archive() ) ? '16' : '24';
+	if ( post_password_required() ){
+		the_bootstrap_blog__icon_svg( 'lock-fill', $size );
+	} elseif ( !empty( $post->post_password ) ){
+		the_bootstrap_blog__icon_svg( 'unlock-fill', $size );
+	}
 }
 
 /**
@@ -161,7 +162,9 @@ function the_bootstrap_blog__padlock() {
  */
 function the_bootstrap_blog__comment_legend(){
   // Don't show comment legenf text if comment_registration option is on and user is not logged in
-  if ( get_option( 'comment_registration' ) && ! is_user_logged_in() ) return;
+  if ( get_option( 'comment_registration' ) && ! is_user_logged_in() ){
+		return;
+	}
   //Show comment legenf text if comments_open()
 	if ( comments_open() ){
  ?>

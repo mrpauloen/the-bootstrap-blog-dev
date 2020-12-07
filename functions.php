@@ -139,9 +139,9 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
  	require trailingslashit( get_template_directory() ) . 'inc/customizer/customizer.php';
 
 	/**
-	 * ** Define Bootstrap Menu **
+	 * Top Menu
 	 *
-	 * ** This theme has only one menu level!
+	 * This menu is one level deep only!
 	 *
 	 * @since The Bootstrap Blog 0.1
 	 */
@@ -163,7 +163,7 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 	 require trailingslashit( get_template_directory() ) . '/inc/svg-icons.php';
 
 	/**
-	 *  Enqueue styles.
+	 *  Enqueue scripts.
 	 *
 	 * @since The Bootstrap Blog 0.1.4
 	 */
@@ -220,8 +220,8 @@ function the_bootstrap_blog__action__enqueue_js() {
 	}
 
 	// HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
-	wp_enqueue_script( 'html5shiv', get_template_directory_uri() . '/inc/bootstrap/js/html5shiv.min.js',   false, null, true );
-	wp_enqueue_script( 'respond',	 get_template_directory_uri() . '/inc/bootstrap/js/respond.min.js',	false, null, true );
+	wp_enqueue_script( 'html5shiv', get_template_directory_uri() . '/inc/bootstrap/js/html5shiv.min.js', false, null, true );
+	wp_enqueue_script( 'respond',	 get_template_directory_uri() . '/inc/bootstrap/js/respond.min.js', false, null, true );
 
 	wp_script_add_data( 'html5shiv', 'conditional', 'lt IE 9' );
   wp_script_add_data( 'respond',   'conditional', 'lt IE 9' );
@@ -386,7 +386,9 @@ add_filter( 'cancel_comment_reply_link', 'the_bootstrap_blog__filter__cancel_com
 
 add_filter( 'protected_title_format', 'the_bootstrap_blog__filter__protected_text_title' );
 function the_bootstrap_blog__filter__protected_text_title( $prepend ) {
-	if ( is_home() || is_singular() || is_archive() )	return  '%s';
+	if ( is_home() || is_singular() || is_archive() ){
+		return  '%s';
+	}
 	return $prepend;
 }
 
@@ -429,7 +431,6 @@ function the_bootstrap_blog__filter__wp_link_pages_link( $link, $i ){
 	if ( is_singular() AND $i === $page ) {
     $link = '<span class="badge badge-secondary badge-pill disabled">' . $i . '</span>';
 	}
-
 	return $link;
 }
 
@@ -528,14 +529,19 @@ function the_bootstrap_blog__default_excerpt_length(){
  */
 function the_bootstrap_blog__filter__excerpt_length( $length ) {
 
-	if ( is_admin() ) return $length;
+	if ( is_admin() ) {
+		return $length;
+	}
 
 	$excerpt_length_home = get_theme_mod( 'excerpt_length' );
 	$excerpt_length_archive = get_theme_mod( 'archive_excerpt_length' );
 
-	if ( $excerpt_length_home && is_home() )	return $excerpt_length_home;
-	if ( $excerpt_length_archive && is_archive() )	return $excerpt_length_archive;
-
+	if ( $excerpt_length_home && is_home() ){
+		return $excerpt_length_home;
+	}
+	if ( $excerpt_length_archive && is_archive() ){
+		return $excerpt_length_archive;
+	}
 	// Remember to always return default number
 	return the_bootstrap_blog__default_excerpt_length();
 }
@@ -590,7 +596,6 @@ add_filter( 'get_the_excerpt', 'the_bootstrap_blog__filter__excerpt_more' );
 	if ( is_author() ){
 		return '';
 	}
-
 	return $prefix;
  }
  add_filter( 'get_the_archive_title_prefix', 'the_bootstrap_blog__filter__archive_title_prefix' );
@@ -619,7 +624,7 @@ add_filter( 'posts_search', 'the_bootstrap_blog__filter__posts_search', 10, 2 );
 
 /**
  * Filters the default gallery shortcode output.
- * Slightly modification of gallery shortcode to match the Bootstrap grig
+ * Slightly modification of gallery shortcode to match the Bootstrap grid
  *
  * @since The Bootstrap Blog 0.1.4
  */
@@ -782,4 +787,3 @@ function the_bootstrap_blog__filter__gallery_output( $output, $attr, $instance )
 
 }
 add_filter( 'post_gallery', 'the_bootstrap_blog__filter__gallery_output', 10, 3);
-//update_option( 'fresh_site', 1 );

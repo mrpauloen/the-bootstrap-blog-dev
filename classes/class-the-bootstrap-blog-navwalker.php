@@ -7,11 +7,9 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'The_Bootstrap_Blog_Walker' ) ) :
 
 	/**
-	 * Main The Bootstrap Blog Menu Walker Class
+	 * The Bootstrap Blog Top Menu Walker Class
 	 *
-	 * ** Define Bootstrap Menu **
-	 *
-	 * ** This theme has only one menu level!
+	 * ** This menu is one level deep only!
 	 *
 	 * @since The Bootstrap Blog 0.1
 	 */

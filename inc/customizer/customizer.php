@@ -48,7 +48,7 @@ function the_bootstrap_blog__theme_customize( $wp_customize ) {
 
 				printf(
 					wp_kses(
-						/* translators: %s: Theme Support Forum URL s*/
+						/* translators: %s: Theme Support Forum URLs*/
 						__( '<a href="%s" target="_blank">Support Forum</a>', 'the-bootstrap-blog' ),
 						array(
 							'a' => array(
@@ -419,22 +419,3 @@ function the_bootstrap_blog__sanitize_numbers( $number ) {
 	// number check.
 	return absint( $number );
 }
-
-
-function my_register_blogname_partials( WP_Customize_Manager $wp_customize ) {
-
-    // Abort if selective refresh is not available.
-    if ( ! isset( $wp_customize->selective_refresh ) ) {
-        return;
-    }
-
-    $wp_customize->selective_refresh->add_partial( 'header_site_title', array(
-        'selector' => '.site-title a',
-        'settings' => array( 'blogname' ),
-        'render_callback' => function() {
-            return get_bloginfo( 'name', 'display' );
-        },
-    ) );
-
-}
-add_action( 'customize_register', 'my_register_blogname_partials' );

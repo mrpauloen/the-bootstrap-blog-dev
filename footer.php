@@ -11,15 +11,17 @@
 
 ?>
 <footer class="blog-footer">
+<?php
+/**
+ * Footer Mega Menu
+ * @since The Bootstrap Blog 0.1.4
+ */
 
+ 	if ( has_nav_menu( 'footer-menu-1' ) ):
+?>
 	<div class="container mb-5">
 	<div class="row">
 	<?php
-
-	/**
-	 * Mega Menu Navigation
-	 * @since The Bootstrap Blog 0.1.4
-	 */
 
 	$locations = array (
 		'footer-menu-1',
@@ -30,24 +32,24 @@
 		'footer-menu-6'
 	);
 
-	foreach ( $locations as $location ){
+		foreach ( $locations as $location ){
 
-		$args = array(
-		'container'=> false,
-		'menu_id' => '',
-		'menu_class' => 'list-unstyled',
-		'theme_location' => $location,
-		'fallback_cb' => false,
-		'walker' => new The_Bootstrap_Blog__Mega_Menu(),
-
-		);
+			$args = array(
+			'theme_location' => $location,
+			'container'=> false,
+			'menu_id' => $location,
+			'menu_class' => 'list-unstyled',
+			'fallback_cb' => false,
+			);
 	?>
 	<div class="col-6 col-md-3 col-lg-2"><?php wp_nav_menu( $args ); ?></div>
-<?php } ?>
+<?php
+		}
+?>
 
 	</div><!-- .row -->
 </div>
-
+<?php endif; ?>
 
 	<p class="copyright"><?php echo the_bootstrap_blog__custom_footer_text(); ?></p>
 	<p><a href="<?php echo esc_url( '#' );?>"><?php esc_html_e( '&uarr; Back to top', 'the-bootstrap-blog' );?></a></p>

@@ -36,17 +36,15 @@ function the_bootstrap_blog__get_starter_content() {
 			'about' => array(
 				'post_type' => 'page',
 				'post_title' => _x( 'About', 'Theme starter content' ),
-				'post_content' => _x( 'You might be an artist who would like to introduce yourself and your work here or maybe you&rsquo;re a business with a mission to describe.', 'Theme starter content' ),
 			),
 			'contact' => array(
 				'post_type' => 'page',
 				'post_title' => _x( 'Contact', 'Theme starter content' ),
-				'post_content' => _x( 'This is a page with some basic contact information, such as an address and phone number. You might also try a plugin to add a contact form.', 'Theme starter content' ),
 			),
 			'blog' => array(
 				'post_type' => 'page',
 				'post_title' => _x( 'Blog', 'Theme starter content' ),
-				'post_content' => _x( 'This is an example of a homepage section. Homepage sections can be any page other than the homepage itself, including the page that shows your latest blog posts.', 'Theme starter content' ),
+				'post_content' => _x( 'Blog content.', 'Theme starter content' ),
 			),
 			'news' => array(
 				'post_type' => 'page',
@@ -68,16 +66,11 @@ function the_bootstrap_blog__get_starter_content() {
 				'post_content' => _x( 'Templates content.', 'Theme starter content' ),
 			),
 
-			'homepage-section' => array(
-				'post_type' => 'page',
-				'post_title' => _x( 'A homepage section', 'Theme starter content' ),
-				'post_content' => _x( 'This is an example of a homepage section. Homepage sections can be any page other than the homepage itself, including the page that shows your latest blog posts.', 'Theme starter content' ),
-			),
 		),
 
 		'nav_menus' => array(
 			'top' => array(
-				'name' => __( 'Header Menu', 'ourtheme' ),
+				'name' => __( 'Top Menu', 'ourtheme' ),
 				'items' => array(
 					'link_home',
 					'page_about',
@@ -85,7 +78,7 @@ function the_bootstrap_blog__get_starter_content() {
 				),
 			),
 			'social-after-widgets' => array(
-				'name' => __( 'Social Links Menu', 'twentyseventeen' ),
+				'name' => __( 'Social Menu', 'twentyseventeen' ),
 					'items' => array(
 						'link_facebook',
 						'link_twitter',
@@ -118,6 +111,10 @@ function the_bootstrap_blog__get_starter_content() {
 						'object'    => 'page',
 						'object_id' => '{{blog}}',
 					),
+					'link_page1' => array(
+						'title' => 'Privacy',
+						'url' => '#',
+					),
 				),
 			),
 			'footer-menu-2' => array(
@@ -125,6 +122,10 @@ function the_bootstrap_blog__get_starter_content() {
 				'items' => array(
 					'page_news',
 					'page_contact',
+					'link_page1' => array(
+						'title' => 'Donate',
+						'url' => '#',
+					),
 				),
 			),
 			'footer-menu-3' => array(
@@ -141,6 +142,10 @@ function the_bootstrap_blog__get_starter_content() {
 						'type'      => 'post_type',
 						'object'    => 'page',
 						'object_id' => '{{page2}}',
+					),
+					'link_page3' => array(
+						'title' => 'Get Involved',
+						'url' => '#',
 					),
 				),
 			),
@@ -170,6 +175,10 @@ function the_bootstrap_blog__get_starter_content() {
 					),
 					'link_page2' => array(
 						'title' => 'bbPress',
+						'url' => '#',
+					),
+					'link_page3' => array(
+						'title' => 'Bulletin',
 						'url' => '#',
 					),
 				),

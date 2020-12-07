@@ -154,13 +154,6 @@ add_action( 'template_redirect', 'the_bootstrap_blog__content_width', 0 );
 	 */
 	 require trailingslashit( get_template_directory() ) . 'classes/class-the-bootstrap-blog-comments-walker.php';
 
-	/**
-	 * Define Mega Menu Custom Walker
-	 *
-	 * @since The Bootstrap Blog 0.1.4
-	 */
-	 require trailingslashit( get_template_directory() ) . 'classes/class-the-bootstrap-blog-mega-menu-walker.php';
-
 	 /**
 		* Handle SVG icons **
 		*
@@ -789,3 +782,4 @@ function the_bootstrap_blog__filter__gallery_output( $output, $attr, $instance )
 
 }
 add_filter( 'post_gallery', 'the_bootstrap_blog__filter__gallery_output', 10, 3);
+//update_option( 'fresh_site', 1 );

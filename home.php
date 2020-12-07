@@ -23,7 +23,8 @@ get_header(); ?>
 $password_required = post_password_required();
 
 $class = array( 'blog-post' );
-if ( $password_required ) array_push( $class, 'border', 'pt-3', 'px-3' );?>
+if ( $password_required ) array_push( $class, 'border', 'pt-3', 'px-3' );
+?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( $class ); ?>>
 
@@ -49,8 +50,7 @@ if ( $password_required ) array_push( $class, 'border', 'pt-3', 'px-3' );?>
 
     	));
 
-      ?>
-
+?>
 
 	<!--
 
@@ -79,7 +79,6 @@ if ( $password_required ) array_push( $class, 'border', 'pt-3', 'px-3' );?>
 <?php get_sidebar(); ?>
 
       </div><!-- /.row -->
-
     </div><!-- /.container -->
 
 <?php get_footer();

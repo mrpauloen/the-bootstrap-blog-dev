@@ -79,7 +79,7 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 		<<?php echo tag_escape( $tag ); ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $this->has_children ? 'parent mt-3' : 'mt-3', $comment ); ?>>
 			<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
 
-			<footer class="comment-meta">
+			<footer class="comment-meta pb-1">
 					<div class="comment-author vcard">
 						<?php $comment_author = get_comment_author_link( $comment ); ?>
 

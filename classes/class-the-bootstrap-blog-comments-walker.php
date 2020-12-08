@@ -27,7 +27,8 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 	 * I just using this since we needed to use the constructor to reach the top
 	 * of the comments list, just seems to balance out :) */
 	function __destruct() {
-	 if ( have_comments() ):	?>
+	 if ( have_comments() ):
+	?>
 		</ul></div>
 	<?php endif;
 	}
@@ -128,7 +129,7 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 
 					<?php if ( '0' == $comment->comment_approved ) : ?>
 					<em class="text-primary comment-awaiting-moderation">
-							<?php the_bootstrap_blog__icon_svg( 'exclamation-triangle', '21' ); ?>
+							<?php the_bootstrap_blog__icon_svg( 'exclamation-triangle', 20 ); ?>
 &nbsp;<?php echo esc_html( $moderation_note ); ?></em>
 
 					<?php endif; ?>
@@ -153,7 +154,7 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 								/* translators: %s: arrow-return-right svg icon */
 								__( '%s Reply', 'the-bootstrap-blog' ), the_bootstrap_blog__get_icon_svg( 'arrow-return-right', '14') ),
 							'login_text'    => esc_html__( 'Log in to Reply', 'the-bootstrap-blog'),
-							/* translators: Comment reply text. %s: Comment author name. */
+							/* translators: %s: Comment author name of comment reply text. . */
         			'reply_to_text' => esc_html__( 'Re: %s', "the-bootstrap-blog" )  . '&emsp;',
 						)
 					)

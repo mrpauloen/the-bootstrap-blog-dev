@@ -62,7 +62,7 @@ if ( ! $password_required ){ ?>
 
 <nav class="blog-pagination mt-4 mb-4">
 
-<?php previous_post_link( '%link', esc_html__( 'Previus post', 'the-bootstrap-blog') ); ?>
+<?php previous_post_link( '%link', esc_html__( 'Previous post', 'the-bootstrap-blog') ); ?>
 
 <?php next_post_link( '%link', esc_html__( 'Next post', 'the-bootstrap-blog') ); ?>
 

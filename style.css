@@ -114,7 +114,6 @@ h6, .h6 {
 /* Nav links */
 .nav-link {
   position: relative;
-  padding: 1rem;
   font-weight: 500;
   color: #cdddeb;
 }
@@ -146,8 +145,6 @@ h6, .h6 {
 .nav-scroller {
   position: relative;
   z-index: 2;
-  height: 2.75rem;
-  overflow-y: hidden;
 }
 
 .nav-scroller .nav {
@@ -155,7 +152,6 @@ h6, .h6 {
   display: flex;
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
-  padding-bottom: 1rem;
   margin-top: 0px;
   overflow-x: auto;
   overflow-y: hidden;

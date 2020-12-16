@@ -579,9 +579,12 @@ add_filter( 'the_excerpt', 'the_bootstrap_blog__filter__the_excerpt' );
  */
 function the_bootstrap_blog__filter__excerpt_more( $more ) {
 
+	if ( is_search() ){
+		return $more;
+	}
 	return $more . ' <a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');
 }
-add_filter( 'get_the_excerpt', 'the_bootstrap_blog__filter__excerpt_more' );
+add_filter( 'get_the_excerpt', 'the_bootstrap_blog__filter__excerpt_more', 10 );
 
 /**
  * Filters the archive title prefix.

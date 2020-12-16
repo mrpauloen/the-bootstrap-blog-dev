@@ -69,3 +69,12 @@ function the_bootstrap_blog__nav_menu_social_icons( $item_output, $item, $depth,
 	return $item_output;
 }
 add_filter( 'walker_nav_menu_start_el', 'the_bootstrap_blog__nav_menu_social_icons', 10, 4 );
+
+function the_bootstrap_blog__filter__nav_menu_link_attributes( $atts, $item, $args ) {
+	$locations = array( 'social-before-widgets', 'social-after-widgets' );
+	if ( in_array( $args->theme_location, $locations, true ) ) {
+    $atts['class'] = 'text-dark';
+}
+    return $atts;
+}
+add_filter( 'nav_menu_link_attributes', 'the_bootstrap_blog__filter__nav_menu_link_attributes', 10, 3 );

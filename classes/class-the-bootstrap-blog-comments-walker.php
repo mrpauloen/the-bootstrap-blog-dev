@@ -130,7 +130,7 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 					<?php if ( '0' == $comment->comment_approved ) : ?>
 					<em class="text-primary comment-awaiting-moderation">
 							<?php the_bootstrap_blog__icon_svg( 'exclamation-triangle', 20 ); ?>
-&nbsp;<?php echo esc_html( $moderation_note ); ?></em>
+&nbsp;<?php esc_html_e( $moderation_note ); ?></em>
 
 					<?php endif; ?>
 

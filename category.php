@@ -20,8 +20,18 @@ get_header(); ?>
 
 <?php the_post_thumbnail( array( 80, 80 ), array ( 'class' => 'd-flex mr-3' )); ?>
 
-	<div class="media-body">
-      <h5 class="mt-0 mb-1"><a href="<?php esc_url( the_permalink() ); ?>"><?php the_bootstrap_blog__padlock(); the_title(); ?> </a></h5>
+	<div class="media-body w-100">
+      <h5 class="mt-0 mb-1"><a href="<?php esc_url( the_permalink() ); ?>"><?php the_bootstrap_blog__padlock();
+
+			 $title = the_title( '', '', false );
+
+				if ( $title ){
+					echo $title;
+				} else {
+					esc_html_e( '(no title)', 'the-bootstrap-blog');
+				}
+				?>
+			 </a></h5>
 
 <?php the_excerpt();
 

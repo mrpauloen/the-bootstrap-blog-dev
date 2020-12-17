@@ -32,7 +32,7 @@ if ( post_password_required() )
       <label for="wp-comment-cookies-consent">
       <input class="" type="checkbox" id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" value="yes">
 <small>Remember me</small>
-      </label> <span data-toggle="tooltip" data-placement="top" title="' . esc_attr( 'Your data will be stored in this browser and added automaticly so next time you don\'t need to put it again.', 'the-bootstrap-blog' ) . '">' . the_bootstrap_blog__get_icon_svg( 'info-square-fill', 16 ) . '</span>
+      </label> <span data-toggle="tooltip" data-placement="top" title="' . esc_attr( 'Your data will be stored in this browser and added automaticly so next time you don\'t need to put it again.', 'the-bootstrap-blog' ) . '">' . the_bootstrap_blog__get_icon_svg( 'info-circle-fill', 16 ) . '</span>
     </div>
   </div>',
 
@@ -103,7 +103,7 @@ $comments_args = array(
 
 <?php   if ( $have_comments || $comments_open ){
 
-?><h2 class="mt-5"><?php printf(
+?><h2 class="d-inline-block mt-5"style="clear:both"><?php printf(
 		/* translators: %s: Number of comments. `Comments` word stay always in plural eg: Comments |1| */
 		esc_html__( 'Comments |%s|', 'the-bootstrap-blog' ), number_format_i18n( $comments_number ) );
 

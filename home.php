@@ -1,4 +1,4 @@
-<?php update_option( 'fresh_site', 1 );
+<?php
 /**
  * The main Home Page template file
  *

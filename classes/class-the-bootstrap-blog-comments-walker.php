@@ -123,9 +123,9 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 
 					<?php if ( '0' == $comment->comment_approved ) : ?>
 					<em class="text-primary comment-awaiting-moderation">
-<?php the_bootstrap_blog__icon_svg( 'exclamation-triangle', 20 );
+<?php the_bootstrap_blog__icon_svg( 'exclamation-triangle', 20 ); ?>
 
-	if ( $commenter['comment_author_email'] ) {
+<?php	if ( $commenter['comment_author_email'] ) {
 		esc_html_e( 'Your comment is awaiting moderation.', 'the-bootstrap-blog' );
 	} else {
 		esc_html_e( ' Your comment is awaiting moderation and will be visible soon. Preview shown below.', 'the-bootstrap-blog' );

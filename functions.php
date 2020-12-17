@@ -561,7 +561,7 @@ function the_bootstrap_blog__filter__the_excerpt( $post_excerpt ){
 		return $post_excerpt;
 	}
 
-	if ( post_password_required() && !is_archive() ){
+	if ( post_password_required() && ! is_archive() ){
 		return '<a class="float-right text-decoration-none" href="' . get_the_permalink() . '" title="Unlock">' . the_bootstrap_blog__get_icon_svg( 'key-fill', '20' ) . the_bootstrap_blog__get_icon_svg( 'shield-lock', '20' ) .
 '</a>' . $post_excerpt;
 	}
@@ -579,7 +579,7 @@ add_filter( 'the_excerpt', 'the_bootstrap_blog__filter__the_excerpt' );
  */
 function the_bootstrap_blog__filter__excerpt_more( $more ) {
 
-	if ( is_search() ){
+	if ( is_search() || is_archive() ){
 		return $more;
 	}
 	return $more . ' <a class="read-more" href="' . get_the_permalink() . '" title="' . esc_attr__( 'Permanent Link to: ', 'the-bootstrap-blog' ) . the_title_attribute( 'echo=0' ) . '">' . __( '&rarr;Read&nbsp;more</a>', 'the-bootstrap-blog');

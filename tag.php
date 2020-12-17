@@ -18,7 +18,14 @@ get_header(); ?>
 
 	<article>
 	<li>
-	<a href="<?php the_permalink(); ?>"><?php the_bootstrap_blog__icon_svg( 'link-45deg' ); the_title(); ?></a>
+	<a href="<?php the_permalink(); ?>"><?php the_bootstrap_blog__icon_svg( 'link-45deg' ); 	$title = the_title( '', '', false );
+
+		if ( $title ){
+			echo $title;
+		} else {
+			esc_html_e( '(no title)', 'the-bootstrap-blog');
+		}
+?></a>
 	</li>
 	<!--
 

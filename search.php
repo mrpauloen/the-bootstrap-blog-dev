@@ -9,7 +9,17 @@
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<h4 class="text-primary mb-0"><a href="<?php the_permalink();?>"><?php the_title(); ?></a></h4>
+	<h4 class="text-primary mb-0"><a href="<?php the_permalink();?>">
+<?php
+	$title = the_title( '', '', false );
+
+	if ( $title ){
+		echo $title;
+	} else {
+		esc_html_e( '(no title)', 'the-bootstrap-blog');
+	}
+	?>
+	</a></h4>
 
 	<p><small class="text-success"><?php the_permalink();?></small><br />
 	<small><?php

@@ -70,12 +70,6 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 
 		$commenter          = wp_get_current_commenter();
 		$show_pending_links = ! empty( $commenter['comment_author'] );
-
-		if ( $commenter['comment_author_email'] ) {
-			$moderation_note = __( 'Your comment is awaiting moderation.', 'the-bootstrap-blog' );
-		} else {
-			$moderation_note = __( ' Your comment is awaiting moderation and will be visible soon. Preview shown below.', 'the-bootstrap-blog' );
-		}
 		?>
 		<<?php echo tag_escape( $tag ); ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( $this->has_children ? 'parent mt-3' : 'mt-3', $comment ); ?>>
 			<article id="div-comment-<?php comment_ID(); ?>" class="comment-body">
@@ -113,10 +107,10 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 						<small><a class="text-muted" href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
 							<?php
 								/* translators: 1: Comment date, 2: Comment time. */
-								$comment_timestamp = sprintf( __( '%1$s at %2$s', 'the-bootstrap-blog' ), get_comment_date( '', $comment ), get_comment_time() );
+								$comment_timestamp = sprintf( esc_html__( '%1$s at %2$s', 'the-bootstrap-blog' ), get_comment_date( '', $comment ), get_comment_time() );
 							?>
 							<time datetime="<?php comment_time( 'c' ); ?>" title="<?php echo $comment_timestamp; ?>">
-								<?php echo esc_html( $comment_timestamp ); ?>
+								<?php echo $comment_timestamp; ?>
 							</time>
 
 						</a>
@@ -129,8 +123,15 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 
 					<?php if ( '0' == $comment->comment_approved ) : ?>
 					<em class="text-primary comment-awaiting-moderation">
-							<?php the_bootstrap_blog__icon_svg( 'exclamation-triangle', 20 ); ?>
-&nbsp;<?php esc_html_e( $moderation_note ); ?></em>
+<?php the_bootstrap_blog__icon_svg( 'exclamation-triangle', 20 );
+
+	if ( $commenter['comment_author_email'] ) {
+		esc_html_e( 'Your comment is awaiting moderation.', 'the-bootstrap-blog' );
+	} else {
+		esc_html_e( ' Your comment is awaiting moderation and will be visible soon. Preview shown below.', 'the-bootstrap-blog' );
+	}
+?>
+</em>
 
 					<?php endif; ?>
 

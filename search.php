@@ -15,7 +15,7 @@
 	<small><?php
 	$excerpt = get_the_excerpt();
 	$excerpt = str_ireplace( get_search_query(), '<strong>' . get_search_query() . '</strong>', $excerpt );
-	echo $excerpt; ?></small></p>
+	echo wp_kses( $excerpt, 'strong' ); ?></small></p>
 
 	<!--
 

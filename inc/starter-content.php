@@ -17,60 +17,62 @@ function the_bootstrap_blog__get_starter_content() {
 	$starter_content = array(
 		'widgets' => array(
 			'sidebar' => array(
-				'search'             => array(
-					'title' => _x( '', 'Theme starter content' ),
+				'search' => array(
+					'title' => '',
 					),
-				'text_about',
-					'example_map' => array(
-					'map',
+				'meta',
+				'text_about' => array(
+					'title' => 'Follow us',
+					'text' => '',
 				),
-			),
+				),
 		),
 
 		'posts' => array(
 			'home' => array(
 				'post_type' => 'page',
-				'post_title' => _x( 'Home', 'Theme starter content' ),
-				'post_content' => _x( 'Welcome to your site! This is your homepage, which is what most visitors will see when they come to your site for the first time.', 'Theme starter content' ),
+				'post_title' => _x( 'Home', 'Theme starter content', 'the-bootstrap-blog' ),
+				'post_content' => _x( 'Welcome to your site! This is your homepage, which is what most visitors will see when they come to your site for the first time.', 'Theme starter content', 'the-bootstrap-blog' ),
 			),
 			'about' => array(
 				'post_type' => 'page',
-				'post_title' => _x( 'About', 'Theme starter content' ),
+				'post_title' => _x( 'About', 'Theme starter content', 'the-bootstrap-blog' ),
 			),
 			'contact' => array(
 				'post_type' => 'page',
-				'post_title' => _x( 'Contact', 'Theme starter content' ),
+				'post_title' => _x( 'Contact', 'Theme starter content', 'the-bootstrap-blog' ),
 			),
 			'blog' => array(
 				'post_type' => 'page',
-				'post_title' => _x( 'Blog', 'Theme starter content' ),
-				'post_content' => _x( 'Blog content.', 'Theme starter content' ),
+				'post_title' => _x( 'Blog', 'Theme starter content', 'the-bootstrap-blog' ),
+				'post_content' => _x( 'Blog content.', 'Theme starter content', 'the-bootstrap-blog' ),
 			),
 			'news' => array(
 				'post_type' => 'page',
-				'post_title' => _x( 'News', 'Theme starter content' ),
+				'post_title' => _x( 'News', 'Theme starter content', 'the-bootstrap-blog' ),
+				'post_content' => _x( 'News content.', 'Theme starter content', 'the-bootstrap-blog' ),
 			),
 			'page1' => array(
 				'post_type' => 'page',
-				'post_title' => _x( 'Support', 'Theme starter content' ),
-				'post_content' => _x( 'Support content', 'Theme starter content' ),
+				'post_title' => _x( 'Support', 'Theme starter content', 'the-bootstrap-blog' ),
+				'post_content' => _x( 'Support content', 'Theme starter content', 'the-bootstrap-blog' ),
 			),
 			'page2' => array(
 				'post_type' => 'page',
-				'post_title' => _x( 'Developers', 'Theme starter content' ),
-				'post_content' => _x( 'Developers content.', 'Theme starter content' ),
+				'post_title' => _x( 'Developers', 'Theme starter content', 'the-bootstrap-blog' ),
+				'post_content' => _x( 'Developers content.', 'Theme starter content', 'the-bootstrap-blog' ),
 			),
 			'page3' => array(
 				'post_type' => 'page',
-				'post_title' => _x( 'Templates', 'Theme starter content' ),
-				'post_content' => _x( 'Templates content.', 'Theme starter content' ),
+				'post_title' => _x( 'Templates', 'Theme starter content', 'the-bootstrap-blog' ),
+				'post_content' => _x( 'Templates content.', 'Theme starter content', 'the-bootstrap-blog' ),
 			),
 
 		),
 
 		'nav_menus' => array(
 			'top' => array(
-				'name' => __( 'Top Menu', 'ourtheme' ),
+				'name' => _x( 'Top Menu', 'Theme starter content', 'the-bootstrap-blog' ),
 				'items' => array(
 					'link_home',
 					'page_about',
@@ -78,7 +80,7 @@ function the_bootstrap_blog__get_starter_content() {
 				),
 			),
 			'social-after-widgets' => array(
-				'name' => __( 'Social Menu', 'twentyseventeen' ),
+				'name' => _x( 'Social Menu', 'Theme starter content', 'the-bootstrap-blog' ),
 					'items' => array(
 						'link_facebook',
 						'link_twitter',
@@ -90,14 +92,14 @@ function the_bootstrap_blog__get_starter_content() {
 							'url' => 'https://youtube.com',
 							),
 						'link_other' => array(
-							'title' => 'Other',
+							'title' => _x( 'Other', 'Theme starter content', 'the-bootstrap-blog' ),
 							'url' => '#',
-							'description' => 'Short description',
+							'description' => _x( 'Short description', 'Theme starter content', 'the-bootstrap-blog' ),
 							),
 						),
 					),
 			'footer-menu-1' => array(
-				'name' => __( 'Footer Mega Menu 1', 'the-bootstrap-blog' ),
+				'name' => _x( 'Footer Mega Menu 1', 'Theme starter content', 'the-bootstrap-blog' ),
 				'items' => array(
 					'page_about'	=> array(
 						'title' => _x( 'About', 'Theme starter content', 'the-bootstrap-blog' ),
@@ -112,85 +114,85 @@ function the_bootstrap_blog__get_starter_content() {
 						'object_id' => '{{blog}}',
 					),
 					'link_page1' => array(
-						'title' => 'Privacy',
+						'title' => _x( 'Privacy', 'Theme starter content', 'the-bootstrap-blog' ),
 						'url' => '#',
 					),
 				),
 			),
 			'footer-menu-2' => array(
-				'name' => __( 'Footer Mega Menu 2', 'ourtheme' ),
+				'name' => _x( 'Footer Mega Menu 2', 'Theme starter content', 'the-bootstrap-blog' ),
 				'items' => array(
 					'page_news',
 					'page_contact',
 					'link_page1' => array(
-						'title' => 'Donate',
+						'title' => _x( 'Donate', 'Theme starter content', 'the-bootstrap-blog' ),
 						'url' => '#',
 					),
 				),
 			),
 			'footer-menu-3' => array(
-				'name' => __( 'Footer Mega Menu 3', 'ourtheme' ),
+				'name' => _x( 'Footer Mega Menu 3', 'Theme starter content', 'the-bootstrap-blog' ),
 				'items' => array(
 					'page_page1' => array(
-						'title' => 'Support',
+						'title' =>  _x( 'Support', 'Theme starter content', 'the-bootstrap-blog' ),
 						'type'      => 'post_type',
 						'object'    => 'page',
 						'object_id' => '{{page1}}',
 					),
 					'page_page2' => array(
-						'title' => 'Developers',
+						'title' =>  _x( 'Developers', 'Theme starter content', 'the-bootstrap-blog' ),
 						'type'      => 'post_type',
 						'object'    => 'page',
 						'object_id' => '{{page2}}',
 					),
 					'link_page3' => array(
-						'title' => 'Get Involved',
+						'title' => _x( 'Get Involved', 'Theme starter content', 'the-bootstrap-blog' ),
 						'url' => '#',
 					),
 				),
 			),
 			'footer-menu-4' => array(
-				'name' => __( 'Footer Mega Menu 4', 'ourtheme' ),
+				'name' => _x( 'Footer Mega Menu 4', 'Theme starter content', 'the-bootstrap-blog' ),
 				'items' => array(
 					'link_page1' => array(
-						'title' => 'Plugins',
+						'title' => _x( 'Plugins', 'Theme starter content', 'the-bootstrap-blog' ),
 						'url' => '#',
 								),
 					'link_page2' => array(
-						'title' => 'Themes',
+						'title' => _x( 'Themes', 'Theme starter content', 'the-bootstrap-blog' ),
 							'url' => '#',
 					),
 					'link_page3' => array(
-						'title' => 'Templates',
+						'title' => _x( 'Templates', 'Theme starter content', 'the-bootstrap-blog' ),
 							'url' => '#',
 					),
 				),
 			),
 			'footer-menu-5' => array(
-				'name' => __( 'Footer Mega Menu 5', 'ourtheme' ),
+				'name' => _x( 'Footer Mega Menu 5', 'Theme starter content', 'the-bootstrap-blog' ),
 				'items' => array(
 					'link_page1' => array(
-						'title' => 'BuddyPress',
+						'title' => _x( 'BuddyPress', 'Theme starter content', 'the-bootstrap-blog' ),
 						'url' => '#',
 					),
 					'link_page2' => array(
-						'title' => 'bbPress',
+						'title' => _x( 'bbPress', 'Theme starter content', 'the-bootstrap-blog' ),
 						'url' => '#',
 					),
 					'link_page3' => array(
-						'title' => 'Bulletin',
+						'title' => _x( 'Bulletin', 'Theme starter content', 'the-bootstrap-blog' ),
 						'url' => '#',
 					),
 				),
 			),
 			'footer-menu-6' => array(
-				'name' => __( 'Footer Mega Menu 6', 'ourtheme' ),
+				'name' => _x( 'Footer Mega Menu 6', 'Theme starter content', 'the-bootstrap-blog' ),
 				'items' => array(
 					'link_twitter' => array(
-						'title'=> '@WordPress',
+						'title'=> _x( '@WordPress', 'Theme starter content', 'the-bootstrap-blog' ),
 					),
 					'link_github' => array(
-						'title'=> 'WordPress',
+						'title'=> _x( 'WordPress', 'Theme starter content', 'the-bootstrap-blog' ),
 					),
 				),
 			),

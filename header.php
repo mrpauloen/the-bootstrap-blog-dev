@@ -51,6 +51,6 @@ $has_header_image = has_header_image();
 <header class="blog-header">
   <div class="container<?php echo ( $has_header_image ? esc_attr( ' has-custom-header') : '' ); ?>">
 		<h1 class="site-title"><?php the_bootstrap_blog__site_title(); ?></h1><br/>
-		<p class="lead site-description<?php echo ( ! $has_header_image ? esc_attr( ' text-muted' ) : '' ); ?>"><?php the_bootstrap_blog__site_description(); ?></p>
+		<p class="lead site-description<?php echo ( $has_header_image ? '' : esc_attr( ' text-muted' ) ); ?>"><?php the_bootstrap_blog__site_description(); ?></p>
   </div>
 </header>

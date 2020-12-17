@@ -96,7 +96,7 @@ $comments_args = array(
 	'comment_notes_after' 	=> '',
 	'fields'				=> apply_filters( 'comment_form_default_fields', $fields ),
 	'comment_field'			=> '<div class="form-group">
-<textarea id="commenttext" name="comment" rows="1" class="form-control rounded comment-textarea" ' . $aria_req . ' '. ( $req ? 'required' : '' ) .' placeholder="' . esc_attr__( '** Write a comment', 'the-boottrap-blog' ) . '"></textarea>
+<textarea id="commenttext" name="comment" rows="1" class="form-control rounded comment-textarea" ' . $aria_req . ' '. ( $req ? 'required' : '' ) .' placeholder="' . esc_attr__( '** Write a comment', 'the-bootstrap-blog' ) . '"></textarea>
 </div>',
 
 ); ?>
@@ -104,10 +104,8 @@ $comments_args = array(
 <?php   if ( $have_comments || $comments_open ){
 
 ?><h2 class="mt-5"><?php printf(
-    /* translators: %s: Number of comments. `Comments` word stay always in plural eg: Comments |1|
-    */
-    esc_html__( 'Comments |%s|', 'the-bootstrap-blog' ),
-     number_format_i18n( $comments_number ) );
+		/* translators: %s: Number of comments. `Comments` word stay always in plural eg: Comments |1| */
+		esc_html__( 'Comments |%s|', 'the-bootstrap-blog' ), number_format_i18n( $comments_number ) );
 
 ?></h2><?php
     }

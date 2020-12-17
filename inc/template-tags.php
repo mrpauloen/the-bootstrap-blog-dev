@@ -60,8 +60,13 @@ function the_bootstrap_blog__site_description(){
   } elseif ( is_404() ) {
        esc_html_e( 'Sorry, no posts matched your criteria.', 'the-bootstrap-blog' );
   } elseif ( is_search() ){
-    /* translators: %d: wp_query->found_posts */
-      printf( _n( '%d result found', '%d results found', $wp_query->found_posts, 'the-bootstrap-blog' ), number_format_i18n( $wp_query->found_posts )  );
+      printf(
+				esc_html(
+				/* translators: %d: wp_query->found_posts */
+					_n( '%d result found', '%d results found', $wp_query->found_posts, 'the-bootstrap-blog' )
+				),
+				number_format_i18n( $wp_query->found_posts )
+			);
   } else {
       bloginfo('description');
   }
@@ -100,16 +105,16 @@ function the_bootstrap_blog__site_description(){
  		esc_html__('by %s', 'the-bootstrap-blog'), get_the_author_link() );
  }
 
- /**
-  * Default footer text
-  *
-  */
+/**
+ * Default footer text
+ *
+ * @return string Default footer text
+ *
+ * @since The Bootstrap Blog 0.1.4
+ */
 
  function the_bootstrap_blog__default_footer_text(){
- 	$default_footer_text = sprintf(
- 		/* translators: %1$s current year, %2$s: site title */
- 		esc_html__( 'Copyright &copy; %1$s by %2$s', 'the-bootstrap-blog' ), date('Y'), get_bloginfo( 'name' ) );
- 	return $default_footer_text;
+ 	return esc_html__( 'Copyright &copy; {year} by {sitetitle}', 'the-bootstrap-blog' );
  }
 
  /**
@@ -130,10 +135,10 @@ function the_bootstrap_blog__site_description(){
  		$custom_footer_text = get_theme_mod( 'custom_footer_text' );
 
  		if ( empty( $custom_footer_text )){
- 		return the_bootstrap_blog__default_footer_text();
+ 		echo str_replace( $tags_search, $tags_replace, the_bootstrap_blog__default_footer_text() );
 		}
  		/* Replace tags */
- 		return str_replace( $tags_search, $tags_replace, $custom_footer_text );
+ 		echo str_replace( $tags_search, $tags_replace, $custom_footer_text );
  	}
  }
 

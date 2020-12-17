@@ -7,17 +7,15 @@
 
 get_header(); ?>
 
-    <div class="container">
+	<div class="container">
 
-      <div class="row">
-       <div id="site-content" class="col-sm-8 blog-main" role="main">
+			<div class="row">
+				<div id="site-content" class="col-sm-8 blog-main" role="main"></div><!-- /.blog-main -->
 
-        </div><!-- /.blog-main -->
+				<?php get_sidebar(); ?>
 
-<?php get_sidebar(); ?>
+		</div><!-- /.row -->
 
-      </div><!-- /.row -->
-
-    </div><!-- /.container -->
+	</div><!-- /.container -->
 
 <?php get_footer();?>

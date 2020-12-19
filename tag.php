@@ -18,14 +18,20 @@ get_header(); ?>
 
 	<article>
 	<li>
-	<a href="<?php the_permalink(); ?>"><?php the_bootstrap_blog__icon_svg( 'link-45deg' ); 	$title = the_title( '', '', false );
+	<a href="<?php the_permalink(); ?>">
+<?php
 
-		if ( $title ){
-			echo $title;
+	the_bootstrap_blog__icon_svg( 'link-45deg' );
+
+	$the_bootstrap_blog_title = the_title( '', '', false );
+
+		if ( $the_bootstrap_blog_title ){
+			echo $the_bootstrap_blog_title;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		} else {
 			esc_html_e( '(no title)', 'the-bootstrap-blog');
 		}
-?></a>
+?>
+</a>
 	</li>
 	<!--
 
@@ -45,11 +51,11 @@ get_header(); ?>
 
 <?php previous_posts_link( esc_html__( 'Newer', 'the-bootstrap-blog' )); ?>
 </nav>
-        </div><!-- /.blog-main -->
+			</div><!-- /.blog-main -->
 
 <?php get_sidebar(); ?>
 
-      </div><!-- /.row -->
-    </div><!-- /.container -->
+		</div><!-- /.row -->
+	</div><!-- /.container -->
 
 <?php get_footer(); ?>

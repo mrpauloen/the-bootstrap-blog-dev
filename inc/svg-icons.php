@@ -9,21 +9,55 @@
  * Display the SVG code for a given icon.
  */
 function the_bootstrap_blog__icon_svg( $icon, $size = 24 ) {
-	echo the_bootstrap_blog__get_icon_svg( $icon, $size );
+	echo the_bootstrap_blog__get_svg( $group = 'ui', $icon, $size );// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in the_bootstrap_blog__get_svg().
+}
+/**
+ * Gets the SVG code for a given icon.
+ */
+function the_bootstrap_blog__get_icon_svg( $icon, $size = 24 ) {
+	return the_bootstrap_blog__get_svg( $group = 'ui', $icon, $size );
 }
 
 /**
  * Gets the SVG code for a given icon.
  */
-function the_bootstrap_blog__get_icon_svg( $icon, $size = 24 ) {
-	return The_Bootstrap_Blog__SVG_Icons::get_svg( 'ui', $icon, $size );
-}
+function the_bootstrap_blog__get_svg( $group, $icon, $size = 24 ) {
 
-/**
- * Gets the SVG code for a given social icon.
- */
-function the_bootstrap_blog__get_social_icon_svg( $icon, $size = 24 ) {
-	return The_Bootstrap_Blog__SVG_Icons::get_svg( 'social', $icon, $size );
+	// Make sure that only our allowed tags and attributes are included.
+	$svg = wp_kses(
+		The_Bootstrap_Blog__SVG_Icons::get_svg( $group, $icon, $size ),
+		array(
+			'svg'     => array(
+				'class'       => true,
+				'xmlns'       => true,
+				'width'       => true,
+				'height'      => true,
+				'viewbox'     => true,
+				'aria-hidden' => true,
+				'role'        => true,
+				'fill'        => true,
+				'focusable'   => true,
+			),
+			'path'    => array(
+				'fill'      => true,
+				'fill-rule' => true,
+				'd'         => true,
+				'transform' => true,
+			),
+			'polygon' => array(
+				'fill'      => true,
+				'fill-rule' => true,
+				'points'    => true,
+				'transform' => true,
+				'focusable' => true,
+			),
+		)
+	);
+
+	if ( ! $svg ) {
+		return false;
+	}
+	return $svg;
 }
 
 /**

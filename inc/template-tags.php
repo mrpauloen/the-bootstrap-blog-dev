@@ -65,7 +65,7 @@ function the_bootstrap_blog__site_description(){
 				/* translators: %d: wp_query->found_posts */
 					_n( '%d result found', '%d results found', $wp_query->found_posts, 'the-bootstrap-blog' )
 				),
-				number_format_i18n( $wp_query->found_posts )
+				number_format_i18n( $wp_query->found_posts )// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped by esc_html()
 			);
   } else {
       bloginfo('description');

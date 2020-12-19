@@ -11,10 +11,10 @@
 
 	<h4 class="text-primary mb-0"><a href="<?php the_permalink();?>">
 <?php
-	$title = the_title( '', '', false );
+	$the_bootstrap_blog_title = the_title( '', '', false );
 
 	if ( $title ){
-		echo $title;
+		echo $the_bootstrap_blog_title;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
 		esc_html_e( '(no title)', 'the-bootstrap-blog');
 	}

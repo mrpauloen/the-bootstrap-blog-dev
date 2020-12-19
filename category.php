@@ -21,12 +21,14 @@ get_header(); ?>
 <?php the_post_thumbnail( array( 80, 80 ), array ( 'class' => 'd-flex mr-3' )); ?>
 
 	<div class="media-body w-100">
-      <h5 class="mt-0 mb-1"><a href="<?php esc_url( the_permalink() ); ?>"><?php the_bootstrap_blog__padlock();
+		<h5 class="mt-0 mb-1"><a href="<?php esc_url( the_permalink() ); ?>"><?php
 
-			 $title = the_title( '', '', false );
+		the_bootstrap_blog__padlock();
 
-				if ( $title ){
-					echo $title;
+			 $the_bootstrap_blog_title = the_title( '', '', false );
+
+				if ( $the_bootstrap_blog_title ){
+					echo $the_bootstrap_blog_title;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				} else {
 					esc_html_e( '(no title)', 'the-bootstrap-blog');
 				}

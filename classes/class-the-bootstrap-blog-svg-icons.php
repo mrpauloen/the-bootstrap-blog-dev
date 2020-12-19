@@ -57,7 +57,7 @@ class The_Bootstrap_Blog__SVG_Icons {
 		}
 		foreach ( $regex_map as $icon => $regex ) {
 			if ( preg_match( $regex, $uri ) ) {
-				return self::get_svg( 'social', $icon, $size );
+				return the_bootstrap_blog__get_svg( 'social', $icon, $size );
 			}
 		}
 		return null;

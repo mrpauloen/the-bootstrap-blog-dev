@@ -101,14 +101,20 @@ $comments_args = array(
 
 ); ?>
 
-<?php   if ( $have_comments || $comments_open ){
+<?php if ( $have_comments || $comments_open ){ ?>
+<h2 class="d-inline-block mt-5"style="clear:both"><?php
 
-?><h2 class="d-inline-block mt-5"style="clear:both"><?php printf(
-		/* translators: %s: Number of comments. `Comments` word stay always in plural eg: Comments |1| */
-		esc_html__( 'Comments |%s|', 'the-bootstrap-blog' ), number_format_i18n( $comments_number ) );
-
-?></h2><?php
-    }
+	printf(
+		esc_html(
+			/* translators: %s: Number of comments. `Comments` word stay always in plural eg: Comments |1| */
+			 __('Comments |%s|', 'the-bootstrap-blog' )
+		),
+		number_format_i18n( $comments_number )// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	);
+?>
+</h2>
+<?php
+	}
 
 comment_form( $comments_args );
 

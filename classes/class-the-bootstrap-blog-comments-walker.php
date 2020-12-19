@@ -100,6 +100,8 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 							),
 							'<b class="fn">' . $comment_author . '</b>'
 						);
+
+						var_dump( esc_html( get_comment_author_url( $comment ) ) );
 						?>
 					</div><!-- .comment-author -->
 
@@ -107,10 +109,10 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 						<small><a class="text-muted" href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
 							<?php
 								/* translators: 1: Comment date, 2: Comment time. */
-								$comment_timestamp = sprintf( esc_html__( '%1$s at %2$s', 'the-bootstrap-blog' ), get_comment_date( '', $comment ), get_comment_time() );
+								$comment_timestamp = sprintf( __( '%1$s at %2$s', 'the-bootstrap-blog' ), get_comment_date( '', $comment ), get_comment_time() );
 							?>
-							<time datetime="<?php comment_time( 'c' ); ?>" title="<?php echo $comment_timestamp; ?>">
-								<?php echo $comment_timestamp; ?>
+							<time datetime="<?php comment_time( 'c' ); ?>" title="<?php echo esc_attr( $comment_timestamp ); ?>">
+								<?php esc_html_e( $comment_timestamp ); ?>
 							</time>
 
 						</a>
@@ -122,16 +124,16 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 				<div class="comment-content">
 
 					<?php if ( '0' == $comment->comment_approved ) : ?>
-					<em class="text-primary comment-awaiting-moderation">
+					<p><em class="text-primary comment-awaiting-moderation">
 <?php the_bootstrap_blog__icon_svg( 'exclamation-triangle', 20 ); ?>
 
 <?php	if ( $commenter['comment_author_email'] ) {
 		esc_html_e( 'Your comment is awaiting moderation.', 'the-bootstrap-blog' );
 	} else {
-		esc_html_e( ' Your comment is awaiting moderation and will be visible soon. Preview shown below.', 'the-bootstrap-blog' );
+		esc_html_e( 'Your comment is awaiting moderation and will be visible soon. Preview shown below.', 'the-bootstrap-blog' );
 	}
 ?>
-</em>
+</em></p>
 
 					<?php endif; ?>
 
@@ -153,7 +155,9 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 							'after'     => '</p>',
 							'reply_text'  => sprintf (
 								/* translators: %s: arrow-return-right svg icon */
-								__( '%s Reply', 'the-bootstrap-blog' ), the_bootstrap_blog__get_icon_svg( 'arrow-return-right', '14') ),
+									esc_html__( '%s Reply', 'the-bootstrap-blog' ),
+										the_bootstrap_blog__get_icon_svg( 'arrow-return-right', '14')
+								),
 							'login_text'    => esc_html__( 'Log in to Reply', 'the-bootstrap-blog'),
 							/* translators: %s: Comment author name of comment reply text. . */
         			'reply_to_text' => esc_html__( 'Re: %s', "the-bootstrap-blog" )  . '&emsp;',

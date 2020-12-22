@@ -44,7 +44,7 @@ Based on the popular Bootstrap 4 library, this theme shows how mobile friendly C
 
 ## License
 
- The Bootstrap Blog WordPress Theme, Copyright 2020 Paweł Nowak
+ The Bootstrap Blog WordPress Theme, Copyright 2016 Paweł Nowak
 
  The Bootstrap Blog is distributed under the terms of the GNU GPL
 

@@ -60,6 +60,11 @@ Activiation and Use
 
  The Bootstrap Blog Theme bundles the following third-party resources:
 
+* TwentyTwenty_SVG_Icons class
+** Copyright: Twenty Twenty WordPress Theme, Copyright 2019-2020 WordPress.org
+** License: GPLv2 or later
+** License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
 *! Playfair Display font
 ** Copyright: 2017 The Playfair Display Project Authors (https://github.com/clauseggers/Playfair-Display)
 ** Licence: SIL Open Font License (OFL)
@@ -116,7 +121,23 @@ Theme has only one widgets area in right sidebar
 
 === Menu ===
 
-This theme uses wp_nav_menu() in one location and has only one level.
+This theme uses wp_nav_menu() in nine locations.
+
+* First location: top menu has only one level deep.
+
+* Two locations: before-widget ang aftre-widget intended to Social Menu.
+ Social media links converted to icons.
+
+* Six locations in footer as footers menu.
+If found Social media link, social icon is added.
+
+=== Custom Excerpt Length section ===
+
+By default the excerpt length is set to return 55 words. Now you can change it in Customizer by moving the slider. Available range is from 1 to 100 but you can set it precisely by input field below.
+
+This functionality works only for posts with empty excerpt metabox (even if you used tag) and only with the_excerpt function, so it doesn't work for teaser when the_content() function is used.
+
+Excerpt length filter is assignedto archive page as well.
 
 == Support ==
 
@@ -125,6 +146,18 @@ https://wordpress.org/support/theme/the-bootstrap-blog
 
 
 == Changelog ==
+
+### 0.1.4
+*Released: December 23, 2020*
+
+* New features added:
+** Custom footer text (with predefined tags)
+** Custom excerpt lenght (on home and archive page)
+** Mega Menu in footer (6 locations)
+** Bold and highlighted site title and description (when header image is set)
+** Bootstrap gallery filter hook
+** Hide comment Legend when login required (no need to show it if there is no comment form)
+** SVG icons
 
 === 0.1.3.1 ====
 ''Released: October 3, 2020''

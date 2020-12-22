@@ -1,6 +1,9 @@
 <?php
 /**
  * SVG Icons class
+ * Copyright: Twenty Twenty WordPress Theme, Copyright 2019-2020 WordPress.org
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
  * @since The Bootstrap Blog 0.1.4
  */

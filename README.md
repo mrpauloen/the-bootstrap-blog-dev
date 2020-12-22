@@ -69,6 +69,11 @@ Based on the popular Bootstrap 4 library, this theme shows how mobile friendly C
 
 #### The Bootstrap Blog Theme bundles the following third-party resources:
 
+* TwentyTwenty_SVG_Icons class
+  - Copyright: Twenty Twenty WordPress Theme, Copyright 2019-2020 WordPress.org
+  - License: GPLv2 or later
+  - License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
 * Playfair Display font
   - Copyright: 2017 The Playfair Display Project Authors (https://github.com/clauseggers/Playfair-Display)
   - Licence: SIL Open Font License (OFL)
@@ -126,6 +131,19 @@ If there is something you don't understand, please use the support forum:
 https://wordpress.org/support/theme/the-bootstrap-blog
 
 ## Changelog
+
+### 0.1.4
+*Released: December 23, 2020*
+
+* New features added:
+  - Custom footer text (with predefined tags)
+  - Custom excerpt lenght (on home and archive page)
+  - Mega Menu in footer (6 locations)
+  - Bold and highlighted site title and description (when header image is set)
+	- Bootstrap gallery filter hook
+	- Hide comment Legend when login required (no need to show it if there is no comment form)
+	- SVG icons
+
 
 ### 0.1.3.1
 *Released: October 3, 2020*

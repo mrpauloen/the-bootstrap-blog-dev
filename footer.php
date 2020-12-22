@@ -51,7 +51,7 @@
 </div>
 <?php endif; ?>
 
-	<p class="copyright"><?php the_bootstrap_blog__custom_footer_text(); ?></p>
+	<p class="copyright"><?php echo the_bootstrap_blog__custom_footer_text(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in the_bootstrap_blog__sanitize_footer_text() ?></p>
 	<p><a href="<?php echo esc_url( '#' );?>"><?php esc_html_e( '&uarr; Back to top', 'the-bootstrap-blog' );?></a></p>
     </footer>
 

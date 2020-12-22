@@ -76,32 +76,30 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 
 			<footer class="comment-meta pb-1">
 					<div class="comment-author vcard">
-						<?php $comment_author = get_comment_author_link( $comment ); ?>
-
 						<?php
-						if ( 0 != $args['avatar_size'] ) {
-							echo get_avatar( $comment, $args['avatar_size'], '', '', $_args = array( 'class' => array(
-		            'rounded-circle', 'img-thumbnail',  'float-right' ) ) );
-						}
+						$comment_author_url = get_comment_author_url( $comment );
+						$comment_author     = get_comment_author( $comment );
+						$avatar             = get_avatar( $comment, $args['avatar_size'], '', '', $_args = array( 'class' => array(
+							'rounded-circle', 'img-thumbnail',  'float-right' ) ) );
+						if ( 0 !== $args['avatar_size'] ) {
+							if ( empty( $comment_author_url ) ) {
+								echo wp_kses_post( $avatar );
+							} else {
+								echo wp_kses_post( $avatar );
+								printf( '<a href="%s" rel="external nofollow" class="url">', $comment_author_url ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped --Escaped in https://developer.wordpress.org/reference/functions/get_comment_author_url/
 
-						if ( '0' == $comment->comment_approved && ! $show_pending_links ) {
-							$comment_author = get_comment_author( $comment );
+							}
 						}
 
 						printf(
-							wp_kses(
-								/* translators: %s: Comment author link. */
-								__( '%s <span class="screen-reader-text says">says:</span>', 'the-bootstrap-blog' ),
-								array(
-									'span' => array(
-										'class' => array(),
-									),
-								)
-							),
-							'<b class="fn">' . $comment_author . '</b>'
+							'<strong class="fn">%1$s</strong> <span class="screen-reader-text says">%2$s</span>',
+							esc_html( $comment_author ),
+							esc_html__( 'says:', 'the-bootstrap-blog' )
 						);
 
-						var_dump( esc_html( get_comment_author_url( $comment ) ) );
+						if ( ! empty( $comment_author_url ) ) {
+							echo '</a>';
+						}
 						?>
 					</div><!-- .comment-author -->
 
@@ -111,8 +109,21 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 								/* translators: 1: Comment date, 2: Comment time. */
 								$comment_timestamp = sprintf( __( '%1$s at %2$s', 'the-bootstrap-blog' ), get_comment_date( '', $comment ), get_comment_time() );
 							?>
-							<time datetime="<?php comment_time( 'c' ); ?>" title="<?php echo esc_attr( $comment_timestamp ); ?>">
-								<?php esc_html_e( $comment_timestamp ); ?>
+							<time datetime="<?php comment_time( 'c' ); ?>" title="<?php
+									printf(
+									/* translators: %1$s: Comment date, %2$s: Comment time. */
+										esc_attr( '%1$s at %2$s', 'the-bootstrap-blog' ),
+											get_comment_date( '', $comment ),
+											get_comment_time()
+									);
+									?>">
+								<?php printf(
+										/* translators: %1$s: Comment date, %2$s: Comment time. */
+											esc_html__( '%1$s at %2$s', 'the-bootstrap-blog' ),
+												get_comment_date( '', $comment ),
+												get_comment_time()
+										);
+								?>
 							</time>
 
 						</a>

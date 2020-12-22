@@ -375,7 +375,7 @@ function the_bootstrap_blog__theme_customize( $wp_customize ) {
 }
 add_action( 'customize_register', 'the_bootstrap_blog__theme_customize', 11 );
 
-function the_bootstrap_blog__allowed_html(){
+function the_bootstrap_blog__allowed_footer_html(){
 
 	$allowed_html = array(
 		'a' => array(
@@ -405,7 +405,7 @@ function the_bootstrap_blog__allowed_html(){
 
  function the_bootstrap_blog__sanitize_footer_text( $text ){
 
- 	$text = wp_kses( $text, the_bootstrap_blog__allowed_html() );
+ 	$text = wp_kses( $text, the_bootstrap_blog__allowed_footer_html() );
  	return  $text;
  }
 

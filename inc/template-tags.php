@@ -135,10 +135,13 @@ function the_bootstrap_blog__site_description(){
  		$custom_footer_text = get_theme_mod( 'custom_footer_text' );
 
  		if ( empty( $custom_footer_text )){
- 		echo str_replace( $tags_search, $tags_replace, the_bootstrap_blog__default_footer_text() );
+			$custom_footer_text = str_replace( $tags_search, $tags_replace, the_bootstrap_blog__default_footer_text() );
+ 		return $custom_footer_text;
 		}
+
+		$custom_footer_text = str_replace( $tags_search, $tags_replace, $custom_footer_text );
  		/* Replace tags */
- 		echo str_replace( $tags_search, $tags_replace, $custom_footer_text );
+ 		return $custom_footer_text;
  	}
  }
 

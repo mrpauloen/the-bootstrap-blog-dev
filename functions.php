@@ -555,7 +555,7 @@ add_filter( 'excerpt_length', 'the_bootstrap_blog__filter__excerpt_length', 999 
  * @since The Bootstrap Blog 0.1.4
  */
 
-function the_bootstrap_blog__filter__the_excerpt( $post_excerpt ){
+function the_bootstrap_blog__filter__the_excerpt_key( $post_excerpt ){
 
 	if ( is_admin() ) {
 		return $post_excerpt;
@@ -567,7 +567,7 @@ function the_bootstrap_blog__filter__the_excerpt( $post_excerpt ){
 	}
 	return $post_excerpt;
 }
-add_filter( 'the_excerpt', 'the_bootstrap_blog__filter__the_excerpt' );
+add_filter( 'the_excerpt', 'the_bootstrap_blog__filter__the_excerpt_key' );
 
 /**
  * Add the "read more" link to excerpt string filter.

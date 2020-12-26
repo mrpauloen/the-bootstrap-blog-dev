@@ -17,9 +17,9 @@ Based on the popular Bootstrap 4 library, this theme shows how mobile friendly C
 
 Manual installation:
 
-1. Download the less-is-more.zip archiwe from WordPress repository on the computer.
+1. Download the ''the-bootstrap-blog.zip'' archiwe from WordPress repository on the computer.
 2. Unzip the archive
-3. Then Upload the less-is-more folder to the /wp-content/themes/ directory
+3. Then Upload the ''the-bootstrap-blog'' folder to the /wp-content/themes/ directory
 
 
 

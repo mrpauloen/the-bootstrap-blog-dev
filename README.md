@@ -136,7 +136,7 @@ If found Social media link, social icon is added.
 
 By default the excerpt length is set to return 55 words. Now you can change it in Customizer by moving the slider. Available range is from 1 to 200 but you can set it precisely by input field below.
 
-This functionality works only for posts with empty excerpt metabox (even if you used tag) and only with the_excerpt function, so it doesn't work for teaser when the_content() function is used.
+This functionality works only for posts with empty excerpt metabox (even if you used tag) and only with `the_excerpt` function, so it doesn't work for teaser when `the_content()` function is used.
 
 Excerpt length filter is assigned to archive page as well.
 

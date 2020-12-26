@@ -159,6 +159,8 @@ https://wordpress.org/support/theme/the-bootstrap-blog
   - Bootstrap gallery filter hook
   - Hide comment Legend when login required (no need to show it if there is no comment form)
   - SVG icons
+	- Two extra locations in sidebar for social menu icons
+	- Starter content
 
 
 ### 0.1.3.1

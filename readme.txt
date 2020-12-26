@@ -148,7 +148,7 @@ https://wordpress.org/support/theme/the-bootstrap-blog
 == Changelog ==
 
 === 0.1.4 ===
-*Released: December 23, 2020*
+*Released: December 26, 2020*
 
 * New features added:
 ** Custom footer text (with predefined tags)

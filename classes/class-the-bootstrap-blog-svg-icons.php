@@ -5,10 +5,6 @@
  * License: GPLv2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
- * @since The Bootstrap Blog 0.1.4
- */
-
-/**
  * This class is in charge of displaying SVG icons across the site.
  *
  * Place each <svg> source on its own array key, without adding the

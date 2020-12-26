@@ -108,7 +108,7 @@ function the_bootstrap_blog__filter__nav_menu_link_attributes( $atts, $item, $ar
 	$locations = array( 'social-before-widgets', 'social-after-widgets' );
 	if ( in_array( $args->theme_location, $locations, true ) ) {
     $atts['class'] = 'text-dark';
-}
-    return $atts;
+	}
+	return $atts;
 }
 add_filter( 'nav_menu_link_attributes', 'the_bootstrap_blog__filter__nav_menu_link_attributes', 10, 3 );

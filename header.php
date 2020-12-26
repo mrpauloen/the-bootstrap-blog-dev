@@ -30,7 +30,7 @@ $has_header_image = has_header_image();
 
 		<div class="blog-masthead<?php
 	 if ( $has_header_image ){
-			 esc_attr( ' border-bottom border-white' );
+			echo esc_attr( ' border-bottom border-white' );
 	}
 	 ?>">
 			<div class="container nav-scroller">
@@ -55,13 +55,13 @@ $has_header_image = has_header_image();
 <header class="blog-header">
   <div class="container<?php
 	if ( $has_header_image ){
-		esc_attr( ' has-custom-header');
+		echo esc_attr( ' has-custom-header');
 	}
 	?>">
 		<h1 class="site-title"><?php the_bootstrap_blog__site_title(); ?></h1><br/>
 		<p class="lead site-description<?php
 		if ( ! $has_header_image ){
-			esc_attr( ' text-muted' );
+			echo esc_attr( ' text-muted' );
 		}
 		?>"><?php the_bootstrap_blog__site_description(); ?></p>
   </div>

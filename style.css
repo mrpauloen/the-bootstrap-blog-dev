@@ -38,6 +38,11 @@ Domain Path: /languages
 
  The Bootstrap Blog Theme bundles the following third-party resources:
 
+*! TwentyTwenty_SVG_Icons class
+ * Copyright: Twenty Twenty WordPress Theme, Copyright 2019-2020 WordPress.org
+ * License: GPLv2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
 *! Playfair Display font
  * Copyright: 2017 The Playfair Display Project Authors (https://github.com/clauseggers/Playfair-Display)
  * Licence: SIL Open Font License (OFL)
@@ -52,8 +57,7 @@ Domain Path: /languages
  * Licence URI: https://creativecommons.org/licenses/by-sa/4.0/
  *
 
-*!
- * Bootstrap v4.5.3 (https://getbootstrap.com/)
+*! Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)

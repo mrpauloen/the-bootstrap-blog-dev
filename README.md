@@ -7,8 +7,8 @@ Summary:           | The Bootstrap Blog
 -------------------|----------------
 Contributors:      | [mrpauloen](https://profiles.wordpress.org/mrpauloen/)
 Version:           | 0.1.4
-Requires at least: | 5.0
-Tested up to:      | 5.5
+Requires at least: | 5.3
+Tested up to:      | 5.6
 Requires PHP:	     | 7.0
 License:           | GPLv2 or later
 License URI:       | http://www.gnu.org/licenses/gpl-2.0.html

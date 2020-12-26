@@ -133,7 +133,7 @@ If found Social media link, social icon is added.
 
 === Custom Excerpt Length section ===
 
-By default the excerpt length is set to return 55 words. Now you can change it in Customizer by moving the slider. Available range is from 1 to 100 but you can set it precisely by input field below.
+By default the excerpt length is set to return 55 words. Now you can change it in Customizer by moving the slider. Available range is from 1 to 200 but you can set it precisely by input field below.
 
 This functionality works only for posts with empty excerpt metabox (even if you used tag) and only with the_excerpt function, so it doesn't work for teaser when the_content() function is used.
 
@@ -147,7 +147,7 @@ https://wordpress.org/support/theme/the-bootstrap-blog
 
 == Changelog ==
 
-### 0.1.4
+=== 0.1.4 ===
 *Released: December 23, 2020*
 
 * New features added:
@@ -158,6 +158,8 @@ https://wordpress.org/support/theme/the-bootstrap-blog
 ** Bootstrap gallery filter hook
 ** Hide comment Legend when login required (no need to show it if there is no comment form)
 ** SVG icons
+** Two extra locations in sidebar for social menu icons
+** Starter content
 
 === 0.1.3.1 ====
 ''Released: October 3, 2020''

@@ -140,9 +140,9 @@ https://wordpress.org/support/theme/the-bootstrap-blog
   - Custom excerpt lenght (on home and archive page)
   - Mega Menu in footer (6 locations)
   - Bold and highlighted site title and description (when header image is set)
-	- Bootstrap gallery filter hook
-	- Hide comment Legend when login required (no need to show it if there is no comment form)
-	- SVG icons
+  - Bootstrap gallery filter hook
+  - Hide comment Legend when login required (no need to show it if there is no comment form)
+  - SVG icons
 
 
 ### 0.1.3.1

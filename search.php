@@ -13,7 +13,7 @@
 <?php
 	$the_bootstrap_blog_title = the_title( '', '', false );
 
-	if ( $title ){
+	if ( $the_bootstrap_blog_title ){
 		echo $the_bootstrap_blog_title;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
 		esc_html_e( '(no title)', 'the-bootstrap-blog');

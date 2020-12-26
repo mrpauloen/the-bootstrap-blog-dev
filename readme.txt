@@ -123,12 +123,12 @@ Theme has only one widgets area in right sidebar
 
 This theme uses wp_nav_menu() in nine locations.
 
-* First location: top menu has only one level deep.
+* First location: top menu has only one level depth.
 
 * Two locations: before-widget ang aftre-widget intended to Social Menu.
  Social media links converted to icons.
 
-* Six locations in footer as footers menu.
+* Six locations in footer as footers mega menu.
 If found Social media link, social icon is added.
 
 === Custom Excerpt Length section ===
@@ -137,7 +137,7 @@ By default the excerpt length is set to return 55 words. Now you can change it i
 
 This functionality works only for posts with empty excerpt metabox (even if you used tag) and only with the_excerpt function, so it doesn't work for teaser when the_content() function is used.
 
-Excerpt length filter is assignedto archive page as well.
+Excerpt length filter is assigned to archive page as well.
 
 == Support ==
 

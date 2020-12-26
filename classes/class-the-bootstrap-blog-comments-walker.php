@@ -87,7 +87,6 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 							} else {
 								echo wp_kses_post( $avatar );
 								printf( '<a href="%s" rel="external nofollow" class="url">', $comment_author_url ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped --Escaped in https://developer.wordpress.org/reference/functions/get_comment_author_url/
-
 							}
 						}
 
@@ -105,10 +104,6 @@ class The_Bootstrap_Blog_Comments_Walker extends Walker_Comment {
 
 					<div class="comment-metadata">
 						<small><a class="text-muted" href="<?php echo esc_url( get_comment_link( $comment, $args ) ); ?>">
-							<?php
-								/* translators: 1: Comment date, 2: Comment time. */
-								$comment_timestamp = sprintf( __( '%1$s at %2$s', 'the-bootstrap-blog' ), get_comment_date( '', $comment ), get_comment_time() );
-							?>
 							<time datetime="<?php comment_time( 'c' ); ?>" title="<?php
 									printf(
 									/* translators: %1$s: Comment date, %2$s: Comment time. */
